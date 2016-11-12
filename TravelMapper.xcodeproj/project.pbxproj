@@ -20,6 +20,7 @@
 		7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5A71DD67A530063F99D /* Model.xcdatamodeld */; };
 		7EE9A5AE1DD67B0F0063F99D /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5AB1DD67B0F0063F99D /* Travel+CoreDataClass.m */; };
 		7EE9A5AF1DD67B0F0063F99D /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5AD1DD67B0F0063F99D /* Travel+CoreDataProperties.m */; };
+		7EE9A5B51DD6937E0063F99D /* TMLocationSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		7EE9A5AB1DD67B0F0063F99D /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Travel+CoreDataClass.m"; path = "../Travel+CoreDataClass.m"; sourceTree = "<group>"; };
 		7EE9A5AC1DD67B0F0063F99D /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Travel+CoreDataProperties.h"; path = "../Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		7EE9A5AD1DD67B0F0063F99D /* Travel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Travel+CoreDataProperties.m"; path = "../Travel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7EE9A5B31DD6937E0063F99D /* TMLocationSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMLocationSearchTableViewController.h; sourceTree = "<group>"; };
+		7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMLocationSearchTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				7EE9A5861DD6764C0063F99D /* TMMapViewController.m */,
 				7EE9A5871DD6764C0063F99D /* TMTravelTableViewController.h */,
 				7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */,
+				7EE9A5B31DD6937E0063F99D /* TMLocationSearchTableViewController.h */,
+				7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				TargetAttributes = {
 					7EE9A5461DD6749A0063F99D = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5K623M54S3;
 						ProvisioningStyle = Automatic;
 					};
 					7EE9A5621DD6749A0063F99D = {
@@ -334,6 +340,7 @@
 				7EE9A5891DD6764C0063F99D /* TMMapViewController.m in Sources */,
 				7EE9A54C1DD6749A0063F99D /* main.m in Sources */,
 				7EE9A5AE1DD67B0F0063F99D /* Travel+CoreDataClass.m in Sources */,
+				7EE9A5B51DD6937E0063F99D /* TMLocationSearchTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +481,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5K623M54S3;
 				INFOPLIST_FILE = TravelMapper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -485,7 +494,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5K623M54S3;
 				INFOPLIST_FILE = TravelMapper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

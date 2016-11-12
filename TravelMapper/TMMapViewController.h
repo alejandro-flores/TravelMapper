@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@import MapKit;
 
-@interface TMMapViewController : UIViewController
+@protocol HandleMapSearch <NSObject>
+- (void)dropPinZoomIn:(MKPlacemark *)placemark;
+@end
+
+@interface TMMapViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate>
 
 @end
