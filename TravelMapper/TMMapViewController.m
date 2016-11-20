@@ -8,11 +8,9 @@
 
 #import "TMMapViewController.h"
 #import "TMLocationSearchTableViewController.h"
-@import MapKit;
 
 @interface TMMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UISearchController *resultSearchController;
@@ -24,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.mapTypeSegmentedControl setSelectedSegmentIndex:0];
-    _mapView.delegate = self;
+    //_mapView.delegate = self;
     [self locationManagerSetup];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
@@ -106,7 +104,7 @@
                            (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
                            ];
     [_mapView addAnnotation:annotation];
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
+    MKCoordinateSpan span = MKCoordinateSpanMake(100, 100);
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
     [_mapView setRegion:region animated:true];
 }
@@ -135,6 +133,7 @@
                       forState:UIControlStateNormal];
     [button addTarget:self action:@selector(getDirections) forControlEvents:UIControlEventTouchUpInside];
     pinView.leftCalloutAccessoryView = button;
+    pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
     return pinView;
 }
@@ -162,6 +161,7 @@
     _locationManager = [[CLLocationManager alloc]init];
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [_locationManager requestLocation];
     [_locationManager requestWhenInUseAuthorization];
 }
 

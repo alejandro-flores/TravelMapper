@@ -42,30 +42,31 @@
 }
 
 - (NSString *)parseAddress:(MKPlacemark *)selectedItem {
-    // put a space between "4" and "Melrose Place"
-    NSString *firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? @" " : @"";
     // put a comma between street and city/state
     NSString *comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? @", " : @"";
     // put a space between "Washington" and "DC"
     NSString *secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? @" " : @"";
+    NSString *thirdSpace = (selectedItem.country != nil && selectedItem.country != nil) ? @" " : @"";
     NSString *addressLine = [NSString stringWithFormat:@"%@%@%@%@%@%@%@",
-                             (selectedItem.subThoroughfare == nil ? @"" : selectedItem.subThoroughfare),
-                             firstSpace,
                              (selectedItem.thoroughfare == nil ? @"" : selectedItem.thoroughfare),
                              comma,
                              // city
                              (selectedItem.locality == nil ? @"" : selectedItem.locality),
                              secondSpace,
                              // state
-                             (selectedItem.administrativeArea == nil ? @"" : selectedItem.administrativeArea)
+                             (selectedItem.administrativeArea == nil ? @"" : selectedItem.administrativeArea),
+                             thirdSpace,
+                             // country
+                             (selectedItem.country == nil ? @"" : selectedItem.country)
                              ];
+    
     return addressLine;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
