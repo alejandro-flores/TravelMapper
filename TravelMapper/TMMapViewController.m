@@ -8,6 +8,9 @@
 
 #import "TMMapViewController.h"
 #import "TMLocationSearchTableViewController.h"
+#import "Travel+CoreDataClass.h"
+#import "TMTravelTableViewController.h"
+@import CoreData;
 
 @interface TMMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -21,8 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tabBarController.delegate = self;
+    _managedObjectCtx = [self getManagedObjectContext];
+    
     [self.mapTypeSegmentedControl setSelectedSegmentIndex:0];
-    //_mapView.delegate = self;
     [self locationManagerSetup];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
@@ -42,12 +48,14 @@
     locationSearchTable.mapView = _mapView;
     
     locationSearchTable.handleMapSearchDelegate = self;
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -90,12 +98,8 @@
     }
 }
 
-- (void)dropPinZoomIn:(MKPlacemark *)placemark
-{
-    // cache the pin
+- (void)dropPinZoomIn:(MKPlacemark *)placemark {
     _selectedPin = placemark;
-    // clear existing pins
-    [_mapView removeAnnotations:(_mapView.annotations)];
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     annotation.coordinate = placemark.coordinate;
     annotation.title = placemark.name;
@@ -107,10 +111,31 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(100, 100);
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
     [_mapView setRegion:region animated:true];
+    
+    // Stores the annotation as a Travel Core Data entity
+    Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:_managedObjectCtx];
+    NSString *cityName = [NSString stringWithFormat:@"%@", placemark.locality];
+    NSString *countryName = [NSString stringWithFormat:@"%@", placemark.country];
+    NSNumber *latitude = [NSNumber numberWithFloat:placemark.coordinate.latitude];
+    NSNumber *longitude = [NSNumber numberWithFloat:placemark.coordinate.longitude];
+    NSDate *date = [NSDate date]; // Get Today's date for now.
+    NSString *travelType = @"Temp"; // Temp for now
+    
+    [newTravel setValue:cityName forKey:@"cityName"];
+    [newTravel setValue:countryName forKey:@"countryName"];
+    [newTravel setValue:latitude forKey:@"latitude"];
+    [newTravel setValue:longitude forKey:@"longitude"];
+    [newTravel setValue:date forKey:@"dateVisited"];
+    [newTravel setValue:travelType forKey:@"travelType"];
+    
+    //Store the New Blade to Persistent Store
+    NSError *error = nil;
+    if (![_managedObjectCtx save:&error])
+        NSLog(@"MAIN -- Error Saving New Blade: %@", [error localizedDescription]);
+    NSLog(@"MAIN -- Saved New Blade");
 }
 
-- (nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
+- (nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
         //return nil so map view draws "blue dot" for standard user location
         return nil;
@@ -143,15 +168,17 @@
     [mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - UITabBarControllerDelegate
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([viewController isKindOfClass:[TMTravelTableViewController class]]) {
+        TMTravelTableViewController *tvc = (TMTravelTableViewController *)viewController;
+        [tvc setManagedObjectCtx:_managedObjectCtx];
+        [tvc setStr:@"FUCK YEAH"];
+    }
+    return YES;
 }
-*/
+
 
 /**
  * Sets up the CLLocationManager to request and start location tracking
@@ -163,6 +190,27 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [_locationManager requestLocation];
     [_locationManager requestWhenInUseAuthorization];
+}
+
+- (void)redrawTravels {
+    for (id<MKAnnotation> annotation in _mapView.annotations) {
+        [_mapView removeAnnotation:annotation];
+        [_mapView addAnnotation:annotation];
+    }
+}
+
+#pragma mark - Core Data
+/**
+ *  Allows user to persist Blade objects by grabbing the ManagedObjectContext
+ *
+ *  @return NSManagedObjectContext object.
+ */
+- (NSManagedObjectContext *)getManagedObjectContext {
+    NSManagedObjectContext *ctx = nil;
+    id delegate = [[UIApplication sharedApplication]delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)])
+        ctx = [delegate managedObjectContext];
+    return ctx;
 }
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import "TMTravelTableViewController.h"
+@import CoreData;
 
 @interface TMTravelTableViewController ()
+@property (strong, nonatomic) NSMutableArray *travelsArray;
 
 @end
 
@@ -16,6 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self fetchTravels];
+    NSLog(@"Blades Array Count = %ld", (unsigned long)[_travelsArray count]);
+    NSLog(@"%@", _str);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -32,24 +38,27 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [_travelsArray count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"travelCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"travelCell"];
+    }
+    
+    cell.textLabel.text = [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"cityName"];
+    cell.detailTextLabel.text = [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"countryName"];
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -94,5 +103,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Helper Methods
+/**
+ * Used to fetch the Blades from the Persistent Data Store and store them in the bladesArray
+ */
+- (void)fetchTravels {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Travel"];
+    _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil]mutableCopy];
+}
 
 @end

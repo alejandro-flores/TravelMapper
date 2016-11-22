@@ -10,4 +10,7 @@
 
 @interface TMTravelTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectCtx;
+@property (strong, nonatomic) NSString *str;
+
 @end

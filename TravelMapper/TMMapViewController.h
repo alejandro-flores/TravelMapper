@@ -13,6 +13,7 @@
 - (void)dropPinZoomIn:(MKPlacemark *)placemark;
 @end
 
-@interface TMMapViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate>
+@interface TMMapViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate, UITabBarControllerDelegate>
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectCtx;
 
 @end
