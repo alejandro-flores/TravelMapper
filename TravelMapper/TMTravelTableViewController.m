@@ -20,14 +20,18 @@
     [super viewDidLoad];
     
     [self fetchTravels];
-    NSLog(@"Blades Array Count = %ld", (unsigned long)[_travelsArray count]);
-    NSLog(@"%@", _str);
+    NSLog(@"Travels Array Count = %ld", (unsigned long)[_travelsArray count]);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"Travels Array Count = %ld", (unsigned long)[_travelsArray count]);
 }
 
 - (void)didReceiveMemoryWarning {

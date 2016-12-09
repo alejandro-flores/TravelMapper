@@ -18,13 +18,13 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UISearchController *resultSearchController;
 @property (strong, nonatomic) MKPlacemark *selectedPin;
+@property (strong, nonatomic) NSMutableArray *travelsArray;
 @end
 
 @implementation TMMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.tabBarController.delegate = self;
     _managedObjectCtx = [self getManagedObjectContext];
     
@@ -103,9 +103,9 @@
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     annotation.coordinate = placemark.coordinate;
     annotation.title = placemark.name;
-    annotation.subtitle = [NSString stringWithFormat:@"%@ %@",
+    annotation.subtitle = [NSString stringWithFormat:@"%@, %@",
                            (placemark.locality == nil ? @"" : placemark.locality),
-                           (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
+                           (placemark.administrativeArea == nil ? @"" : placemark.country)
                            ];
     [_mapView addAnnotation:annotation];
     MKCoordinateSpan span = MKCoordinateSpanMake(100, 100);
@@ -114,8 +114,8 @@
     
     // Stores the annotation as a Travel Core Data entity
     Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:_managedObjectCtx];
-    NSString *cityName = [NSString stringWithFormat:@"%@", placemark.locality];
-    NSString *countryName = [NSString stringWithFormat:@"%@", placemark.country];
+    NSString *cityName = [NSString stringWithFormat:@"%@", annotation.title];
+    NSString *countryName = [NSString stringWithFormat:@"%@", annotation.subtitle];
     NSNumber *latitude = [NSNumber numberWithFloat:placemark.coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithFloat:placemark.coordinate.longitude];
     NSDate *date = [NSDate date]; // Get Today's date for now.
@@ -131,8 +131,8 @@
     //Store the New Blade to Persistent Store
     NSError *error = nil;
     if (![_managedObjectCtx save:&error])
-        NSLog(@"MAIN -- Error Saving New Blade: %@", [error localizedDescription]);
-    NSLog(@"MAIN -- Saved New Blade");
+        NSLog(@"MAIN -- Error Saving New Travel: %@", [error localizedDescription]);
+    NSLog(@"MAIN -- Saved New Travel");
 }
 
 - (nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -171,14 +171,13 @@
 
 #pragma mark - UITabBarControllerDelegate
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if ([viewController isKindOfClass:[TMTravelTableViewController class]]) {
-        TMTravelTableViewController *tvc = (TMTravelTableViewController *)viewController;
-        [tvc setManagedObjectCtx:_managedObjectCtx];
-        [tvc setStr:@"FUCK YEAH"];
+    UINavigationController *navController = (UINavigationController *)viewController;
+    if ([navController.topViewController isKindOfClass:[TMTravelTableViewController class]]) {
+        TMTravelTableViewController *tvc = (TMTravelTableViewController *)navController.topViewController;
+        [tvc setManagedObjectCtx:_managedObjectCtx]; // Injects the ManagedObjectContext
     }
     return YES;
 }
-
 
 /**
  * Sets up the CLLocationManager to request and start location tracking
@@ -197,6 +196,14 @@
         [_mapView removeAnnotation:annotation];
         [_mapView addAnnotation:annotation];
     }
+}
+
+/**
+ * Used to fetch the Blades from the Persistent Data Store and store them in the bladesArray
+ */
+- (void)fetchTravels {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Travel"];
+    _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil]mutableCopy];
 }
 
 #pragma mark - Core Data
