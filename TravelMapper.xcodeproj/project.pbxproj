@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */; };
 		7EE9A54C1DD6749A0063F99D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54B1DD6749A0063F99D /* main.m */; };
 		7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54E1DD6749A0063F99D /* AppDelegate.m */; };
 		7EE9A55A1DD6749A0063F99D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE9A5591DD6749A0063F99D /* Assets.xcassets */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMTravelTableViewCell.h; path = ../TMTravelTableViewCell.h; sourceTree = "<group>"; };
+		7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMTravelTableViewCell.m; path = ../TMTravelTableViewCell.m; sourceTree = "<group>"; };
 		7EE9A5471DD6749A0063F99D /* TravelMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE9A54B1DD6749A0063F99D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EE9A54D1DD6749A0063F99D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				7EE9A5AB1DD67B0F0063F99D /* Travel+CoreDataClass.m */,
 				7EE9A5AC1DD67B0F0063F99D /* Travel+CoreDataProperties.h */,
 				7EE9A5AD1DD67B0F0063F99D /* Travel+CoreDataProperties.m */,
+				7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */,
+				7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				7EE9A54C1DD6749A0063F99D /* main.m in Sources */,
 				7EE9A5AE1DD67B0F0063F99D /* Travel+CoreDataClass.m in Sources */,
 				7EE9A5B51DD6937E0063F99D /* TMLocationSearchTableViewController.m in Sources */,
+				7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

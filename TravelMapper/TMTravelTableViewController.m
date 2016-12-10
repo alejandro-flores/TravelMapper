@@ -9,6 +9,7 @@
 #import "TMTravelTableViewController.h"
 #import "TMMapViewController.h"
 #import "Travel+CoreDataClass.h"
+#import "TMTravelTableViewCell.h"
 @import CoreData;
 
 @interface TMTravelTableViewController ()
@@ -49,17 +50,18 @@
     return [_travelsArray count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSUInteger cell_height = 300;
+    return cell_height;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"travelCell" forIndexPath:indexPath];
+    TMTravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"travelCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"travelCell"];
-    }
-    
-    cell.textLabel.text = [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"cityName"];
-    cell.detailTextLabel.text = [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"countryName"];
+    cell.cityImageView.image = [UIImage imageNamed:@"IMAGE_NAME"];
+    cell.flagImageView.image = [UIImage imageNamed:@"IMAGE_NAME"];
+    cell.placeLabel.text = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"countryName"]];
     
     return cell;
 }
