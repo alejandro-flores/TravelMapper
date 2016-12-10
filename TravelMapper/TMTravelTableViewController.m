@@ -7,8 +7,12 @@
 //
 
 #import "TMTravelTableViewController.h"
+#import "TMMapViewController.h"
+#import "Travel+CoreDataClass.h"
+@import CoreData;
 
 @interface TMTravelTableViewController ()
+@property (strong, nonatomic) NSMutableArray *travelsArray;
 
 @end
 
@@ -16,12 +20,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self addRefreshControl];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self fetchTravels];
+    [self.tableView reloadData];
+    NSLog(@"Travels Array Count = %ld", (unsigned long)[_travelsArray count]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,26 +41,28 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [_travelsArray count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"travelCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"travelCell"];
+    }
+    
+    cell.textLabel.text = [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"cityName"];
+    cell.detailTextLabel.text = [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"countryName"];
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -59,17 +72,21 @@
 }
 */
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        Travel *travelToDelete = [_travelsArray objectAtIndex:indexPath.row];
+        [_managedObjectCtx deleteObject:travelToDelete];
+        [_travelsArray removeObjectAtIndex:indexPath.row];
+        
+        NSError *err = nil;
+        if (![_managedObjectCtx save:&err]) {
+            NSLog(@"TVC - Error deleting Travel: %@", [err localizedDescription]);
+        }
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
 /*
 // Override to support rearranging the table view.
@@ -85,14 +102,42 @@
 }
 */
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - UITabBarControllerDelegate
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    UINavigationController *navController = (UINavigationController *)viewController;
+    if ([navController.topViewController isKindOfClass:[TMMapViewController class]]) {
+        TMMapViewController *mvc = (TMMapViewController *)navController.topViewController;
+        [mvc setManagedObjectCtx:_managedObjectCtx]; // Injects the ManagedObjectContext
+    }
+    return YES;
 }
-*/
+
+#pragma mark - Helper Methods
+/*
+ * Used to fetch the Blades from the Persistent Data Store and store them in the bladesArray
+ */
+- (void)fetchTravels {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Travel"];
+    _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil]mutableCopy];
+}
+
+/**
+ * Adds a UIRefreshControl to the table view to update the table.
+ */
+- (void)addRefreshControl {
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:refreshControl];
+}
+
+/**
+ * When the refresh control is pulled down, this method
+ * polls Core Data and updates the table view
+ * @param refreshControl UIRefreshControl requesting action
+ */
+- (void)refreshTable:(UIRefreshControl *)refreshControl {
+    [self.tableView reloadData];
+    [refreshControl endRefreshing];
+}
 
 @end
