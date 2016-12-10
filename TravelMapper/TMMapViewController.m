@@ -22,7 +22,7 @@
 @end
 
 @implementation TMMapViewController
-
+#pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarController.delegate = self;
@@ -52,6 +52,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [_mapView removeAnnotations:_mapView.annotations];
+    [self redrawTravelPins];
+    NSLog(@"Travels Array Count = %ld", (unsigned long)[_travelsArray count]);
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +106,12 @@
     }
 }
 
+#pragma mark - HandleMapSearch Protocol
+/**
+ * Drops a MKPointAnnotation on the map and zooms into it.
+
+ @param placemark MKPlaceMark object containing the travel data.
+ */
 - (void)dropPinZoomIn:(MKPlacemark *)placemark {
     _selectedPin = placemark;
     MKPointAnnotation *annotation = [MKPointAnnotation new];
@@ -112,27 +126,13 @@
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
     [_mapView setRegion:region animated:true];
     
-    // Stores the annotation as a Travel Core Data entity
-    Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:_managedObjectCtx];
-    NSString *cityName = [NSString stringWithFormat:@"%@", annotation.title];
-    NSString *countryName = [NSString stringWithFormat:@"%@", annotation.subtitle];
-    NSNumber *latitude = [NSNumber numberWithFloat:placemark.coordinate.latitude];
-    NSNumber *longitude = [NSNumber numberWithFloat:placemark.coordinate.longitude];
-    NSDate *date = [NSDate date]; // Get Today's date for now.
-    NSString *travelType = @"Temp"; // Temp for now
-    
-    [newTravel setValue:cityName forKey:@"cityName"];
-    [newTravel setValue:countryName forKey:@"countryName"];
-    [newTravel setValue:latitude forKey:@"latitude"];
-    [newTravel setValue:longitude forKey:@"longitude"];
-    [newTravel setValue:date forKey:@"dateVisited"];
-    [newTravel setValue:travelType forKey:@"travelType"];
-    
-    //Store the New Blade to Persistent Store
-    NSError *error = nil;
-    if (![_managedObjectCtx save:&error])
-        NSLog(@"MAIN -- Error Saving New Travel: %@", [error localizedDescription]);
-    NSLog(@"MAIN -- Saved New Travel");
+    // Create new Travel record
+    [self newTravel:annotation.title
+        countryName:annotation.subtitle
+           latitude:[NSNumber numberWithFloat:placemark.coordinate.latitude]
+          longitude:[NSNumber numberWithFloat:placemark.coordinate.longitude]
+               date:[NSDate date]
+               type:@"Temp"];
 }
 
 - (nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -163,11 +163,13 @@
     return pinView;
 }
 
+/**
+ * Extension on the Travel Pin to allow using Maps to get directions to/from the Travel Pin.
+ */
 - (void)getDirections {
     MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:_selectedPin];
     [mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
 }
-
 
 #pragma mark - UITabBarControllerDelegate
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
@@ -191,9 +193,27 @@
     [_locationManager requestWhenInUseAuthorization];
 }
 
-- (void)redrawTravels {
-    for (id<MKAnnotation> annotation in _mapView.annotations) {
-        [_mapView removeAnnotation:annotation];
+/**
+ * Redraws the Travel pins on the map from the data stored in the Travel entity
+ * when reopening the app.
+ */
+- (void)redrawTravelPins {
+    [self fetchTravels];
+    
+    NSString *title;
+    NSString *subtitle;
+    CLLocationCoordinate2D coord;
+    
+    for (Travel *travel in _travelsArray) {
+        title = [travel valueForKey:@"cityName"];
+        subtitle = [travel valueForKey:@"countryName"];
+        coord = CLLocationCoordinate2DMake([[travel valueForKey:@"latitude"] doubleValue], [[travel valueForKey:@"longitude"] doubleValue]);
+        
+        MKPointAnnotation *annotation = [MKPointAnnotation new];
+        annotation.title = title;
+        annotation.subtitle = subtitle;
+        annotation.coordinate = coord;
+        
         [_mapView addAnnotation:annotation];
     }
 }
@@ -218,6 +238,34 @@
     if ([delegate performSelector:@selector(managedObjectContext)])
         ctx = [delegate managedObjectContext];
     return ctx;
+}
+
+/**
+ * Creates a new Travel entity record in Core Data
+
+ * @param cityName name of the city traveled to.
+ * @param countryName combination of the municipality/province or canton + the name of the country.
+ * @param latitude destination's latitude
+ * @param longitude destination's longitude
+ * @param dateTraveled date when you traveled to that location
+ * @param travelType type of travel (pleasure, business, etc).
+ */
+- (void)newTravel:(NSString *)cityName countryName:(NSString *)countryName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude date:(NSDate *)dateTraveled type:(NSString *)travelType {
+    // Stores the annotation as a Travel Core Data entity
+    Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:_managedObjectCtx];
+    
+    [newTravel setValue:cityName forKey:@"cityName"];
+    [newTravel setValue:countryName forKey:@"countryName"];
+    [newTravel setValue:latitude forKey:@"latitude"];
+    [newTravel setValue:longitude forKey:@"longitude"];
+    [newTravel setValue:dateTraveled forKey:@"dateVisited"];
+    [newTravel setValue:travelType forKey:@"travelType"];
+    
+    //Store the New Blade to Persistent Store
+    NSError *error = nil;
+    if (![_managedObjectCtx save:&error])
+        NSLog(@"MAIN -- Error Saving New Travel: %@", [error localizedDescription]);
+    NSLog(@"MAIN -- Saved New Travel");
 }
 
 @end
