@@ -11,5 +11,4 @@
 @interface TMTravelTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectCtx;
-
 @end

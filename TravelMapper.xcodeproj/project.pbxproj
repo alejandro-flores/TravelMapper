@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35ACBCC44BCE4C107133D965 /* libPods-TravelMapperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */; };
+		5C037A8D2ADE65D8116F4EBC /* libPods-TravelMapperTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */; };
+		7E7EF13F1DFDF2CA004C09F7 /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7EF13C1DFDF2CA004C09F7 /* Travel+CoreDataClass.m */; };
+		7E7EF1401DFDF2CA004C09F7 /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7EF13E1DFDF2CA004C09F7 /* Travel+CoreDataProperties.m */; };
 		7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */; };
 		7EE9A54C1DD6749A0063F99D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54B1DD6749A0063F99D /* main.m */; };
 		7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54E1DD6749A0063F99D /* AppDelegate.m */; };
@@ -19,9 +23,8 @@
 		7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */; };
 		7EE9A5931DD677960063F99D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE9A5921DD677960063F99D /* MapKit.framework */; };
 		7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5A71DD67A530063F99D /* Model.xcdatamodeld */; };
-		7EE9A5AE1DD67B0F0063F99D /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5AB1DD67B0F0063F99D /* Travel+CoreDataClass.m */; };
-		7EE9A5AF1DD67B0F0063F99D /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5AD1DD67B0F0063F99D /* Travel+CoreDataProperties.m */; };
 		7EE9A5B51DD6937E0063F99D /* TMLocationSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */; };
+		D1F6D2D7A7E81328E06D8474 /* libPods-TravelMapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C2BBB78644DB2AB3DB495CF /* Pods-TravelMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper.debug.xcconfig"; sourceTree = "<group>"; };
+		13F4EEFA957F9E40FEECB254 /* Pods-TravelMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper.release.xcconfig"; sourceTree = "<group>"; };
+		24DFD4C3CD2391FB963A471F /* Pods-TravelMapperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapperUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5743496A020C618A94EE28FA /* Pods-TravelMapperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7E7EF13B1DFDF2CA004C09F7 /* Travel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataClass.h"; sourceTree = "<group>"; };
+		7E7EF13C1DFDF2CA004C09F7 /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataClass.m"; sourceTree = "<group>"; };
+		7E7EF13D1DFDF2CA004C09F7 /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7E7EF13E1DFDF2CA004C09F7 /* Travel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMTravelTableViewCell.h; path = ../TMTravelTableViewCell.h; sourceTree = "<group>"; };
 		7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMTravelTableViewCell.m; path = ../TMTravelTableViewCell.m; sourceTree = "<group>"; };
 		7EE9A5471DD6749A0063F99D /* TravelMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,12 +76,12 @@
 		7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelTableViewController.m; sourceTree = "<group>"; };
 		7EE9A5921DD677960063F99D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7EE9A5A81DD67A530063F99D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		7EE9A5AA1DD67B0F0063F99D /* Travel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Travel+CoreDataClass.h"; path = "../Travel+CoreDataClass.h"; sourceTree = "<group>"; };
-		7EE9A5AB1DD67B0F0063F99D /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Travel+CoreDataClass.m"; path = "../Travel+CoreDataClass.m"; sourceTree = "<group>"; };
-		7EE9A5AC1DD67B0F0063F99D /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Travel+CoreDataProperties.h"; path = "../Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
-		7EE9A5AD1DD67B0F0063F99D /* Travel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Travel+CoreDataProperties.m"; path = "../Travel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7EE9A5B31DD6937E0063F99D /* TMLocationSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMLocationSearchTableViewController.h; sourceTree = "<group>"; };
 		7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMLocationSearchTableViewController.m; sourceTree = "<group>"; };
+		863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests.release.xcconfig"; sourceTree = "<group>"; };
+		A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C21495368BD11606B526A64D /* Pods-TravelMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EE9A5931DD677960063F99D /* MapKit.framework in Frameworks */,
+				D1F6D2D7A7E81328E06D8474 /* libPods-TravelMapper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C037A8D2ADE65D8116F4EBC /* libPods-TravelMapperTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +106,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35ACBCC44BCE4C107133D965 /* libPods-TravelMapperUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C1EFDDBAA17E63A6D753B31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C2BBB78644DB2AB3DB495CF /* Pods-TravelMapper.debug.xcconfig */,
+				13F4EEFA957F9E40FEECB254 /* Pods-TravelMapper.release.xcconfig */,
+				C21495368BD11606B526A64D /* Pods-TravelMapperTests.debug.xcconfig */,
+				9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */,
+				24DFD4C3CD2391FB963A471F /* Pods-TravelMapperUITests.debug.xcconfig */,
+				5743496A020C618A94EE28FA /* Pods-TravelMapperUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7EE9A53E1DD6749A0063F99D = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +134,7 @@
 				7EE9A5711DD6749A0063F99D /* TravelMapperUITests */,
 				7EE9A5481DD6749A0063F99D /* Products */,
 				7EE9A5911DD677960063F99D /* Frameworks */,
+				0C1EFDDBAA17E63A6D753B31 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,10 +215,10 @@
 		7EE9A5821DD674D70063F99D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7EE9A5AA1DD67B0F0063F99D /* Travel+CoreDataClass.h */,
-				7EE9A5AB1DD67B0F0063F99D /* Travel+CoreDataClass.m */,
-				7EE9A5AC1DD67B0F0063F99D /* Travel+CoreDataProperties.h */,
-				7EE9A5AD1DD67B0F0063F99D /* Travel+CoreDataProperties.m */,
+				7E7EF13B1DFDF2CA004C09F7 /* Travel+CoreDataClass.h */,
+				7E7EF13C1DFDF2CA004C09F7 /* Travel+CoreDataClass.m */,
+				7E7EF13D1DFDF2CA004C09F7 /* Travel+CoreDataProperties.h */,
+				7E7EF13E1DFDF2CA004C09F7 /* Travel+CoreDataProperties.m */,
 				7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */,
 				7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */,
 			);
@@ -200,6 +229,9 @@
 			isa = PBXGroup;
 			children = (
 				7EE9A5921DD677960063F99D /* MapKit.framework */,
+				A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */,
+				863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */,
+				4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,9 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EE9A5771DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapper" */;
 			buildPhases = (
+				C5B2842FCF00B6125BD5C5FC /* [CP] Check Pods Manifest.lock */,
 				7EE9A5431DD6749A0063F99D /* Sources */,
 				7EE9A5441DD6749A0063F99D /* Frameworks */,
 				7EE9A5451DD6749A0063F99D /* Resources */,
+				654C13A80CC8DDB2885EB97B /* [CP] Embed Pods Frameworks */,
+				80345F0AB6AA1ECF9FCC9F7D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,9 +263,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EE9A57A1DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapperTests" */;
 			buildPhases = (
+				86C6D0CD442F1E86C1BD6D22 /* [CP] Check Pods Manifest.lock */,
 				7EE9A55F1DD6749A0063F99D /* Sources */,
 				7EE9A5601DD6749A0063F99D /* Frameworks */,
 				7EE9A5611DD6749A0063F99D /* Resources */,
+				2A818B0E4D37908B0B9FF985 /* [CP] Embed Pods Frameworks */,
+				6501572205AC8DFFEDD6F3C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,9 +284,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EE9A57D1DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapperUITests" */;
 			buildPhases = (
+				12FB3D13A386B5350D7DCE75 /* [CP] Check Pods Manifest.lock */,
 				7EE9A56A1DD6749A0063F99D /* Sources */,
 				7EE9A56B1DD6749A0063F99D /* Frameworks */,
 				7EE9A56C1DD6749A0063F99D /* Resources */,
+				FA29A8CE4DBCE44ED63A6C06 /* [CP] Embed Pods Frameworks */,
+				5621E2C51C9D9240F5C3F595 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -333,6 +374,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12FB3D13A386B5350D7DCE75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2A818B0E4D37908B0B9FF985 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5621E2C51C9D9240F5C3F595 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6501572205AC8DFFEDD6F3C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		654C13A80CC8DDB2885EB97B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80345F0AB6AA1ECF9FCC9F7D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86C6D0CD442F1E86C1BD6D22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5B2842FCF00B6125BD5C5FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA29A8CE4DBCE44ED63A6C06 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7EE9A5431DD6749A0063F99D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -341,10 +520,10 @@
 				7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */,
 				7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */,
 				7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */,
-				7EE9A5AF1DD67B0F0063F99D /* Travel+CoreDataProperties.m in Sources */,
+				7E7EF13F1DFDF2CA004C09F7 /* Travel+CoreDataClass.m in Sources */,
 				7EE9A5891DD6764C0063F99D /* TMMapViewController.m in Sources */,
 				7EE9A54C1DD6749A0063F99D /* main.m in Sources */,
-				7EE9A5AE1DD67B0F0063F99D /* Travel+CoreDataClass.m in Sources */,
+				7E7EF1401DFDF2CA004C09F7 /* Travel+CoreDataProperties.m in Sources */,
 				7EE9A5B51DD6937E0063F99D /* TMLocationSearchTableViewController.m in Sources */,
 				7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */,
 			);
@@ -485,6 +664,7 @@
 		};
 		7EE9A5781DD6749A0063F99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C2BBB78644DB2AB3DB495CF /* Pods-TravelMapper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -499,6 +679,7 @@
 		};
 		7EE9A5791DD6749A0063F99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13F4EEFA957F9E40FEECB254 /* Pods-TravelMapper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -513,6 +694,7 @@
 		};
 		7EE9A57B1DD6749A0063F99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C21495368BD11606B526A64D /* Pods-TravelMapperTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TravelMapperTests/Info.plist;
@@ -526,6 +708,7 @@
 		};
 		7EE9A57C1DD6749A0063F99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TravelMapperTests/Info.plist;
@@ -539,6 +722,7 @@
 		};
 		7EE9A57E1DD6749A0063F99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DFD4C3CD2391FB963A471F /* Pods-TravelMapperUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TravelMapperUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -551,6 +735,7 @@
 		};
 		7EE9A57F1DD6749A0063F99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5743496A020C618A94EE28FA /* Pods-TravelMapperUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TravelMapperUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

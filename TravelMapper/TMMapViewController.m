@@ -127,8 +127,9 @@
     [_mapView setRegion:region animated:true];
     
     // Create new Travel record
-    [self newTravel:annotation.title
-        countryName:annotation.subtitle
+    [self newTravel:placemark.locality
+          stateName:placemark.administrativeArea
+        countryName:placemark.country
            latitude:[NSNumber numberWithFloat:placemark.coordinate.latitude]
           longitude:[NSNumber numberWithFloat:placemark.coordinate.longitude]
                date:[NSDate date]
@@ -244,17 +245,19 @@
  * Creates a new Travel entity record in Core Data
 
  * @param cityName name of the city traveled to.
- * @param countryName combination of the municipality/province or canton + the name of the country.
+ * @param stateName name of the state/municipality/province
+ * @param countryName Name of the country.
  * @param latitude destination's latitude
  * @param longitude destination's longitude
  * @param dateTraveled date when you traveled to that location
  * @param travelType type of travel (pleasure, business, etc).
  */
-- (void)newTravel:(NSString *)cityName countryName:(NSString *)countryName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude date:(NSDate *)dateTraveled type:(NSString *)travelType {
+- (void)newTravel:(NSString *)cityName stateName:(NSString *)stateName countryName:(NSString *)countryName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude date:(NSDate *)dateTraveled type:(NSString *)travelType {
     // Stores the annotation as a Travel Core Data entity
     Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:_managedObjectCtx];
     
     [newTravel setValue:cityName forKey:@"cityName"];
+    [newTravel setValue:cityName forKey:@"stateName"];
     [newTravel setValue:countryName forKey:@"countryName"];
     [newTravel setValue:latitude forKey:@"latitude"];
     [newTravel setValue:longitude forKey:@"longitude"];
