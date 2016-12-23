@@ -1,9 +1,9 @@
 //
 //  Travel+CoreDataClass.h
-//  
+//  TravelMapper
 //
-//  Created by Alejandro Martin Flores Naranjo on 12/11/16.
-//
+//  Created by Alejandro Martin Flores Naranjo on 12/16/16.
+//  Copyright © 2016 Alejandro Martin Flores Naranjo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

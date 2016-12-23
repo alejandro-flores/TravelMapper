@@ -10,8 +10,7 @@
 #import "TMMapViewController.h"
 #import "Travel+CoreDataClass.h"
 #import "TMTravelTableViewCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <AFNetworking/AFHTTPSessionManager.h>
+#import <GooglePlaces/GooglePlaces.h>
 @import CoreData;
 
 @interface TMTravelTableViewController ()
@@ -29,7 +28,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,37 +40,45 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_travelsArray count];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSUInteger cell_height = 300;
+    static NSUInteger cell_height = 275;
+    
     return cell_height;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 15.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [UIView new];
+    [view setBackgroundColor:[UIColor colorWithRed:242.0 green:242.0 blue:242.0 alpha:0.5]];
+    
+    return view;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TMTravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"travelCell" forIndexPath:indexPath];
-    NSString *cityName = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"cityName"]];
-    NSString *stateName = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"stateName"]];
-    NSString *countryName = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.row] valueForKey:@"countryName"]];
+    NSString *cityName = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"cityName"]];
+    NSString *formattedAddress = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"formattedAddress"]];
+    NSString *placeID = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"placeId"]];
     
-    _imageURL = [self getImageURLWithCityName:cityName stateName:stateName countryName:countryName];
+    [self loadFirstPhotoForPlace:placeID imageView:cell.cityImageView attributionLabel:cell.attributionLabel];
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:_imageURL]];
-    
-    //cell.flagImageView.image = [UIImage imageNamed:@"IMAGE_NAME"];
-    
-    cell.placeLabel.text = [NSString stringWithFormat:@"%@, %@", cityName, countryName];
+    cell.title.text = cityName;
+    cell.title.adjustsFontSizeToFitWidth = YES;
+    cell.subtitle.text = formattedAddress;
     
     return cell;
 }
@@ -88,9 +95,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        Travel *travelToDelete = [_travelsArray objectAtIndex:indexPath.row];
+        Travel *travelToDelete = [_travelsArray objectAtIndex:indexPath.section];
         [_managedObjectCtx deleteObject:travelToDelete];
-        [_travelsArray removeObjectAtIndex:indexPath.row];
+        [_travelsArray removeObjectAtIndex:indexPath.section];
         
         NSError *err = nil;
         if (![_managedObjectCtx save:&err]) {
@@ -114,6 +121,38 @@
  }
  */
 
+#pragma mark - Fetch Place Photo
+- (void)loadFirstPhotoForPlace:(NSString *)placeID imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel {
+    [[GMSPlacesClient sharedClient]
+     lookUpPhotosForPlaceID:placeID
+     callback:^(GMSPlacePhotoMetadataList *_Nullable photos,
+                NSError *_Nullable error) {
+         if (error) {
+             NSLog(@"Error: %@", [error description]);
+         } else {
+             if (photos.results.count > 0) {
+                 GMSPlacePhotoMetadata *firstPhoto = photos.results.firstObject;
+                 [self loadImageForMetadata:firstPhoto imageView:imageView attributionLabel:attributionLabel];
+             }
+         }
+     }];
+}
+
+- (void)loadImageForMetadata:(GMSPlacePhotoMetadata *)photoMetadata imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel {
+    [[GMSPlacesClient sharedClient]
+     loadPlacePhoto:photoMetadata
+     constrainedToSize:imageView.bounds.size
+     scale:imageView.window.screen.scale
+     callback:^(UIImage *_Nullable photo, NSError *_Nullable error) {
+         if (error) {
+             NSLog(@"Error: %@", [error description]);
+         } else {
+             imageView.image = photo;
+             attributionLabel.attributedText = photoMetadata.attributions;
+         }
+     }];
+}
+
 #pragma mark - UITabBarControllerDelegate
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     UINavigationController *navController = (UINavigationController *)viewController;
@@ -122,38 +161,6 @@
         [mvc setManagedObjectCtx:_managedObjectCtx]; // Injects the ManagedObjectContext
     }
     return YES;
-}
-
-#pragma mark - Flickr API Calls
-- (NSString *)getImageURLWithCityName:(NSString *)cityName stateName:(NSString *)stateName countryName:(NSString *)countryName {
-    NSMutableArray *flickrFeeds = [NSMutableArray new];
-    __block NSDictionary *items = [NSMutableDictionary new];
-    __block NSDictionary *mediaDictionary = [NSMutableDictionary new];
-    __block NSString *resultURL = @"";
-    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/feeds/photos_public.gne?tags=%@,%@,%@&;tagmode=any&format=json&nojsoncallback=1", cityName, stateName, countryName];
-    
-#warning The url is being generated correctly, but the block is being skipped for some reason. Fix this
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionTask *task, id jsonObject) {
-        if ([jsonObject isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *jsonResult = [[NSDictionary alloc]initWithDictionary:jsonObject];
-            [flickrFeeds addObject:[jsonResult objectForKey:@"items"]];
-            items = [[jsonResult valueForKey:@"items"] objectAtIndex:0];
-            mediaDictionary = [items valueForKey:@"media"];
-            resultURL = [NSString stringWithFormat:@"%@", [mediaDictionary valueForKey:@"m"]];
-            NSLog(@"URL for %@: %@", cityName, resultURL);
-        }
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-    return resultURL;
-}
-
-- (NSURL *)createURLWithCityName:(NSString *)cityName stateName:(NSString *)stateName countryName:(NSString *)countryName {
-    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/feeds/photos_public.gne?tags=%@,%@,%@&;tagmode=any&format=json&nojsoncallback=1", cityName, stateName, countryName];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    return url;
 }
 
 #pragma mark - Helper Methods

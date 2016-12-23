@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		35ACBCC44BCE4C107133D965 /* libPods-TravelMapperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */; };
 		5C037A8D2ADE65D8116F4EBC /* libPods-TravelMapperTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */; };
-		7E7EF13F1DFDF2CA004C09F7 /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7EF13C1DFDF2CA004C09F7 /* Travel+CoreDataClass.m */; };
-		7E7EF1401DFDF2CA004C09F7 /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7EF13E1DFDF2CA004C09F7 /* Travel+CoreDataProperties.m */; };
+		7E9855BC1E047C3B00F945FA /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */; };
+		7E9855BD1E047C3B00F945FA /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */; };
 		7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */; };
 		7EE9A54C1DD6749A0063F99D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54B1DD6749A0063F99D /* main.m */; };
 		7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54E1DD6749A0063F99D /* AppDelegate.m */; };
@@ -23,7 +23,6 @@
 		7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */; };
 		7EE9A5931DD677960063F99D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE9A5921DD677960063F99D /* MapKit.framework */; };
 		7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5A71DD67A530063F99D /* Model.xcdatamodeld */; };
-		7EE9A5B51DD6937E0063F99D /* TMLocationSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */; };
 		D1F6D2D7A7E81328E06D8474 /* libPods-TravelMapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */; };
 /* End PBXBuildFile section */
 
@@ -50,10 +49,10 @@
 		24DFD4C3CD2391FB963A471F /* Pods-TravelMapperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapperUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5743496A020C618A94EE28FA /* Pods-TravelMapperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7E7EF13B1DFDF2CA004C09F7 /* Travel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataClass.h"; sourceTree = "<group>"; };
-		7E7EF13C1DFDF2CA004C09F7 /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataClass.m"; sourceTree = "<group>"; };
-		7E7EF13D1DFDF2CA004C09F7 /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
-		7E7EF13E1DFDF2CA004C09F7 /* Travel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7E9855B81E047C3B00F945FA /* Travel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataClass.h"; sourceTree = "<group>"; };
+		7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataClass.m"; sourceTree = "<group>"; };
+		7E9855BA1E047C3B00F945FA /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMTravelTableViewCell.h; path = ../TMTravelTableViewCell.h; sourceTree = "<group>"; };
 		7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMTravelTableViewCell.m; path = ../TMTravelTableViewCell.m; sourceTree = "<group>"; };
 		7EE9A5471DD6749A0063F99D /* TravelMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,8 +75,6 @@
 		7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelTableViewController.m; sourceTree = "<group>"; };
 		7EE9A5921DD677960063F99D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7EE9A5A81DD67A530063F99D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		7EE9A5B31DD6937E0063F99D /* TMLocationSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMLocationSearchTableViewController.h; sourceTree = "<group>"; };
-		7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMLocationSearchTableViewController.m; sourceTree = "<group>"; };
 		863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests.release.xcconfig"; sourceTree = "<group>"; };
 		A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,8 +196,6 @@
 				7EE9A5861DD6764C0063F99D /* TMMapViewController.m */,
 				7EE9A5871DD6764C0063F99D /* TMTravelTableViewController.h */,
 				7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */,
-				7EE9A5B31DD6937E0063F99D /* TMLocationSearchTableViewController.h */,
-				7EE9A5B41DD6937E0063F99D /* TMLocationSearchTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -215,10 +210,10 @@
 		7EE9A5821DD674D70063F99D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7E7EF13B1DFDF2CA004C09F7 /* Travel+CoreDataClass.h */,
-				7E7EF13C1DFDF2CA004C09F7 /* Travel+CoreDataClass.m */,
-				7E7EF13D1DFDF2CA004C09F7 /* Travel+CoreDataProperties.h */,
-				7E7EF13E1DFDF2CA004C09F7 /* Travel+CoreDataProperties.m */,
+				7E9855B81E047C3B00F945FA /* Travel+CoreDataClass.h */,
+				7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */,
+				7E9855BA1E047C3B00F945FA /* Travel+CoreDataProperties.h */,
+				7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */,
 				7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */,
 				7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */,
 			);
@@ -518,14 +513,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */,
+				7E9855BC1E047C3B00F945FA /* Travel+CoreDataClass.m in Sources */,
 				7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */,
 				7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */,
-				7E7EF13F1DFDF2CA004C09F7 /* Travel+CoreDataClass.m in Sources */,
 				7EE9A5891DD6764C0063F99D /* TMMapViewController.m in Sources */,
 				7EE9A54C1DD6749A0063F99D /* main.m in Sources */,
-				7E7EF1401DFDF2CA004C09F7 /* Travel+CoreDataProperties.m in Sources */,
-				7EE9A5B51DD6937E0063F99D /* TMLocationSearchTableViewController.m in Sources */,
 				7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */,
+				7E9855BD1E047C3B00F945FA /* Travel+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

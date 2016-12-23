@@ -7,55 +7,38 @@
 //
 
 #import "TMMapViewController.h"
-#import "TMLocationSearchTableViewController.h"
 #import "Travel+CoreDataClass.h"
 #import "TMTravelTableViewController.h"
+#import <GooglePlaces/GooglePlaces.h>
+#import <GoogleMaps/GoogleMaps.h>
 @import CoreData;
 
-@interface TMMapViewController ()
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@interface TMMapViewController () <GMSAutocompleteResultsViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet GMSMapView *GMapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) UISearchController *resultSearchController;
 @property (strong, nonatomic) MKPlacemark *selectedPin;
 @property (strong, nonatomic) NSMutableArray *travelsArray;
+@property (strong, nonatomic) GMSAutocompleteResultsViewController *resultsViewController;
+@property (strong, nonatomic) UISearchController *searchController;
+
 @end
 
 @implementation TMMapViewController
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self locationManagerSetup];
+    [self addAutoCompleteSearchBar];
+    
     self.tabBarController.delegate = self;
     _managedObjectCtx = [self getManagedObjectContext];
-    
-    [self.mapTypeSegmentedControl setSelectedSegmentIndex:0];
-    [self locationManagerSetup];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    TMLocationSearchTableViewController *locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchTable"];
-    _resultSearchController = [[UISearchController alloc] initWithSearchResultsController:locationSearchTable];
-    _resultSearchController.searchResultsUpdater = locationSearchTable;
-    
-    UISearchBar *searchBar = _resultSearchController.searchBar;
-    [searchBar sizeToFit];
-    searchBar.placeholder = @"Search for places";
-    self.navigationItem.titleView = _resultSearchController.searchBar;
-    
-    _resultSearchController.hidesNavigationBarDuringPresentation = NO;
-    _resultSearchController.dimsBackgroundDuringPresentation = YES;
-    self.definesPresentationContext = YES;
-    
-    locationSearchTable.mapView = _mapView;
-    
-    locationSearchTable.handleMapSearchDelegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [_mapView removeAnnotations:_mapView.annotations];
-    [self redrawTravelPins];
-    NSLog(@"Travels Array Count = %ld", (unsigned long)[_travelsArray count]);
-    
+    [_GMapView clear];
+    [self redrawTravelMarkers];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -66,23 +49,58 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - GMSAutocompleteResultsViewControllerDelegate
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController didAutocompleteWithPlace:(GMSPlace *)place {
+    _searchController.active = NO;
+    
+    // Drops a Marker on the Place selected from the list. Stores new Travel.
+    GMSMarker *marker = [GMSMarker markerWithPosition:[place coordinate]];
+    marker.title = [place name];
+    marker.snippet = [place formattedAddress];
+    [_GMapView animateToLocation:[place coordinate]];
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.map = _GMapView;
+    
+    [self storeTravel:place];
+    
+    NSLog(@"TMAPVC -- Place name %@", place.name);
+    NSLog(@"TMAPVC -- Place address %@", place.formattedAddress);
+}
+
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController didFailAutocompleteWithError:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSLog(@"TMAPVC -- Error Autocompleting: %@", [error localizedDescription]);
+}
+
+// Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictionsForResultsController:(GMSAutocompleteResultsViewController *)resultsController {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictionsForResultsController:(GMSAutocompleteResultsViewController *)resultsController {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    if (status == kCLAuthorizationStatusAuthorizedWhenInUse)
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         [_locationManager requestLocation];
+        [_locationManager startUpdatingLocation];
+        _GMapView.myLocationEnabled = YES;
+        _GMapView.settings.myLocationButton = YES;
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    NSLog(@"MAPVC - Location: %@", [locations firstObject]);
     CLLocation *location = [locations firstObject];
-    MKCoordinateSpan span = MKCoordinateSpanMake(100, 100); // 1 degree = 111km
-    MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, span);
-    
-    [_mapView setRegion:region animated:YES];
+    _GMapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:0.0 bearing:0.0 viewingAngle:0.0];
+    [_GMapView animateToLocation:location.coordinate];
+    [_locationManager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"MAPVC - LocationManager failed with error: %@", error);
+    NSLog(@"TMAPVC -- LocationManager failed with error: %@", [error localizedDescription]);
 }
 
 #pragma mark - Map Utils
@@ -95,81 +113,11 @@
 - (IBAction)changeMapType:(UISegmentedControl *)sender {
     NSInteger index = [self.mapTypeSegmentedControl selectedSegmentIndex];
     switch (index) {
-        case 0: self.mapView.mapType = MKMapTypeStandard;
-            break;
-        case 1: self.mapView.mapType = MKMapTypeSatellite;
-            break;
-        case 2: self.mapView.mapType = MKMapTypeHybrid;
-            break;
-        default:
-            break;
+        case 0: _GMapView.mapType = kGMSTypeNormal;     break;
+        case 1: _GMapView.mapType = kGMSTypeSatellite;  break;
+        case 2: _GMapView.mapType = kGMSTypeHybrid;     break;
+        default: break;
     }
-}
-
-#pragma mark - HandleMapSearch Protocol
-/**
- * Drops a MKPointAnnotation on the map and zooms into it.
-
- @param placemark MKPlaceMark object containing the travel data.
- */
-- (void)dropPinZoomIn:(MKPlacemark *)placemark {
-    _selectedPin = placemark;
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = placemark.coordinate;
-    annotation.title = placemark.name;
-    annotation.subtitle = [NSString stringWithFormat:@"%@, %@",
-                           (placemark.locality == nil ? @"" : placemark.locality),
-                           (placemark.administrativeArea == nil ? @"" : placemark.country)
-                           ];
-    [_mapView addAnnotation:annotation];
-    MKCoordinateSpan span = MKCoordinateSpanMake(100, 100);
-    MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
-    [_mapView setRegion:region animated:true];
-    
-    // Create new Travel record
-    [self newTravel:placemark.locality
-          stateName:placemark.administrativeArea
-        countryName:placemark.country
-           latitude:[NSNumber numberWithFloat:placemark.coordinate.latitude]
-          longitude:[NSNumber numberWithFloat:placemark.coordinate.longitude]
-               date:[NSDate date]
-               type:@"Temp"];
-}
-
-- (nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[MKUserLocation class]]) {
-        //return nil so map view draws "blue dot" for standard user location
-        return nil;
-    }
-    
-    static NSString *reuseId = @"pin";
-    
-    MKPinAnnotationView *pinView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
-    if (pinView == nil) {
-        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
-        pinView.enabled = YES;
-        pinView.canShowCallout = YES;
-        pinView.tintColor = [UIColor orangeColor];
-    } else {
-        pinView.annotation = annotation;
-    }
-    
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [button setBackgroundImage:[UIImage imageNamed:@"car"]
-                      forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(getDirections) forControlEvents:UIControlEventTouchUpInside];
-    pinView.leftCalloutAccessoryView = button;
-    pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    
-    return pinView;
-}
-
-/**
- * Extension on the Travel Pin to allow using Maps to get directions to/from the Travel Pin.
- */
-- (void)getDirections {
-    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:_selectedPin];
-    [mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
 }
 
 #pragma mark - UITabBarControllerDelegate
@@ -195,27 +143,19 @@
 }
 
 /**
- * Redraws the Travel pins on the map from the data stored in the Travel entity
+ * Redraws the Travel Markers on the map from the data stored in the Travel entity
  * when reopening the app.
  */
-- (void)redrawTravelPins {
+- (void)redrawTravelMarkers {
     [self fetchTravels];
     
-    NSString *title;
-    NSString *subtitle;
-    CLLocationCoordinate2D coord;
-    
     for (Travel *travel in _travelsArray) {
-        title = [travel valueForKey:@"cityName"];
-        subtitle = [travel valueForKey:@"countryName"];
-        coord = CLLocationCoordinate2DMake([[travel valueForKey:@"latitude"] doubleValue], [[travel valueForKey:@"longitude"] doubleValue]);
-        
-        MKPointAnnotation *annotation = [MKPointAnnotation new];
-        annotation.title = title;
-        annotation.subtitle = subtitle;
-        annotation.coordinate = coord;
-        
-        [_mapView addAnnotation:annotation];
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([[travel valueForKey:@"latitude"] doubleValue],
+                                                                  [[travel valueForKey:@"longitude"] doubleValue]);
+        GMSMarker *marker = [GMSMarker markerWithPosition:coord];
+        marker.title = [travel valueForKey:@"cityName"];
+        marker.snippet = [travel valueForKey:@"formattedAddress"];
+        marker.map = _GMapView;
     }
 }
 
@@ -236,39 +176,49 @@
 - (NSManagedObjectContext *)getManagedObjectContext {
     NSManagedObjectContext *ctx = nil;
     id delegate = [[UIApplication sharedApplication]delegate];
+    
     if ([delegate performSelector:@selector(managedObjectContext)])
         ctx = [delegate managedObjectContext];
+    
     return ctx;
 }
 
-/**
- * Creates a new Travel entity record in Core Data
-
- * @param cityName name of the city traveled to.
- * @param stateName name of the state/municipality/province
- * @param countryName Name of the country.
- * @param latitude destination's latitude
- * @param longitude destination's longitude
- * @param dateTraveled date when you traveled to that location
- * @param travelType type of travel (pleasure, business, etc).
- */
-- (void)newTravel:(NSString *)cityName stateName:(NSString *)stateName countryName:(NSString *)countryName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude date:(NSDate *)dateTraveled type:(NSString *)travelType {
-    // Stores the annotation as a Travel Core Data entity
-    Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:_managedObjectCtx];
-    
-    [newTravel setValue:cityName forKey:@"cityName"];
-    [newTravel setValue:cityName forKey:@"stateName"];
-    [newTravel setValue:countryName forKey:@"countryName"];
-    [newTravel setValue:latitude forKey:@"latitude"];
-    [newTravel setValue:longitude forKey:@"longitude"];
-    [newTravel setValue:dateTraveled forKey:@"dateVisited"];
-    [newTravel setValue:travelType forKey:@"travelType"];
+- (void)storeTravel:(GMSPlace *)place {
+    Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel"
+                                                      inManagedObjectContext:_managedObjectCtx];
+    [newTravel setValue:place.name forKey:@"cityName"];
+    [newTravel setValue:place.formattedAddress forKey:@"formattedAddress"];
+    [newTravel setValue:place.placeID forKey:@"placeId"];
+    [newTravel setValue:[NSNumber numberWithDouble:place.coordinate.latitude] forKey:@"latitude"];
+    [newTravel setValue:[NSNumber numberWithDouble:place.coordinate.longitude] forKey:@"longitude"];
+    [newTravel setValue:[NSDate date] forKey:@"dateVisited"];
+    [newTravel setValue:@"N/A" forKey:@"travelType"];
     
     //Store the New Blade to Persistent Store
-    NSError *error = nil;
-    if (![_managedObjectCtx save:&error])
-        NSLog(@"MAIN -- Error Saving New Travel: %@", [error localizedDescription]);
-    NSLog(@"MAIN -- Saved New Travel");
+    NSError *travelSaveError = nil;
+    if (![_managedObjectCtx save:&travelSaveError])
+        NSLog(@"TMAPVC -- Error Saving New Travel: %@", [travelSaveError localizedDescription]);
+    NSLog(@"TMAPVC -- Saved New Travel");
+}
+
+#pragma mark - Autocomplete
+- (void)addAutoCompleteSearchBar {
+    _resultsViewController = [[GMSAutocompleteResultsViewController alloc]init];
+    _resultsViewController.delegate = self;
+    
+    _searchController = [[UISearchController alloc]initWithSearchResultsController:_resultsViewController];
+    _searchController.searchResultsUpdater = _resultsViewController;
+    
+    // Put the search bar in the nav bar
+    [_searchController.searchBar sizeToFit];
+    self.navigationItem.titleView = _searchController.searchBar;
+    
+    // When UISearchController presents the result view, present it in
+    // this view controller, not one further up the chain
+    self.definesPresentationContext = YES;
+    
+    // Prevent the nav bar from being hidden when searching
+    _searchController.hidesNavigationBarDuringPresentation = NO;
 }
 
 @end

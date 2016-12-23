@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="15G1108" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Travel" representedClassName="Travel" syncable="YES">
         <attribute name="cityName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="countryName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateVisited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="formattedAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="placeId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stateName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="travelType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Travel" positionX="-27" positionY="18" width="128" height="150"/>
+        <element name="Travel" positionX="-27" positionY="18" width="128" height="165"/>
     </elements>
 </model>

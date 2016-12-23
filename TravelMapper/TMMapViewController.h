@@ -9,11 +9,7 @@
 #import <UIKit/UIKit.h>
 @import MapKit;
 
-@protocol HandleMapSearch <NSObject>
-- (void)dropPinZoomIn:(MKPlacemark *)placemark;
-@end
-
-@interface TMMapViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate, UITabBarControllerDelegate>
+@interface TMMapViewController : UIViewController <CLLocationManagerDelegate, UITabBarControllerDelegate>
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectCtx;
 
 @end

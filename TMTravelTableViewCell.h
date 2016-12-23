@@ -10,6 +10,8 @@
 
 @interface TMTravelTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *cityImageView;
-@property (weak, nonatomic) IBOutlet UILabel *placeLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
-@end
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *subtitle;
+@property (weak, nonatomic) IBOutlet UILabel *attributionLabel;
+
+@end;
