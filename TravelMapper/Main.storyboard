@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="-335"/>
+            <point key="canvasLocation" x="428" y="-334"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -75,9 +75,9 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-796" y="-6"/>
+            <point key="canvasLocation" x="-1177" y="-27"/>
         </scene>
-        <!--Travel Table View Controller-->
+        <!--My Travels-->
         <scene sceneID="nxY-xG-Pnb">
             <objects>
                 <tableViewController id="3db-S2-YUa" customClass="TMTravelTableViewController" sceneMemberID="viewController">
@@ -154,11 +154,11 @@
                             <outlet property="delegate" destination="3db-S2-YUa" id="WIT-8f-oxs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gec-Mh-lhP"/>
+                    <navigationItem key="navigationItem" title="My Travels" id="gec-Mh-lhP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTI-ei-wx9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="410"/>
+            <point key="canvasLocation" x="428" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="g4b-3t-ana">
@@ -166,7 +166,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q4c-az-2HU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="49N-5w-Am1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="49N-5w-Am1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -185,7 +185,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea9-eE-iVd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Cdg-oH-1ui"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8EA-Y8-ieY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8EA-Y8-ieY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -196,7 +196,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Asu-y9-aCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-307" y="410"/>
+            <point key="canvasLocation" x="-308" y="330"/>
         </scene>
     </scenes>
 </document>
