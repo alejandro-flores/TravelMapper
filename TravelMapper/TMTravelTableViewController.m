@@ -11,11 +11,13 @@
 #import "Travel+CoreDataClass.h"
 #import "TMTravelTableViewCell.h"
 #import <GooglePlaces/GooglePlaces.h>
+#import "TMDetailedTravelViewController.h"
 @import CoreData;
 
 @interface TMTravelTableViewController ()
 @property (strong, nonatomic) NSMutableArray *travelsArray;
 @property (strong, nonatomic) NSString *imageURL;
+@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId;
 
 @end
 
@@ -63,33 +65,33 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [UIView new];
-    [view setBackgroundColor:[UIColor colorWithRed:242.0 green:242.0 blue:242.0 alpha:0.5]];
+    [view setBackgroundColor:[UIColor colorWithRed:242.0 / 255.0 green:242.0 / 255.0 blue:242.0 / 255.0 alpha:0.5]];
     
     return view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TMTravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"travelCell" forIndexPath:indexPath];
-    NSString *cityName = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"cityName"]];
-    NSString *formattedAddress = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"formattedAddress"]];
-    NSString *placeID = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"placeId"]];
+    _cityName = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"cityName"]];
+    _cityFormattedAddress = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"formattedAddress"]];
+    _placeId = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"placeId"]];
     
-    [self loadFirstPhotoForPlace:placeID imageView:cell.cityImageView attributionLabel:cell.attributionLabel];
+    [self loadFirstPhotoForPlace:_placeId imageView:cell.cityImageView attributionLabel:cell.attributionLabel];
     
-    cell.title.text = cityName;
+    cell.title.text = _cityName;
     cell.title.adjustsFontSizeToFitWidth = YES;
-    cell.subtitle.text = formattedAddress;
+    cell.subtitle.text = _cityFormattedAddress;
     
     return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    _cityName = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"cityName"]];
+    _cityFormattedAddress = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"formattedAddress"]];
+    _travelType = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"travelType"]];
+    _placeId = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"placeId"]];
+    [self performSegueWithIdentifier:@"toDetaliedTravelVC" sender:self];
+}
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,20 +111,6 @@
         [tableView endUpdates];
     }
 }
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Fetch Place Photo
 - (void)loadFirstPhotoForPlace:(NSString *)placeID imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel {
@@ -164,6 +152,17 @@
         [mvc setManagedObjectCtx:_managedObjectCtx]; // Injects the ManagedObjectContext
     }
     return YES;
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"toDetaliedTravelVC"]) {
+        TMDetailedTravelViewController *detailedVC = [segue destinationViewController];
+        [detailedVC setCityName:_cityName];
+        [detailedVC setCityFormattedAddress:_cityFormattedAddress];
+        [detailedVC setTravelType:_travelType];
+        [detailedVC setPlaceId:_placeId];
+    }
 }
 
 #pragma mark - Helper Methods

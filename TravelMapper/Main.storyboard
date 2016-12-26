@@ -53,11 +53,193 @@
                     <connections>
                         <outlet property="GMapView" destination="OIW-c1-ZI0" id="RPe-5B-p1v"/>
                         <outlet property="mapTypeSegmentedControl" destination="4KR-SX-nd4" id="ZB0-GO-HxV"/>
+                        <segue destination="J6U-jc-0zF" kind="presentation" identifier="toTravelDetailsVC" id="vx7-6k-aab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428" y="-334"/>
+            <point key="canvasLocation" x="-230" y="-336"/>
+        </scene>
+        <!--Travel Details View Controller-->
+        <scene sceneID="sw8-XB-7Y9">
+            <objects>
+                <viewController id="J6U-jc-0zF" customClass="TMTravelDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ctN-hh-xa5"/>
+                        <viewControllerLayoutGuide type="bottom" id="mDS-b6-gnj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZE9-Ye-X2g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1F4-zZ-Bvo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="k7b-H8-lP4"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Travel Details" id="INS-E3-PGW">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ut1-ki-dro">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="J6U-jc-0zF" id="8MQ-Jn-P1d"/>
+                                                <segue destination="TNe-tZ-3lE" kind="unwind" unwindAction="unwindToRedrawMarkers:" id="0oa-WO-Yht"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="FWn-kf-iy6">
+                                            <connections>
+                                                <action selector="saveButon:" destination="J6U-jc-0zF" id="f3v-Lc-c2F"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grindelwald" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJ9-1M-PeP">
+                                <rect key="frame" x="16" y="54" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wqi-IH-aDm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canton of Bern, Switzerland" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CML-iI-4yr">
+                                <rect key="frame" x="16" y="84" width="343" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Xpu-ph-bqn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XIA-Xh-6fe">
+                                <rect key="frame" x="16" y="152" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Vsi-bo-UJ2"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Vacation"/>
+                                    <segment title="Work"/>
+                                </segments>
+                                <connections>
+                                    <action selector="pickTravelType:" destination="J6U-jc-0zF" eventType="valueChanged" id="jAk-O3-OZC"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdt-FK-54G">
+                                <rect key="frame" x="16" y="124" width="343" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CML-iI-4yr" firstAttribute="trailing" secondItem="cdt-FK-54G" secondAttribute="trailing" id="4Pn-Gg-Kf0"/>
+                            <constraint firstItem="cdt-FK-54G" firstAttribute="top" secondItem="CML-iI-4yr" secondAttribute="bottom" constant="15" id="BBG-xG-fm4"/>
+                            <constraint firstItem="CML-iI-4yr" firstAttribute="top" secondItem="KJ9-1M-PeP" secondAttribute="bottom" id="DLk-NZ-eV1"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="trailing" secondItem="CML-iI-4yr" secondAttribute="trailing" id="Is0-SO-2VC"/>
+                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="leading" secondItem="ZE9-Ye-X2g" secondAttribute="leading" id="MFf-iw-bnW"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="leading" secondItem="CML-iI-4yr" secondAttribute="leading" id="SVy-En-v5X"/>
+                            <constraint firstItem="XIA-Xh-6fe" firstAttribute="top" secondItem="cdt-FK-54G" secondAttribute="bottom" constant="8" symbolic="YES" id="Uie-kA-MTH"/>
+                            <constraint firstItem="cdt-FK-54G" firstAttribute="trailing" secondItem="XIA-Xh-6fe" secondAttribute="trailing" id="WoJ-yf-N3z"/>
+                            <constraint firstItem="CML-iI-4yr" firstAttribute="leading" secondItem="cdt-FK-54G" secondAttribute="leading" id="YFS-Cq-rMd"/>
+                            <constraint firstItem="cdt-FK-54G" firstAttribute="leading" secondItem="XIA-Xh-6fe" secondAttribute="leading" id="YL1-yV-OwY"/>
+                            <constraint firstAttribute="trailing" secondItem="1F4-zZ-Bvo" secondAttribute="trailing" id="aGb-1O-BKA"/>
+                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="centerX" secondItem="KJ9-1M-PeP" secondAttribute="centerX" id="csF-HT-ZVS"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="leading" secondItem="ZE9-Ye-X2g" secondAttribute="leadingMargin" id="kgz-N2-Kql"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="top" secondItem="1F4-zZ-Bvo" secondAttribute="bottom" constant="10" id="nOW-kQ-XlG"/>
+                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="top" secondItem="ZE9-Ye-X2g" secondAttribute="top" id="omJ-pL-n4V"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="KJ9-1M-PeP" id="JxW-CF-S1K"/>
+                        <outlet property="stateLabel" destination="CML-iI-4yr" id="ZdS-ix-ng3"/>
+                        <outlet property="travelTypeSegmentedControl" destination="XIA-Xh-6fe" id="sfN-bd-StQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P28-L7-nLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TNe-tZ-3lE" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="482" y="-339"/>
+        </scene>
+        <!--Detailed Travel View Controller-->
+        <scene sceneID="J2a-VG-hjZ">
+            <objects>
+                <viewController id="D7i-hM-Vwc" customClass="TMDetailedTravelViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RnL-H1-RLX"/>
+                        <viewControllerLayoutGuide type="bottom" id="4u1-sp-3cg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zIp-mJ-nRO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dgf-u3-duR">
+                                <rect key="frame" x="0.0" y="28" width="375" height="250"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Attribution" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhN-94-519">
+                                <rect key="frame" x="16" y="247" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="cYe-j8-Tah"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grindelwald" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbu-Gb-NZb">
+                                <rect key="frame" x="0.0" y="286" width="359" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Canton of Bern, Switzerland" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL2-cV-wvJ">
+                                <rect key="frame" x="0.0" y="324" width="359" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="c7n-6h-8ma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Type: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYK-JJ-2jq">
+                                <rect key="frame" x="0.0" y="370" width="359" height="25"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nbu-Gb-NZb" firstAttribute="leading" secondItem="QL2-cV-wvJ" secondAttribute="leading" id="0ke-aw-ZOZ"/>
+                            <constraint firstItem="QL2-cV-wvJ" firstAttribute="trailing" secondItem="CYK-JJ-2jq" secondAttribute="trailing" id="23Z-uk-fG3"/>
+                            <constraint firstItem="CYK-JJ-2jq" firstAttribute="top" secondItem="QL2-cV-wvJ" secondAttribute="bottom" constant="21" id="3f3-2c-8nG"/>
+                            <constraint firstItem="nbu-Gb-NZb" firstAttribute="top" secondItem="AhN-94-519" secondAttribute="bottom" constant="18" id="8s3-6C-zzR"/>
+                            <constraint firstItem="AhN-94-519" firstAttribute="trailing" secondItem="nbu-Gb-NZb" secondAttribute="trailing" id="Fry-kx-8mC"/>
+                            <constraint firstItem="nbu-Gb-NZb" firstAttribute="trailing" secondItem="QL2-cV-wvJ" secondAttribute="trailing" id="Jzn-eF-A0b"/>
+                            <constraint firstItem="nbu-Gb-NZb" firstAttribute="top" secondItem="Dgf-u3-duR" secondAttribute="bottom" constant="8" symbolic="YES" id="Kth-1d-9PF"/>
+                            <constraint firstItem="Dgf-u3-duR" firstAttribute="top" secondItem="zIp-mJ-nRO" secondAttribute="topMargin" constant="28" id="LKG-en-x5E"/>
+                            <constraint firstItem="AhN-94-519" firstAttribute="top" secondItem="RnL-H1-RLX" secondAttribute="bottom" constant="183" id="LWN-ss-JUw"/>
+                            <constraint firstAttribute="trailing" secondItem="Dgf-u3-duR" secondAttribute="trailing" id="Mmd-1E-qZi"/>
+                            <constraint firstItem="CYK-JJ-2jq" firstAttribute="centerY" secondItem="zIp-mJ-nRO" secondAttribute="centerY" constant="49" id="a6W-fG-1y8"/>
+                            <constraint firstItem="4u1-sp-3cg" firstAttribute="top" secondItem="CYK-JJ-2jq" secondAttribute="bottom" constant="223" id="bJz-CJ-6h7"/>
+                            <constraint firstItem="QL2-cV-wvJ" firstAttribute="top" secondItem="nbu-Gb-NZb" secondAttribute="bottom" constant="8" symbolic="YES" id="dti-aO-igr"/>
+                            <constraint firstItem="AhN-94-519" firstAttribute="leading" secondItem="nbu-Gb-NZb" secondAttribute="leading" constant="16" id="jR9-Nx-Qix"/>
+                            <constraint firstItem="AhN-94-519" firstAttribute="leading" secondItem="zIp-mJ-nRO" secondAttribute="leadingMargin" id="lLN-G5-SQB"/>
+                            <constraint firstItem="Dgf-u3-duR" firstAttribute="leading" secondItem="zIp-mJ-nRO" secondAttribute="leading" id="lhD-tY-iEs"/>
+                            <constraint firstItem="QL2-cV-wvJ" firstAttribute="leading" secondItem="CYK-JJ-2jq" secondAttribute="leading" id="maQ-9k-QT5"/>
+                            <constraint firstItem="Dgf-u3-duR" firstAttribute="centerX" secondItem="AhN-94-519" secondAttribute="centerX" id="xfR-Cg-tSv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="attributeLabel" destination="AhN-94-519" id="1J2-qr-pv0"/>
+                        <outlet property="cityImageView" destination="Dgf-u3-duR" id="fET-kc-8y0"/>
+                        <outlet property="cityLabel" destination="nbu-Gb-NZb" id="BGS-j6-k0i"/>
+                        <outlet property="stateLabel" destination="QL2-cV-wvJ" id="1NJ-rW-niR"/>
+                        <outlet property="traveltypeLabel" destination="CYK-JJ-2jq" id="bGB-Pd-CNx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qCL-q6-fbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="482" y="324"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -75,7 +257,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1177" y="-27"/>
+            <point key="canvasLocation" x="-1751" y="-26"/>
         </scene>
         <!--My Travels-->
         <scene sceneID="nxY-xG-Pnb">
@@ -155,10 +337,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Travels" id="gec-Mh-lhP"/>
+                    <connections>
+                        <segue destination="D7i-hM-Vwc" kind="show" identifier="toDetaliedTravelVC" id="Qct-Xe-g01"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTI-ei-wx9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428" y="330"/>
+            <point key="canvasLocation" x="-231" y="324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="g4b-3t-ana">
@@ -166,6 +351,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q4c-az-2HU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="acW-dT-cKf"/>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="49N-5w-Am1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -177,7 +364,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5F-4Z-SIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-307" y="-334"/>
+            <point key="canvasLocation" x="-966" y="-338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NHr-qC-7Nm">
@@ -185,6 +372,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea9-eE-iVd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Cdg-oH-1ui"/>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8EA-Y8-ieY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -196,7 +385,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Asu-y9-aCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-308" y="330"/>
+            <point key="canvasLocation" x="-967" y="325"/>
         </scene>
     </scenes>
 </document>

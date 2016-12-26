@@ -23,6 +23,10 @@
 		7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */; };
 		7EE9A5931DD677960063F99D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE9A5921DD677960063F99D /* MapKit.framework */; };
 		7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5A71DD67A530063F99D /* Model.xcdatamodeld */; };
+		889AD2611E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889AD2601E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m */; };
+		889AD2641E0F4853007A5BA0 /* TMTravelDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889AD2631E0F4853007A5BA0 /* TMTravelDetailsViewController.m */; };
+		889AD26A1E1042F0007A5BA0 /* TMTravelDetailsBounceAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889AD2691E1042F0007A5BA0 /* TMTravelDetailsBounceAnimationController.m */; };
+		889AD26D1E1056FB007A5BA0 /* TMDetailedTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889AD26C1E1056FB007A5BA0 /* TMDetailedTravelViewController.m */; };
 		D1F6D2D7A7E81328E06D8474 /* libPods-TravelMapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +80,14 @@
 		7EE9A5921DD677960063F99D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7EE9A5A81DD67A530063F99D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		889AD25F1E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTravelDetailsPresentationController.h; sourceTree = "<group>"; };
+		889AD2601E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelDetailsPresentationController.m; sourceTree = "<group>"; };
+		889AD2621E0F4853007A5BA0 /* TMTravelDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTravelDetailsViewController.h; sourceTree = "<group>"; };
+		889AD2631E0F4853007A5BA0 /* TMTravelDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelDetailsViewController.m; sourceTree = "<group>"; };
+		889AD2681E1042F0007A5BA0 /* TMTravelDetailsBounceAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTravelDetailsBounceAnimationController.h; sourceTree = "<group>"; };
+		889AD2691E1042F0007A5BA0 /* TMTravelDetailsBounceAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelDetailsBounceAnimationController.m; sourceTree = "<group>"; };
+		889AD26B1E1056FB007A5BA0 /* TMDetailedTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDetailedTravelViewController.h; sourceTree = "<group>"; };
+		889AD26C1E1056FB007A5BA0 /* TMDetailedTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDetailedTravelViewController.m; sourceTree = "<group>"; };
 		9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests.release.xcconfig"; sourceTree = "<group>"; };
 		A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21495368BD11606B526A64D /* Pods-TravelMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +208,9 @@
 				7EE9A5861DD6764C0063F99D /* TMMapViewController.m */,
 				7EE9A5871DD6764C0063F99D /* TMTravelTableViewController.h */,
 				7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */,
+				889AD26E1E1085CD007A5BA0 /* TMTravelDetailsViewController */,
+				889AD26B1E1056FB007A5BA0 /* TMDetailedTravelViewController.h */,
+				889AD26C1E1056FB007A5BA0 /* TMDetailedTravelViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -229,6 +244,19 @@
 				4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		889AD26E1E1085CD007A5BA0 /* TMTravelDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				889AD2621E0F4853007A5BA0 /* TMTravelDetailsViewController.h */,
+				889AD2631E0F4853007A5BA0 /* TMTravelDetailsViewController.m */,
+				889AD25F1E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.h */,
+				889AD2601E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m */,
+				889AD2681E1042F0007A5BA0 /* TMTravelDetailsBounceAnimationController.h */,
+				889AD2691E1042F0007A5BA0 /* TMTravelDetailsBounceAnimationController.m */,
+			);
+			name = TMTravelDetailsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,10 +543,14 @@
 				7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */,
 				7E9855BC1E047C3B00F945FA /* Travel+CoreDataClass.m in Sources */,
 				7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */,
+				889AD26A1E1042F0007A5BA0 /* TMTravelDetailsBounceAnimationController.m in Sources */,
 				7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */,
 				7EE9A5891DD6764C0063F99D /* TMMapViewController.m in Sources */,
+				889AD26D1E1056FB007A5BA0 /* TMDetailedTravelViewController.m in Sources */,
 				7EE9A54C1DD6749A0063F99D /* main.m in Sources */,
+				889AD2641E0F4853007A5BA0 /* TMTravelDetailsViewController.m in Sources */,
 				7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */,
+				889AD2611E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m in Sources */,
 				7E9855BD1E047C3B00F945FA /* Travel+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

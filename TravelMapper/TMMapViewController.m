@@ -9,8 +9,9 @@
 #import "TMMapViewController.h"
 #import "Travel+CoreDataClass.h"
 #import "TMTravelTableViewController.h"
-#import <GooglePlaces/GooglePlaces.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <GooglePlaces/GooglePlaces.h>
+#import "TMTravelDetailsViewController.h"
 @import CoreData;
 
 @interface TMMapViewController () <GMSAutocompleteResultsViewControllerDelegate>
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *travelsArray;
 @property (strong, nonatomic) GMSAutocompleteResultsViewController *resultsViewController;
 @property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) GMSPlace *place;
 
 @end
 
@@ -37,7 +39,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [_GMapView clear];
     [self redrawTravelMarkers];
 }
 
@@ -52,24 +53,23 @@
 #pragma mark - GMSAutocompleteResultsViewControllerDelegate
 - (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController didAutocompleteWithPlace:(GMSPlace *)place {
     _searchController.active = NO;
+    [_GMapView animateToLocation:[place coordinate]];
+    
+    _place = place;
+    
+    // Present TMTravelDetailsViewController Modally to gather Trip Details
+    [self performSegueWithIdentifier:@"toTravelDetailsVC" sender:nil];
     
     // Drops a Marker on the Place selected from the list. Stores new Travel.
     GMSMarker *marker = [GMSMarker markerWithPosition:[place coordinate]];
     marker.title = [place name];
     marker.snippet = [place formattedAddress];
-    [_GMapView animateToLocation:[place coordinate]];
-    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.appearAnimation = kGMSMarkerAnimationPop ;
     marker.map = _GMapView;
-    
-    [self storeTravel:place];
-    
-    NSLog(@"TMAPVC -- Place name %@", place.name);
-    NSLog(@"TMAPVC -- Place address %@", place.formattedAddress);
 }
 
 - (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController didFailAutocompleteWithError:(NSError *)error {
     [self dismissViewControllerAnimated:YES completion:nil];
-    
     NSLog(@"TMAPVC -- Error Autocompleting: %@", [error localizedDescription]);
 }
 
@@ -130,6 +130,22 @@
     return YES;
 }
 
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"toTravelDetailsVC"]) {
+        TMTravelDetailsViewController *travelDetailsVC = [segue destinationViewController];
+        [travelDetailsVC setManagedObjectCtx:_managedObjectCtx];
+        [travelDetailsVC setPlace:_place];
+    }
+}
+
+- (IBAction)unwindToRedrawMarkers:(UIStoryboardSegue *)segue {
+    // After dismissing TMTravelDetailsViewControllers reload markers from Model.
+    // If cancel is clicked on TMTravelDetailsViewController, the marker just dropped
+    // on the map is not kept, since the Travel record was discarded.
+    [self redrawTravelMarkers];
+}
+
 /**
  * Sets up the CLLocationManager to request and start location tracking
  */
@@ -147,6 +163,7 @@
  * when reopening the app.
  */
 - (void)redrawTravelMarkers {
+    [_GMapView clear];
     [self fetchTravels];
     
     for (Travel *travel in _travelsArray) {
@@ -181,24 +198,6 @@
         ctx = [delegate managedObjectContext];
     
     return ctx;
-}
-
-- (void)storeTravel:(GMSPlace *)place {
-    Travel *newTravel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel"
-                                                      inManagedObjectContext:_managedObjectCtx];
-    [newTravel setValue:place.name forKey:@"cityName"];
-    [newTravel setValue:place.formattedAddress forKey:@"formattedAddress"];
-    [newTravel setValue:place.placeID forKey:@"placeId"];
-    [newTravel setValue:[NSNumber numberWithDouble:place.coordinate.latitude] forKey:@"latitude"];
-    [newTravel setValue:[NSNumber numberWithDouble:place.coordinate.longitude] forKey:@"longitude"];
-    [newTravel setValue:[NSDate date] forKey:@"dateVisited"];
-    [newTravel setValue:@"N/A" forKey:@"travelType"];
-    
-    //Store the New Blade to Persistent Store
-    NSError *travelSaveError = nil;
-    if (![_managedObjectCtx save:&travelSaveError])
-        NSLog(@"TMAPVC -- Error Saving New Travel: %@", [travelSaveError localizedDescription]);
-    NSLog(@"TMAPVC -- Saved New Travel");
 }
 
 #pragma mark - Autocomplete

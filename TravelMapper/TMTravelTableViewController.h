@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TMTravelTableViewController : UITableViewController
-
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectCtx;
+
+- (void)loadFirstPhotoForPlace:(NSString *)placeID imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel;
 @end
