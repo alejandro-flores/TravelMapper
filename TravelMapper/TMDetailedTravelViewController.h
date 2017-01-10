@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TMDetailedTravelViewController : UIViewController
+
 @property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId;
+
 @end

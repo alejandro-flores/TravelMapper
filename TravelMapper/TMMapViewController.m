@@ -12,9 +12,11 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import "TMTravelDetailsViewController.h"
+#import <CWStatusBarNotification/CWStatusBarNotification.h>
 @import CoreData;
 
-@interface TMMapViewController () <GMSAutocompleteResultsViewControllerDelegate>
+@interface TMMapViewController () <GMSAutocompleteResultsViewControllerDelegate, TMTravelDetailsViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet GMSMapView *GMapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -23,10 +25,12 @@
 @property (strong, nonatomic) GMSAutocompleteResultsViewController *resultsViewController;
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) GMSPlace *place;
+@property (strong, nonatomic) GMSMarker *marker;
 
 @end
 
 @implementation TMMapViewController
+
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,10 +46,6 @@
     [self redrawTravelMarkers];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -59,13 +59,6 @@
     
     // Present TMTravelDetailsViewController Modally to gather Trip Details
     [self performSegueWithIdentifier:@"toTravelDetailsVC" sender:nil];
-    
-    // Drops a Marker on the Place selected from the list. Stores new Travel.
-    GMSMarker *marker = [GMSMarker markerWithPosition:[place coordinate]];
-    marker.title = [place name];
-    marker.snippet = [place formattedAddress];
-    marker.appearAnimation = kGMSMarkerAnimationPop ;
-    marker.map = _GMapView;
 }
 
 - (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController didFailAutocompleteWithError:(NSError *)error {
@@ -130,10 +123,27 @@
     return YES;
 }
 
+#pragma mark - TMTravelDetailsViewControllerDelegate
+- (void)didStoreTravel:(TMTravelDetailsViewController *)controller {
+    // Display Sucess Notification
+    UIColor *greenColor = [UIColor colorWithRed:72.0 / 255.0 green:194.0 / 255.0 blue:31.0 / 255.0 alpha:1.0f];
+    [self showNotificationWithMessage:@"Saved New Travel" andBackgroundColor:greenColor];
+}
+
+- (void)willDropMarker:(TMTravelDetailsViewController *)controller {
+    // Drops a Marker on the Place selected from the list.
+    _marker = [GMSMarker markerWithPosition:[_place coordinate]];
+    _marker.title = [_place name];
+    _marker.snippet = [_place formattedAddress];
+    _marker.appearAnimation = kGMSMarkerAnimationPop ;
+    _marker.map = _GMapView;
+}
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"toTravelDetailsVC"]) {
         TMTravelDetailsViewController *travelDetailsVC = [segue destinationViewController];
+        travelDetailsVC.delegate = self;
         [travelDetailsVC setManagedObjectCtx:_managedObjectCtx];
         [travelDetailsVC setPlace:_place];
     }
@@ -144,6 +154,7 @@
     // If cancel is clicked on TMTravelDetailsViewController, the marker just dropped
     // on the map is not kept, since the Travel record was discarded.
     [self redrawTravelMarkers];
+    [self showNotificationWithMessage:@"Cancelled Operation" andBackgroundColor:[UIColor redColor]];
 }
 
 /**
@@ -174,6 +185,23 @@
         marker.snippet = [travel valueForKey:@"formattedAddress"];
         marker.map = _GMapView;
     }
+}
+
+/**
+ * Displays a CWStatusBarNotification when a new marker is either added or
+ * discarded from the map.
+
+ * @param message String to display on the CWStatusBarNotification.
+ * @param color background color of the CWStatusBarNotification.
+ */
+- (void)showNotificationWithMessage:(NSString *)message andBackgroundColor:(UIColor *)color {
+    CWStatusBarNotification *notification = [CWStatusBarNotification new];
+    notification.notificationLabelBackgroundColor = color;
+    notification.notificationLabelTextColor = [UIColor whiteColor];
+    notification.notificationStyle = CWNotificationStyleStatusBarNotification;
+    notification.notificationAnimationInStyle = CWNotificationAnimationStyleTop;
+    notification.notificationAnimationOutStyle = CWNotificationAnimationStyleLeft;
+    [notification displayNotificationWithMessage:message forDuration:1.5f];
 }
 
 /**

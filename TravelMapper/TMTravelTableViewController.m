@@ -15,9 +15,10 @@
 @import CoreData;
 
 @interface TMTravelTableViewController ()
+
+@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId;
 @property (strong, nonatomic) NSMutableArray *travelsArray;
 @property (strong, nonatomic) NSString *imageURL;
-@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId;
 
 @end
 
@@ -76,7 +77,7 @@
     _cityFormattedAddress = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"formattedAddress"]];
     _placeId = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"placeId"]];
     
-    [self loadFirstPhotoForPlace:_placeId imageView:cell.cityImageView attributionLabel:cell.attributionLabel];
+    [Travel loadFirstPhotoForPlace:_placeId imageView:cell.cityImageView attributionLabel:cell.attributionLabel];
     
     cell.title.text = _cityName;
     cell.title.adjustsFontSizeToFitWidth = YES;
@@ -110,38 +111,6 @@
         [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
         [tableView endUpdates];
     }
-}
-
-#pragma mark - Fetch Place Photo
-- (void)loadFirstPhotoForPlace:(NSString *)placeID imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel {
-    [[GMSPlacesClient sharedClient]
-     lookUpPhotosForPlaceID:placeID
-     callback:^(GMSPlacePhotoMetadataList *_Nullable photos,
-                NSError *_Nullable error) {
-         if (error) {
-             NSLog(@"Error: %@", [error description]);
-         } else {
-             if (photos.results.count > 0) {
-                 GMSPlacePhotoMetadata *firstPhoto = photos.results.firstObject;
-                 [self loadImageForMetadata:firstPhoto imageView:imageView attributionLabel:attributionLabel];
-             }
-         }
-     }];
-}
-
-- (void)loadImageForMetadata:(GMSPlacePhotoMetadata *)photoMetadata imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel {
-    [[GMSPlacesClient sharedClient]
-     loadPlacePhoto:photoMetadata
-     constrainedToSize:imageView.bounds.size
-     scale:imageView.window.screen.scale
-     callback:^(UIImage *_Nullable photo, NSError *_Nullable error) {
-         if (error) {
-             NSLog(@"Error: %@", [error description]);
-         } else {
-             imageView.image = photo;
-             attributionLabel.attributedText = photoMetadata.attributions;
-         }
-     }];
 }
 
 #pragma mark - UITabBarControllerDelegate

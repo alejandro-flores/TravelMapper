@@ -69,17 +69,15 @@
                         <viewControllerLayoutGuide type="bottom" id="mDS-b6-gnj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZE9-Ye-X2g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1F4-zZ-Bvo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="k7b-H8-lP4"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
                                 <items>
                                     <navigationItem title="Travel Details" id="INS-E3-PGW">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ut1-ki-dro">
+                                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="cancelButton:" destination="J6U-jc-0zF" id="8MQ-Jn-P1d"/>
                                                 <segue destination="TNe-tZ-3lE" kind="unwind" unwindAction="unwindToRedrawMarkers:" id="0oa-WO-Yht"/>
@@ -94,29 +92,45 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grindelwald" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJ9-1M-PeP">
-                                <rect key="frame" x="16" y="54" width="343" height="30"/>
+                                <rect key="frame" x="16" y="200" width="318" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="wqi-IH-aDm"/>
+                                    <constraint firstAttribute="height" constant="30" id="guD-jv-2yO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canton of Bern, Switzerland" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CML-iI-4yr">
-                                <rect key="frame" x="16" y="84" width="343" height="25"/>
+                                <rect key="frame" x="16" y="230" width="318" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Xpu-ph-bqn"/>
+                                    <constraint firstAttribute="height" constant="25" id="jpd-Gh-rO7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XIA-Xh-6fe">
-                                <rect key="frame" x="16" y="152" width="343" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdt-FK-54G">
+                                <rect key="frame" x="16" y="270" width="318" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1I-QK-kAm">
+                                <rect key="frame" x="0.0" y="44" width="350" height="148"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Attribution" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qF-vo-c4b">
+                                <rect key="frame" x="16" y="167" width="318" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="Vsi-bo-UJ2"/>
+                                    <constraint firstAttribute="height" constant="25" id="wAR-Jk-0WD"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XIA-Xh-6fe">
+                                <rect key="frame" x="16" y="302" width="318" height="29"/>
                                 <segments>
+                                    <segment title="Home"/>
                                     <segment title="Vacation"/>
                                     <segment title="Work"/>
                                 </segments>
@@ -124,33 +138,38 @@
                                     <action selector="pickTravelType:" destination="J6U-jc-0zF" eventType="valueChanged" id="jAk-O3-OZC"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdt-FK-54G">
-                                <rect key="frame" x="16" y="124" width="343" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CML-iI-4yr" firstAttribute="trailing" secondItem="cdt-FK-54G" secondAttribute="trailing" id="4Pn-Gg-Kf0"/>
-                            <constraint firstItem="cdt-FK-54G" firstAttribute="top" secondItem="CML-iI-4yr" secondAttribute="bottom" constant="15" id="BBG-xG-fm4"/>
-                            <constraint firstItem="CML-iI-4yr" firstAttribute="top" secondItem="KJ9-1M-PeP" secondAttribute="bottom" id="DLk-NZ-eV1"/>
-                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="trailing" secondItem="CML-iI-4yr" secondAttribute="trailing" id="Is0-SO-2VC"/>
-                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="leading" secondItem="ZE9-Ye-X2g" secondAttribute="leading" id="MFf-iw-bnW"/>
-                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="leading" secondItem="CML-iI-4yr" secondAttribute="leading" id="SVy-En-v5X"/>
-                            <constraint firstItem="XIA-Xh-6fe" firstAttribute="top" secondItem="cdt-FK-54G" secondAttribute="bottom" constant="8" symbolic="YES" id="Uie-kA-MTH"/>
-                            <constraint firstItem="cdt-FK-54G" firstAttribute="trailing" secondItem="XIA-Xh-6fe" secondAttribute="trailing" id="WoJ-yf-N3z"/>
-                            <constraint firstItem="CML-iI-4yr" firstAttribute="leading" secondItem="cdt-FK-54G" secondAttribute="leading" id="YFS-Cq-rMd"/>
-                            <constraint firstItem="cdt-FK-54G" firstAttribute="leading" secondItem="XIA-Xh-6fe" secondAttribute="leading" id="YL1-yV-OwY"/>
-                            <constraint firstAttribute="trailing" secondItem="1F4-zZ-Bvo" secondAttribute="trailing" id="aGb-1O-BKA"/>
-                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="centerX" secondItem="KJ9-1M-PeP" secondAttribute="centerX" id="csF-HT-ZVS"/>
-                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="leading" secondItem="ZE9-Ye-X2g" secondAttribute="leadingMargin" id="kgz-N2-Kql"/>
-                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="top" secondItem="1F4-zZ-Bvo" secondAttribute="bottom" constant="10" id="nOW-kQ-XlG"/>
-                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="top" secondItem="ZE9-Ye-X2g" secondAttribute="top" id="omJ-pL-n4V"/>
+                            <constraint firstItem="4qF-vo-c4b" firstAttribute="leading" secondItem="ZE9-Ye-X2g" secondAttribute="leadingMargin" id="48m-mg-3Uh"/>
+                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="leading" secondItem="ZE9-Ye-X2g" secondAttribute="leading" id="7z6-1i-qsC"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="top" secondItem="I1I-QK-kAm" secondAttribute="bottom" constant="8" symbolic="YES" id="Bmw-S5-NbY"/>
+                            <constraint firstItem="CML-iI-4yr" firstAttribute="top" secondItem="KJ9-1M-PeP" secondAttribute="bottom" id="E57-PW-SEl"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="trailing" secondItem="CML-iI-4yr" secondAttribute="trailing" id="ExE-a0-gKk"/>
+                            <constraint firstItem="cdt-FK-54G" firstAttribute="trailing" secondItem="XIA-Xh-6fe" secondAttribute="trailing" id="HV7-Rh-75o"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="top" secondItem="4qF-vo-c4b" secondAttribute="bottom" constant="8" symbolic="YES" id="NEM-g0-iPm"/>
+                            <constraint firstItem="I1I-QK-kAm" firstAttribute="centerX" secondItem="4qF-vo-c4b" secondAttribute="centerX" id="P0R-cd-GnQ"/>
+                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="top" secondItem="ZE9-Ye-X2g" secondAttribute="top" id="UaM-LS-FuV"/>
+                            <constraint firstItem="KJ9-1M-PeP" firstAttribute="leading" secondItem="CML-iI-4yr" secondAttribute="leading" id="UqI-Ja-Cz6"/>
+                            <constraint firstItem="cdt-FK-54G" firstAttribute="top" secondItem="CML-iI-4yr" secondAttribute="bottom" constant="15" id="YDD-rL-rdB"/>
+                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="trailing" secondItem="I1I-QK-kAm" secondAttribute="trailing" id="a57-RP-XfG"/>
+                            <constraint firstItem="4qF-vo-c4b" firstAttribute="leading" secondItem="KJ9-1M-PeP" secondAttribute="leading" id="bKF-SR-dE2"/>
+                            <constraint firstAttribute="trailing" secondItem="1F4-zZ-Bvo" secondAttribute="trailing" id="eFZ-Y3-33r"/>
+                            <constraint firstItem="1F4-zZ-Bvo" firstAttribute="leading" secondItem="I1I-QK-kAm" secondAttribute="leading" id="fAE-OP-EFJ"/>
+                            <constraint firstItem="CML-iI-4yr" firstAttribute="leading" secondItem="cdt-FK-54G" secondAttribute="leading" id="fBk-1a-eMo"/>
+                            <constraint firstItem="cdt-FK-54G" firstAttribute="leading" secondItem="XIA-Xh-6fe" secondAttribute="leading" id="gjs-rT-KEm"/>
+                            <constraint firstItem="4qF-vo-c4b" firstAttribute="trailing" secondItem="KJ9-1M-PeP" secondAttribute="trailing" id="of5-61-Mdz"/>
+                            <constraint firstItem="XIA-Xh-6fe" firstAttribute="top" secondItem="cdt-FK-54G" secondAttribute="bottom" constant="8" symbolic="YES" id="qf2-DV-UKH"/>
+                            <constraint firstAttribute="bottom" secondItem="XIA-Xh-6fe" secondAttribute="bottom" constant="20" symbolic="YES" id="ruS-bi-kOh"/>
+                            <constraint firstItem="CML-iI-4yr" firstAttribute="trailing" secondItem="cdt-FK-54G" secondAttribute="trailing" id="tEe-u3-jVe"/>
+                            <constraint firstItem="I1I-QK-kAm" firstAttribute="top" secondItem="1F4-zZ-Bvo" secondAttribute="bottom" id="w6K-Kc-i30"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="350" height="350"/>
                     <connections>
+                        <outlet property="attributionLabel" destination="4qF-vo-c4b" id="KpX-cB-3Iy"/>
+                        <outlet property="cityImageView" destination="I1I-QK-kAm" id="8cp-nc-UAC"/>
                         <outlet property="cityNameLabel" destination="KJ9-1M-PeP" id="JxW-CF-S1K"/>
                         <outlet property="stateLabel" destination="CML-iI-4yr" id="ZdS-ix-ng3"/>
                         <outlet property="travelTypeSegmentedControl" destination="XIA-Xh-6fe" id="sfN-bd-StQ"/>
@@ -159,7 +178,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P28-L7-nLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TNe-tZ-3lE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="482" y="-339"/>
+            <point key="canvasLocation" x="480" y="-340.02998500749629"/>
         </scene>
         <!--Detailed Travel View Controller-->
         <scene sceneID="J2a-VG-hjZ">
@@ -348,11 +367,9 @@
         <!--Navigation Controller-->
         <scene sceneID="g4b-3t-ana">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q4c-az-2HU" sceneMemberID="viewController">
+                <navigationController id="q4c-az-2HU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="49N-5w-Am1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -369,11 +386,9 @@
         <!--Navigation Controller-->
         <scene sceneID="NHr-qC-7Nm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea9-eE-iVd" sceneMemberID="viewController">
+                <navigationController id="ea9-eE-iVd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Cdg-oH-1ui"/>
                     <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8EA-Y8-ieY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

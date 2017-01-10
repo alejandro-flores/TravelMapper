@@ -693,6 +693,7 @@
 			baseConfigurationReference = 0C2BBB78644DB2AB3DB495CF /* Pods-TravelMapper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5K623M54S3;
 				INFOPLIST_FILE = TravelMapper/Info.plist;
@@ -708,6 +709,7 @@
 			baseConfigurationReference = 13F4EEFA957F9E40FEECB254 /* Pods-TravelMapper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5K623M54S3;
 				INFOPLIST_FILE = TravelMapper/Info.plist;

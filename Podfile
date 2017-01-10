@@ -9,8 +9,8 @@ target 'TravelMapper' do
   # Pods for TravelMapper
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  target 'TravelMapperTests' do
-    inherit! :search_paths
+  pod 'CWStatusBarNotification', '~> 2.3.5'
+  target 'TravelMapperTests' do    inherit! :search_paths
     # Pods for testing
   end
 

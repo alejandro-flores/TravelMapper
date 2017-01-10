@@ -9,10 +9,13 @@
 #import "TMTravelDetailsPresentationController.h"
 
 @interface TMTravelDetailsPresentationController()
+
 @property (strong, readonly) UIView *dimmedBackgroundView;
+
 @end
 
 @implementation TMTravelDetailsPresentationController
+
 #pragma mark - UIPresentationController Required Methods
 - (UIView *)dimmedBackgroundView {
     static UIView *instance = nil;
@@ -52,10 +55,8 @@
 }
 
 - (CGRect)frameOfPresentedViewInContainerView {
-    CGFloat size = 280;
-    CGRect frame = CGRectMake((self.containerView.frame.size.width - size) / 2,
-                              (self.containerView.frame.size.height - size) / 2,
-                              size, size);
+    CGFloat size = 350;
+    CGRect frame = CGRectMake((self.containerView.frame.size.width - size) / 2, (self.containerView.frame.size.height - size) / 2, size, size);
     
     return frame;
 }
@@ -67,7 +68,7 @@
 
 #pragma mark - Helper Methods
 - (void)setUpPresentedView:(UIView *)presentedView {
-    presentedView.layer.cornerRadius = 20.0;
+    presentedView.layer.cornerRadius = 0;
     presentedView.layer.shadowColor = [[UIColor blackColor]CGColor];
     presentedView.layer.shadowOffset = CGSizeMake(0, 10);
     presentedView.layer.shadowRadius = 10;

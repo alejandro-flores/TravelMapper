@@ -1,4 +1,5 @@
 PODS:
+  - CWStatusBarNotification (2.3.5)
   - GoogleMaps (2.1.1):
     - GoogleMaps/Maps (= 2.1.1)
   - GoogleMaps/Base (2.1.1)
@@ -8,13 +9,15 @@ PODS:
     - GoogleMaps/Base (= 2.1.1)
 
 DEPENDENCIES:
+  - CWStatusBarNotification (~> 2.3.5)
   - GoogleMaps
   - GooglePlaces
 
 SPEC CHECKSUMS:
+  CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
 
-PODFILE CHECKSUM: 7c77c922abd76253f8f55171e8d4aadac7075d87
+PODFILE CHECKSUM: 715b3854cbc3bf045733ed5d2d331dfd5b7bdce1
 
 COCOAPODS: 1.1.1

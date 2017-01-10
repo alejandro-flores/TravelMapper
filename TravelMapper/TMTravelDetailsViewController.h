@@ -9,7 +9,21 @@
 #import <UIKit/UIKit.h>
 #import <GooglePlaces/GooglePlaces.h>
 
+/******************** TMTravelDetailsViewControllerDelegate *******************/
+@class TMTravelDetailsViewController;
+@protocol TMTravelDetailsViewControllerDelegate <NSObject>
+@required
+
+- (void)didStoreTravel:(TMTravelDetailsViewController *)controller;
+- (void)willDropMarker:(TMTravelDetailsViewController *)controller;
+
+@end
+/*********************************************************************/
+
 @interface TMTravelDetailsViewController : UIViewController
+
+@property(weak, nonatomic) id<TMTravelDetailsViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectCtx;
 @property (strong, nonatomic) GMSPlace *place;
+
 @end

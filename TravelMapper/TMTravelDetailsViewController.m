@@ -7,18 +7,25 @@
 //
 
 #import "TMTravelDetailsViewController.h"
+#import "TMMapViewController.h"
 #import "TMTravelDetailsBounceAnimationController.h"
 #import "TMTravelDetailsPresentationController.h"
 #import "Travel+CoreDataClass.h"
 
 @interface TMTravelDetailsViewController () <UIViewControllerTransitioningDelegate>
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *travelTypeSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIImageView *cityImageView;
+@property (weak, nonatomic) IBOutlet UILabel *attributionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *travelTypeSegmentedControl;
 @property (strong, nonatomic) NSString *travelType;
+
 @end
 
 @implementation TMTravelDetailsViewController
+
+@synthesize delegate;
 
 #pragma mark - Lifecycle
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -39,6 +46,9 @@
     _travelType = [NSString stringWithFormat:@"%@", [_travelTypeSegmentedControl titleForSegmentAtIndex:0]];
     _cityNameLabel.text = [NSString stringWithString:_place.name];
     _stateLabel.text = [NSString stringWithString:_place.formattedAddress];
+    
+    // Loads city image on the cityImageView
+    [Travel loadFirstPhotoForPlace:_place.placeID imageView:_cityImageView attributionLabel:_attributionLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,10 +67,14 @@
 #pragma mark - IBActions
 - (IBAction)saveButon:(UIBarButtonItem *)sender {
     [self storeTravel:_place];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^(void) {
+        [self.delegate willDropMarker:self];
+        [self.delegate didStoreTravel:self];
+    }];
 }
 
 - (IBAction)cancelButton:(UIBarButtonItem *)sender {
+    
 }
 
 - (IBAction)pickTravelType:(UISegmentedControl *)sender {

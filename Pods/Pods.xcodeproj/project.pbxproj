@@ -7,58 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22FA0D8579890BD12BC8B9A1CD8CA705 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		6B1076A65E163299A0BAEA3482D49A5A /* CWStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F6ABB878D70221776A3EA5A880454220 /* CWStatusBarNotification.m */; };
 		6DD3C02A7851BDA328EC2BB50E431E38 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		7F0024341EBFC623E49F247329D85411 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		9CEFA219C5F9CA6613F406A7A5BE4EBC /* Pods-TravelMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AABF70A74FC21F9C3A460E907526E5 /* Pods-TravelMapper-dummy.m */; };
+		887E14FD6478B11C3A25EB68A9A80FC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		8B826C945BD4F63ED04D7A50A5852D83 /* CWStatusBarNotification-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8622201D38158F15BC14AA695E9A1B /* CWStatusBarNotification-dummy.m */; };
+		A268FF82E998C3378C84607B7555F668 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		A479EA9924255C6012F3628C0A3220B7 /* CWStatusBarNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6BD8E137035460D54DB0C91226FC37 /* CWStatusBarNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B411C3484F6C69712247ACAF9AA935D7 /* Pods-TravelMapperUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D536FC1CEAC89FA851A4DD67267A4F8 /* Pods-TravelMapperUITests-dummy.m */; };
 		D310D8EB2DCF8264B8D31AC5C1EB1A92 /* Pods-TravelMapperTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AEA899E12BC45B6222A6A12F7047A4 /* Pods-TravelMapperTests-dummy.m */; };
+		D78BA5581F9207A05BD2D23F05638D6C /* Pods-TravelMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AABF70A74FC21F9C3A460E907526E5 /* Pods-TravelMapper-dummy.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FABBF22F8CA20F20D1303DD34F47D51B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F97224F950ACF4C0C53F41A3CE06F07;
+			remoteInfo = CWStatusBarNotification;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		0A3D35E8D220A14E4F7899091B4997A9 /* Pods-TravelMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelMapper.debug.xcconfig"; sourceTree = "<group>"; };
+		0C8FAE4545FB61BD3F08620CADF604E9 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		0F249BFB0A16C964A92E6BC571EAB7C8 /* CWStatusBarNotification.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CWStatusBarNotification.xcconfig; sourceTree = "<group>"; };
 		266E31F7607188657CBEAE034362DD88 /* Pods-TravelMapperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelMapperUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2E46F88106008F43600FF2622FE6FA6D /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		3384738BBF242E41C265DE3705EF0F51 /* Pods-TravelMapper-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TravelMapper-acknowledgements.plist"; sourceTree = "<group>"; };
-		34C76CA526F1D2581A71A16877409D5B /* libPods-TravelMapperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TravelMapperTests.a"; path = "libPods-TravelMapperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38AABF70A74FC21F9C3A460E907526E5 /* Pods-TravelMapper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TravelMapper-dummy.m"; sourceTree = "<group>"; };
 		3BAA9795AE9A875CE01077336AF794B0 /* Pods-TravelMapperTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelMapperTests-resources.sh"; sourceTree = "<group>"; };
 		3E33A4D2760976BEF24C712B65ED39F1 /* Pods-TravelMapperTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TravelMapperTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		4D536FC1CEAC89FA851A4DD67267A4F8 /* Pods-TravelMapperUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TravelMapperUITests-dummy.m"; sourceTree = "<group>"; };
+		55A2989B7001B88A46DC1E6E4F276A76 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 		57E421D37725562994657C64923473D0 /* Pods-TravelMapperTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TravelMapperTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5F549220106F495510C8E60DA3AA1C9A /* Pods-TravelMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelMapper.release.xcconfig"; sourceTree = "<group>"; };
 		60BA5EBBAE1E3A70106F4368C980D520 /* Pods-TravelMapper-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelMapper-frameworks.sh"; sourceTree = "<group>"; };
-		6486F019333E6DFA0AB14F5550D720D2 /* libPods-TravelMapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TravelMapper.a"; path = "libPods-TravelMapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AEA899E12BC45B6222A6A12F7047A4 /* Pods-TravelMapperTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TravelMapperTests-dummy.m"; sourceTree = "<group>"; };
 		668A445F020385ECFA88C055C40FC38F /* Pods-TravelMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6A3ECCCFD2E663C31CD7EC1EEF6BB0C4 /* Pods-TravelMapperTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelMapperTests-frameworks.sh"; sourceTree = "<group>"; };
-		70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
-		89062BF8A660809FC127AAD269EF9FB5 /* libPods-TravelMapperUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TravelMapperUITests.a"; path = "libPods-TravelMapperUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84141907F6D8ADB34AF088DBFAF8C5B2 /* libPods-TravelMapperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TravelMapperTests.a"; path = "libPods-TravelMapperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		99BE44E5FC49B97B0E5C782CE8BC9C0F /* Pods-TravelMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelMapperTests.release.xcconfig"; sourceTree = "<group>"; };
+		9C9DD3E325B4FBF7C5E02928824A58EE /* libCWStatusBarNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCWStatusBarNotification.a; path = libCWStatusBarNotification.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E77CBDC3496BA05DC8471587B67F565 /* Pods-TravelMapperUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TravelMapperUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A2DCF4B7CAB6EDCC3B589F1F95633D83 /* Pods-TravelMapperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelMapperUITests.release.xcconfig"; sourceTree = "<group>"; };
-		A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		A9BB2E0DF6EBC97E6173D2605B7ECF2A /* libPods-TravelMapperUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TravelMapperUITests.a"; path = "libPods-TravelMapperUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC4CE43DE7D078B1ABBE1084BDE746E2 /* CWStatusBarNotification-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CWStatusBarNotification-prefix.pch"; sourceTree = "<group>"; };
+		AEC7D9E3873F77440FEF75C666577BB0 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		AECBA066132CDF27E0F11A9D975C0F1E /* Pods-TravelMapperUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TravelMapperUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		AFD4D1E144CCB4285706E577C2602A44 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 		B3F0F56BBC7A0358AA666DC8A009A454 /* Pods-TravelMapperUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelMapperUITests-frameworks.sh"; sourceTree = "<group>"; };
+		B752C4850F8451209467C18FB192BBE5 /* libPods-TravelMapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TravelMapper.a"; path = "libPods-TravelMapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F83D0164FA303B335BB2901966537E /* Pods-TravelMapperUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelMapperUITests-resources.sh"; sourceTree = "<group>"; };
 		C8EDD23B6C812598B8E0F70009F24727 /* Pods-TravelMapper-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TravelMapper-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C99535CD0422D1A59AA1E63FB8B93602 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D2D790C9A03836AA0A77B5B1EE3DFD51 /* Pods-TravelMapper-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelMapper-resources.sh"; sourceTree = "<group>"; };
-		F88E2A6AB865C2A1EB845B27A14348FA /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		EE6BD8E137035460D54DB0C91226FC37 /* CWStatusBarNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CWStatusBarNotification.h; path = CWStatusBarNotification/CWStatusBarNotification.h; sourceTree = "<group>"; };
+		F45643F60C014EC654423515BDEB6AE1 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		F6ABB878D70221776A3EA5A880454220 /* CWStatusBarNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CWStatusBarNotification.m; path = CWStatusBarNotification/CWStatusBarNotification.m; sourceTree = "<group>"; };
+		FA8622201D38158F15BC14AA695E9A1B /* CWStatusBarNotification-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CWStatusBarNotification-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04735A546A519523B97007F9D443E6ED /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22FA0D8579890BD12BC8B9A1CD8CA705 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1D81F6BEBB706B772BA9E00595C846F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,69 +87,60 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B476A868AB79574E1079EA90361D1739 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				887E14FD6478B11C3A25EB68A9A80FC8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF0B458009F44DEC41A5A50CBDB27A1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A268FF82E998C3378C84607B7555F668 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */ = {
+		092B2441284CF1CAC77D85930C054D07 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				475420FA59EFC8377CF994A338979247 /* Frameworks */,
-				4F6C8AC648A5703DF2BEC96A882D19E9 /* Resources */,
-			);
-			name = GooglePlaces;
-			path = GooglePlaces;
-			sourceTree = "<group>";
-		};
-		26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				B2F22323EA3B1ADB4F96376E3F709A68 /* Base */,
-				488E301C4ACDDA928635C4886F5F6158 /* Maps */,
+				4232E3DE8B189294AE32690BD8BF374D /* Base */,
+				EB1830C54374194F40CD521A663EC1AC /* Maps */,
 			);
 			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
-		385FA015FFB9210F372AB1078B856AAB /* Pods */ = {
+		3F7D80ED8788B928B42A7752577FFAAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */,
-				00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		475420FA59EFC8377CF994A338979247 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */,
+				55A2989B7001B88A46DC1E6E4F276A76 /* GoogleMapsBase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		488E301C4ACDDA928635C4886F5F6158 /* Maps */ = {
+		3FF35DBA3A1D32A58B614AA378AB3AB6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */,
-				FAC5D957D919553947FEE0A96B739CC4 /* Resources */,
+				0F249BFB0A16C964A92E6BC571EAB7C8 /* CWStatusBarNotification.xcconfig */,
+				FA8622201D38158F15BC14AA695E9A1B /* CWStatusBarNotification-dummy.m */,
+				AC4CE43DE7D078B1ABBE1084BDE746E2 /* CWStatusBarNotification-prefix.pch */,
 			);
-			name = Maps;
+			name = "Support Files";
+			path = "../Target Support Files/CWStatusBarNotification";
 			sourceTree = "<group>";
 		};
-		4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */ = {
+		4232E3DE8B189294AE32690BD8BF374D /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */,
+				3F7D80ED8788B928B42A7752577FFAAC /* Frameworks */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4F6C8AC648A5703DF2BEC96A882D19E9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F88E2A6AB865C2A1EB845B27A14348FA /* GooglePlaces.bundle */,
-			);
-			name = Resources;
+			name = Base;
 			sourceTree = "<group>";
 		};
 		4FE71C78964492F47E2CB740D4ABFD9A /* Targets Support Files */ = {
@@ -150,6 +153,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		6FEC2CE24DC002F87E941CA61DB340CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F45643F60C014EC654423515BDEB6AE1 /* GooglePlaces.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,24 +169,64 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		7BEC6B26374CF0C367A0B1E483DEC5D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88C202955E4439B4FF9F1030F5CB8177 /* CWStatusBarNotification */,
+				092B2441284CF1CAC77D85930C054D07 /* GoogleMaps */,
+				F699305377CD1C9E576A9A15FD8F7ADB /* GooglePlaces */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				385FA015FFB9210F372AB1078B856AAB /* Pods */,
-				BA1CFE4AE756733E1B487C151CB62166 /* Products */,
+				7BEC6B26374CF0C367A0B1E483DEC5D3 /* Pods */,
+				961426447C97238951D0ED2A7DF40FFA /* Products */,
 				4FE71C78964492F47E2CB740D4ABFD9A /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */ = {
+		86E148296F3CCD634F3A302F03097945 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */,
-				A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */,
+				C99535CD0422D1A59AA1E63FB8B93602 /* GooglePlaces.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		88C202955E4439B4FF9F1030F5CB8177 /* CWStatusBarNotification */ = {
+			isa = PBXGroup;
+			children = (
+				EE6BD8E137035460D54DB0C91226FC37 /* CWStatusBarNotification.h */,
+				F6ABB878D70221776A3EA5A880454220 /* CWStatusBarNotification.m */,
+				3FF35DBA3A1D32A58B614AA378AB3AB6 /* Support Files */,
+			);
+			name = CWStatusBarNotification;
+			path = CWStatusBarNotification;
+			sourceTree = "<group>";
+		};
+		91FCB5C4661D0B747C334365127A48BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E46F88106008F43600FF2622FE6FA6D /* GoogleMaps.framework */,
+				0C8FAE4545FB61BD3F08620CADF604E9 /* GoogleMapsCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		961426447C97238951D0ED2A7DF40FFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C9DD3E325B4FBF7C5E02928824A58EE /* libCWStatusBarNotification.a */,
+				B752C4850F8451209467C18FB192BBE5 /* libPods-TravelMapper.a */,
+				84141907F6D8ADB34AF088DBFAF8C5B2 /* libPods-TravelMapperTests.a */,
+				A9BB2E0DF6EBC97E6173D2605B7ECF2A /* libPods-TravelMapperUITests.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		987A2834CD86E875B1300BD2E055D7B0 /* Pods-TravelMapperTests */ = {
@@ -193,12 +244,12 @@
 			path = "Target Support Files/Pods-TravelMapperTests";
 			sourceTree = "<group>";
 		};
-		B2F22323EA3B1ADB4F96376E3F709A68 /* Base */ = {
+		B0ECBFE8BCC6D3A9ADA2343840CFCE0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */,
+				AEC7D9E3873F77440FEF75C666577BB0 /* GoogleMaps.bundle */,
 			);
-			name = Base;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		B7CD10663E63EEDE9026CE170EA27D73 /* Pods-TravelMapper */ = {
@@ -214,16 +265,6 @@
 			);
 			name = "Pods-TravelMapper";
 			path = "Target Support Files/Pods-TravelMapper";
-			sourceTree = "<group>";
-		};
-		BA1CFE4AE756733E1B487C151CB62166 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6486F019333E6DFA0AB14F5550D720D2 /* libPods-TravelMapper.a */,
-				34C76CA526F1D2581A71A16877409D5B /* libPods-TravelMapperTests.a */,
-				89062BF8A660809FC127AAD269EF9FB5 /* libPods-TravelMapperUITests.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -249,17 +290,73 @@
 			path = "Target Support Files/Pods-TravelMapperUITests";
 			sourceTree = "<group>";
 		};
-		FAC5D957D919553947FEE0A96B739CC4 /* Resources */ = {
+		EB1830C54374194F40CD521A663EC1AC /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				AFD4D1E144CCB4285706E577C2602A44 /* GoogleMaps.bundle */,
+				91FCB5C4661D0B747C334365127A48BB /* Frameworks */,
+				B0ECBFE8BCC6D3A9ADA2343840CFCE0C /* Resources */,
 			);
-			name = Resources;
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		F699305377CD1C9E576A9A15FD8F7ADB /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				6FEC2CE24DC002F87E941CA61DB340CD /* Frameworks */,
+				86E148296F3CCD634F3A302F03097945 /* Resources */,
+			);
+			name = GooglePlaces;
+			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4781591A8152077C5337CA8A222ABF74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A479EA9924255C6012F3628C0A3220B7 /* CWStatusBarNotification.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		6F97224F950ACF4C0C53F41A3CE06F07 /* CWStatusBarNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37FF8831FACABAC1A2B830D56AB9A506 /* Build configuration list for PBXNativeTarget "CWStatusBarNotification" */;
+			buildPhases = (
+				061417F7F99DD4E4F4E17433AE63D763 /* Sources */,
+				BF0B458009F44DEC41A5A50CBDB27A1A /* Frameworks */,
+				4781591A8152077C5337CA8A222ABF74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CWStatusBarNotification;
+			productName = CWStatusBarNotification;
+			productReference = 9C9DD3E325B4FBF7C5E02928824A58EE /* libCWStatusBarNotification.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		AD286AE648158BCE96F43D8189E57C7A /* Pods-TravelMapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FE3712791DB1396EA1EB0E0D491FFB8 /* Build configuration list for PBXNativeTarget "Pods-TravelMapper" */;
+			buildPhases = (
+				0E81D6F02387B9E1F1246F0F385AC65D /* Sources */,
+				B476A868AB79574E1079EA90361D1739 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52E43E8F75AF7B9A3DF27D59E0B7D1EC /* PBXTargetDependency */,
+			);
+			name = "Pods-TravelMapper";
+			productName = "Pods-TravelMapper";
+			productReference = B752C4850F8451209467C18FB192BBE5 /* libPods-TravelMapper.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		B05B9CB86E64ED8BCA16BA012E160D1B /* Pods-TravelMapperUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEF61412ED0D5445D2BD051B963EF937 /* Build configuration list for PBXNativeTarget "Pods-TravelMapperUITests" */;
@@ -273,23 +370,7 @@
 			);
 			name = "Pods-TravelMapperUITests";
 			productName = "Pods-TravelMapperUITests";
-			productReference = 89062BF8A660809FC127AAD269EF9FB5 /* libPods-TravelMapperUITests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		DA5510D6D4F3216D520F576FA2AC0F65 /* Pods-TravelMapper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6BDFA65FC4D2459CDD84E2DAFB9F0ACB /* Build configuration list for PBXNativeTarget "Pods-TravelMapper" */;
-			buildPhases = (
-				0E5C5A6318AF068BD00121BFBF5A1603 /* Sources */,
-				04735A546A519523B97007F9D443E6ED /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-TravelMapper";
-			productName = "Pods-TravelMapper";
-			productReference = 6486F019333E6DFA0AB14F5550D720D2 /* libPods-TravelMapper.a */;
+			productReference = A9BB2E0DF6EBC97E6173D2605B7ECF2A /* libPods-TravelMapperUITests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		DB05361D71A0F055292F7919C7CA8C6B /* Pods-TravelMapperTests */ = {
@@ -305,7 +386,7 @@
 			);
 			name = "Pods-TravelMapperTests";
 			productName = "Pods-TravelMapperTests";
-			productReference = 34C76CA526F1D2581A71A16877409D5B /* libPods-TravelMapperTests.a */;
+			productReference = 84141907F6D8ADB34AF088DBFAF8C5B2 /* libPods-TravelMapperTests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -325,11 +406,12 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = BA1CFE4AE756733E1B487C151CB62166 /* Products */;
+			productRefGroup = 961426447C97238951D0ED2A7DF40FFA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA5510D6D4F3216D520F576FA2AC0F65 /* Pods-TravelMapper */,
+				6F97224F950ACF4C0C53F41A3CE06F07 /* CWStatusBarNotification */,
+				AD286AE648158BCE96F43D8189E57C7A /* Pods-TravelMapper */,
 				DB05361D71A0F055292F7919C7CA8C6B /* Pods-TravelMapperTests */,
 				B05B9CB86E64ED8BCA16BA012E160D1B /* Pods-TravelMapperUITests */,
 			);
@@ -345,11 +427,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0E5C5A6318AF068BD00121BFBF5A1603 /* Sources */ = {
+		061417F7F99DD4E4F4E17433AE63D763 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CEFA219C5F9CA6613F406A7A5BE4EBC /* Pods-TravelMapper-dummy.m in Sources */,
+				8B826C945BD4F63ED04D7A50A5852D83 /* CWStatusBarNotification-dummy.m in Sources */,
+				6B1076A65E163299A0BAEA3482D49A5A /* CWStatusBarNotification.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E81D6F02387B9E1F1246F0F385AC65D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D78BA5581F9207A05BD2D23F05638D6C /* Pods-TravelMapper-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +453,15 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52E43E8F75AF7B9A3DF27D59E0B7D1EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CWStatusBarNotification;
+			target = 6F97224F950ACF4C0C53F41A3CE06F07 /* CWStatusBarNotification */;
+			targetProxy = FABBF22F8CA20F20D1303DD34F47D51B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
@@ -408,7 +508,30 @@
 			};
 			name = Debug;
 		};
-		57B562262B55D69D441E04BC125CF30D /* Debug */ = {
+		203D52055E9A0C32CEA36DA9578FBFD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F549220106F495510C8E60DA3AA1C9A /* Pods-TravelMapper.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		4E62395A7A4CC790F5FD68F09F8AA788 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A3D35E8D220A14E4F7899091B4997A9 /* Pods-TravelMapper.debug.xcconfig */;
 			buildSettings = {
@@ -454,9 +577,9 @@
 			};
 			name = Release;
 		};
-		86C06EEE7DBC46EBE6FD609213ED1702 /* Release */ = {
+		778D24C2CB3814B979D5ADD77D6A18A7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2DCF4B7CAB6EDCC3B589F1F95633D83 /* Pods-TravelMapperUITests.release.xcconfig */;
+			baseConfigurationReference = 0F249BFB0A16C964A92E6BC571EAB7C8 /* CWStatusBarNotification.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -464,22 +587,22 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/CWStatusBarNotification/CWStatusBarNotification-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		CB5F068EFF091B1C488B543C08CE4E9F /* Release */ = {
+		86C06EEE7DBC46EBE6FD609213ED1702 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F549220106F495510C8E60DA3AA1C9A /* Pods-TravelMapper.release.xcconfig */;
+			baseConfigurationReference = A2DCF4B7CAB6EDCC3B589F1F95633D83 /* Pods-TravelMapperUITests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -563,6 +686,29 @@
 			};
 			name = Release;
 		};
+		EFAF8AF5F483D10FFF420AA33F09CCEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F249BFB0A16C964A92E6BC571EAB7C8 /* CWStatusBarNotification.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CWStatusBarNotification/CWStatusBarNotification-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 		FA75DE87BCE71478597FAC867948073C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 668A445F020385ECFA88C055C40FC38F /* Pods-TravelMapperTests.debug.xcconfig */;
@@ -607,11 +753,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BDFA65FC4D2459CDD84E2DAFB9F0ACB /* Build configuration list for PBXNativeTarget "Pods-TravelMapper" */ = {
+		37FF8831FACABAC1A2B830D56AB9A506 /* Build configuration list for PBXNativeTarget "CWStatusBarNotification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				57B562262B55D69D441E04BC125CF30D /* Debug */,
-				CB5F068EFF091B1C488B543C08CE4E9F /* Release */,
+				EFAF8AF5F483D10FFF420AA33F09CCEF /* Debug */,
+				778D24C2CB3814B979D5ADD77D6A18A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FE3712791DB1396EA1EB0E0D491FFB8 /* Build configuration list for PBXNativeTarget "Pods-TravelMapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E62395A7A4CC790F5FD68F09F8AA788 /* Debug */,
+				203D52055E9A0C32CEA36DA9578FBFD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
