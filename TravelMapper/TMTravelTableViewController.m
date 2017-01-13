@@ -141,6 +141,7 @@
 - (void)fetchTravels {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Travel"];
     _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil]mutableCopy];
+    _travelsArray = [[[_travelsArray reverseObjectEnumerator] allObjects] mutableCopy]; // Reversed Array so that newly added Travels show up first.
 }
 
 /**
