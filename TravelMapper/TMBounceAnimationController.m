@@ -1,14 +1,14 @@
 //
-//  TMTravelDetailsBounceAnimationController.m
+//  TMBounceAnimationController.m
 //  TravelMapper
 //
-//  Created by Guests on 12/25/16.
-//  Copyright © 2016 Alejandro Martin Flores Naranjo. All rights reserved.
+//  Created by Alejandro Martin Flores Naranjo on 1/9/17.
+//  Copyright © 2017 Alejandro Martin Flores Naranjo. All rights reserved.
 //
 
-#import "TMTravelDetailsBounceAnimationController.h"
+#import "TMBounceAnimationController.h"
 
-@implementation TMTravelDetailsBounceAnimationController
+@implementation TMBounceAnimationController
 
 #pragma mark - UIViewControllerAnimatedTransitioning Protocol Methods
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {

@@ -20,8 +20,8 @@
              NSLog(@"Error: %@", [error description]);
          } else {
              if (photos.results.count > 0) {
-                 GMSPlacePhotoMetadata *firstPhoto = photos.results.firstObject;
-                 [self loadImageForMetadata:firstPhoto imageView:imageView attributionLabel:attributionLabel];
+                 GMSPlacePhotoMetadata *photo = photos.results.firstObject;
+                 [self loadImageForMetadata:photo imageView:imageView attributionLabel:attributionLabel];
              }
          }
      }];

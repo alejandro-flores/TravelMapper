@@ -13,17 +13,20 @@
 #import <GooglePlaces/GooglePlaces.h>
 #import "TMTravelDetailsViewController.h"
 #import <CWStatusBarNotification/CWStatusBarNotification.h>
+#import "TMMapSettingsTableViewController.h"
+#import "SWRevealViewController.h"
 @import CoreData;
 
-@interface TMMapViewController () <GMSAutocompleteResultsViewControllerDelegate, TMTravelDetailsViewControllerDelegate>
+@interface TMMapViewController () <GMSAutocompleteResultsViewControllerDelegate, TMTravelDetailsViewControllerDelegate, TMMapSettingsTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet GMSMapView *GMapView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) MKPlacemark *selectedPin;
-@property (strong, nonatomic) NSMutableArray *travelsArray;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButton;
+
 @property (strong, nonatomic) GMSAutocompleteResultsViewController *resultsViewController;
 @property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSMutableArray *travelsArray;
+@property (strong, nonatomic) MKPlacemark *selectedPin;
 @property (strong, nonatomic) GMSPlace *place;
 @property (strong, nonatomic) GMSMarker *marker;
 
@@ -34,6 +37,9 @@
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setMapSettingsDelegate];
+    [self menuViewRevealSetup];
     [self locationManagerSetup];
     [self addAutoCompleteSearchBar];
     
@@ -75,6 +81,28 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
+#pragma mark - Autocomplete
+- (void)addAutoCompleteSearchBar {
+    _resultsViewController = [[GMSAutocompleteResultsViewController alloc]init];
+    _resultsViewController.delegate = self;
+    
+    _searchController = [[UISearchController alloc]initWithSearchResultsController:_resultsViewController];
+    _searchController.searchResultsUpdater = _resultsViewController;
+    
+    // Put the search bar in the nav bar
+    [_searchController.searchBar sizeToFit];
+    
+    self.navigationItem.titleView = _searchController.searchBar;
+    
+    
+    // When UISearchController presents the result view, present it in
+    // this view controller, not one further up the chain
+    self.definesPresentationContext = YES;
+    
+    // Prevent the nav bar from being hidden when searching
+    _searchController.hidesNavigationBarDuringPresentation = NO;
+}
+
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
@@ -96,23 +124,6 @@
     NSLog(@"TMAPVC -- LocationManager failed with error: %@", [error localizedDescription]);
 }
 
-#pragma mark - Map Utils
-/**
- *  Allows the user to change the Map Type to either standard,
- *  satellite or hybrid.
- *
- *  @param sender UISegmentedControl object sending the action.
- */
-- (IBAction)changeMapType:(UISegmentedControl *)sender {
-    NSInteger index = [self.mapTypeSegmentedControl selectedSegmentIndex];
-    switch (index) {
-        case 0: _GMapView.mapType = kGMSTypeNormal;     break;
-        case 1: _GMapView.mapType = kGMSTypeSatellite;  break;
-        case 2: _GMapView.mapType = kGMSTypeHybrid;     break;
-        default: break;
-    }
-}
-
 #pragma mark - UITabBarControllerDelegate
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     UINavigationController *navController = (UINavigationController *)viewController;
@@ -120,6 +131,7 @@
         TMTravelTableViewController *tvc = (TMTravelTableViewController *)navController.topViewController;
         [tvc setManagedObjectCtx:_managedObjectCtx]; // Injects the ManagedObjectContext
     }
+    
     return YES;
 }
 
@@ -137,6 +149,11 @@
     _marker.snippet = [_place formattedAddress];
     _marker.appearAnimation = kGMSMarkerAnimationPop ;
     _marker.map = _GMapView;
+}
+
+#pragma mark - TMMapSettingsTableViewControllerDelegate
+- (void)willChangeMapType:(TMMapSettingsTableViewController *)controller mapType:(GMSMapViewType)mapType {
+    _GMapView.mapType = mapType;
 }
 
 #pragma mark - Navigation
@@ -157,10 +174,34 @@
     [self showNotificationWithMessage:@"Cancelled Operation" andBackgroundColor:[UIColor redColor]];
 }
 
+#pragma mark - Core Data
+/**
+ *  Allows user to persist Blade objects by grabbing the ManagedObjectContext
+ *
+ *  @return NSManagedObjectContext object.
+ */
+- (NSManagedObjectContext *)getManagedObjectContext {
+    NSManagedObjectContext *ctx = nil;
+    id delegate = [[UIApplication sharedApplication]delegate];
+    
+    if ([delegate performSelector:@selector(managedObjectContext)])
+        ctx = [delegate managedObjectContext];
+    
+    return ctx;
+}
+
+/**
+ * Used to fetch the Blades from the Persistent Data Store and store them in the bladesArray
+ */
+- (void)fetchTravels {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Travel"];
+    _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil]mutableCopy];
+}
+
+#pragma mark - Helper Methods
 /**
  * Sets up the CLLocationManager to request and start location tracking
  */
-#pragma mark - Helper Methods
 - (void)locationManagerSetup {
     _locationManager = [[CLLocationManager alloc]init];
     _locationManager.delegate = self;
@@ -190,7 +231,7 @@
 /**
  * Displays a CWStatusBarNotification when a new marker is either added or
  * discarded from the map.
-
+ 
  * @param message String to display on the CWStatusBarNotification.
  * @param color background color of the CWStatusBarNotification.
  */
@@ -198,54 +239,35 @@
     CWStatusBarNotification *notification = [CWStatusBarNotification new];
     notification.notificationLabelBackgroundColor = color;
     notification.notificationLabelTextColor = [UIColor whiteColor];
-    notification.notificationStyle = CWNotificationStyleStatusBarNotification;
+    notification.notificationStyle = CWNotificationStyleNavigationBarNotification;
     notification.notificationAnimationInStyle = CWNotificationAnimationStyleTop;
     notification.notificationAnimationOutStyle = CWNotificationAnimationStyleLeft;
-    [notification displayNotificationWithMessage:message forDuration:1.5f];
+    [notification displayNotificationWithMessage:message forDuration:0.5f];
 }
 
 /**
- * Used to fetch the Blades from the Persistent Data Store and store them in the bladesArray
+ * Configures the menu bar button responsible for revealing the settings view.
  */
-- (void)fetchTravels {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Travel"];
-    _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil]mutableCopy];
+- (void)menuViewRevealSetup {
+    SWRevealViewController *revealController = [self revealViewController];
+    if (revealController) {
+        _menuBarButton.tintColor = [UIColor lightGrayColor];
+        [_menuBarButton setTarget:self.revealViewController];
+        [_menuBarButton setAction:@selector(revealToggleAnimated:)];
+        [revealController tapGestureRecognizer];
+        [revealController panGestureRecognizer];
+    }
 }
 
-#pragma mark - Core Data
 /**
- *  Allows user to persist Blade objects by grabbing the ManagedObjectContext
- *
- *  @return NSManagedObjectContext object.
+ * Gets a reference of the Map Settings View Controller and sets itself as its delegate.
  */
-- (NSManagedObjectContext *)getManagedObjectContext {
-    NSManagedObjectContext *ctx = nil;
-    id delegate = [[UIApplication sharedApplication]delegate];
-    
-    if ([delegate performSelector:@selector(managedObjectContext)])
-        ctx = [delegate managedObjectContext];
-    
-    return ctx;
-}
-
-#pragma mark - Autocomplete
-- (void)addAutoCompleteSearchBar {
-    _resultsViewController = [[GMSAutocompleteResultsViewController alloc]init];
-    _resultsViewController.delegate = self;
-    
-    _searchController = [[UISearchController alloc]initWithSearchResultsController:_resultsViewController];
-    _searchController.searchResultsUpdater = _resultsViewController;
-    
-    // Put the search bar in the nav bar
-    [_searchController.searchBar sizeToFit];
-    self.navigationItem.titleView = _searchController.searchBar;
-    
-    // When UISearchController presents the result view, present it in
-    // this view controller, not one further up the chain
-    self.definesPresentationContext = YES;
-    
-    // Prevent the nav bar from being hidden when searching
-    _searchController.hidesNavigationBarDuringPresentation = NO;
+- (void)setMapSettingsDelegate {
+    UINavigationController *rearNavController = (UINavigationController *)self.revealViewController.rearViewController;
+    if ([rearNavController.topViewController isKindOfClass:[TMMapSettingsTableViewController class]]) {
+        TMMapSettingsTableViewController *mapSettingsTVC = (TMMapSettingsTableViewController *)rearNavController.topViewController;
+        mapSettingsTVC.delegate = self;
+    }
 }
 
 @end

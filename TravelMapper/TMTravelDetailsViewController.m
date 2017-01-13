@@ -8,7 +8,7 @@
 
 #import "TMTravelDetailsViewController.h"
 #import "TMMapViewController.h"
-#import "TMTravelDetailsBounceAnimationController.h"
+#import "TMBounceAnimationController.h"
 #import "TMTravelDetailsPresentationController.h"
 #import "Travel+CoreDataClass.h"
 
@@ -57,7 +57,7 @@
 
 #pragma mark - UIViewControllerTransitioningDelegate
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    return [[TMTravelDetailsBounceAnimationController alloc] init];
+    return [[TMBounceAnimationController alloc] init];
 }
 
 - (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source {

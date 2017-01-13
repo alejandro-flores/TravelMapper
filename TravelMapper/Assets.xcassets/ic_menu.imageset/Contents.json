@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "fa-car_30_0_0064ff_none.png",
+      "filename" : "ic_menu.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "fa-car_60_0_0064ff_none.png",
+      "filename" : "ic_menu_2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "fa-car_90_0_0064ff_none.png",
+      "filename" : "ic_menu_3x.png",
       "scale" : "3x"
     }
   ],
