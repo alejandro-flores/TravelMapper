@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@import MapKit;
 
-@interface TMMapViewController : UIViewController
+@interface TMMapViewController : UIViewController <CLLocationManagerDelegate, UITabBarControllerDelegate>
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectCtx;
 
 @end
