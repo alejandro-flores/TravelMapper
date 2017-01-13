@@ -8,13 +8,12 @@
 
 #import "TMMapSettingsTableViewController.h"
 
-static const NSInteger STD_ROW = 0;
-static const NSInteger SAT_ROW = 1;
-static const NSInteger HYB_ROW = 2;
+static const NSInteger SAT_ROW = 0;
+static const NSInteger HYB_ROW = 1;
 
 @interface TMMapSettingsTableViewController ()
 
-@property (strong, nonatomic) NSArray *menuItems;
+@property (strong, nonatomic) NSArray *menuItemsIdentifiers;
 
 @end
 
@@ -22,7 +21,8 @@ static const NSInteger HYB_ROW = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _menuItems = @[@"Standard", @"Satellite", @"Hybrid"];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Hides empty rows
+    _menuItemsIdentifiers = @[@"standardCell", @"hybridCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,35 +35,12 @@ static const NSInteger HYB_ROW = 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_menuItems count];
+    return [_menuItemsIdentifiers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellId = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        // Customize Cell
-        NSString *cellText = nil;
-        NSInteger row = indexPath.row;
-        switch (row) {
-            case STD_ROW:
-                cellText = [NSString stringWithFormat:@"%@", [_menuItems objectAtIndex:STD_ROW]];
-                break;
-            case SAT_ROW:
-                cellText = [NSString stringWithFormat:@"%@", [_menuItems objectAtIndex:SAT_ROW]];;
-                break;
-            case HYB_ROW:
-                cellText = [NSString stringWithFormat:@"%@", [_menuItems objectAtIndex:HYB_ROW]];;
-                break;
-            default:
-                break;
-        }
-        
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.text = cellText;
-    }
+    NSString *CellIdentifier = [_menuItemsIdentifiers objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     return cell;
 }
@@ -71,11 +48,8 @@ static const NSInteger HYB_ROW = 2;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     switch (row) {
-        case STD_ROW:
-            [self.delegate willChangeMapType:self mapType:kGMSTypeNormal];
-            break;
         case SAT_ROW:
-            [self.delegate willChangeMapType:self mapType:kGMSTypeSatellite];
+            [self.delegate willChangeMapType:self mapType:kGMSTypeNormal];
             break;
         case HYB_ROW:
             [self.delegate willChangeMapType:self mapType:kGMSTypeHybrid];

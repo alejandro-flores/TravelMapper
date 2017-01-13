@@ -15,7 +15,7 @@
 @required
 
 - (void)didStoreTravel:(TMTravelDetailsViewController *)controller;
-- (void)willDropMarker:(TMTravelDetailsViewController *)controller;
+- (void)willDropMarker:(TMTravelDetailsViewController *)controller forTravelType:(NSString *)travelType;
 
 @end
 /*********************************************************************/

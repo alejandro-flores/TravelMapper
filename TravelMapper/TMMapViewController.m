@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet GMSMapView *GMapView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButton;
 
+@property (strong, nonatomic) UIImage *vacationImage, *homeImage, *schoolImage, *workImage;
 @property (strong, nonatomic) GMSAutocompleteResultsViewController *resultsViewController;
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -38,6 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initMarkerIcons];
     [self setMapSettingsDelegate];
     [self menuViewRevealSetup];
     [self locationManagerSetup];
@@ -110,6 +112,7 @@
         [_locationManager startUpdatingLocation];
         _GMapView.myLocationEnabled = YES;
         _GMapView.settings.myLocationButton = YES;
+        _GMapView.settings.compassButton = YES;
     }
 }
 
@@ -142,12 +145,13 @@
     [self showNotificationWithMessage:@"Saved New Travel" andBackgroundColor:greenColor];
 }
 
-- (void)willDropMarker:(TMTravelDetailsViewController *)controller {
+- (void)willDropMarker:(TMTravelDetailsViewController *)controller forTravelType:(NSString *)travelType {
     // Drops a Marker on the Place selected from the list.
     _marker = [GMSMarker markerWithPosition:[_place coordinate]];
     _marker.title = [_place name];
     _marker.snippet = [_place formattedAddress];
-    _marker.appearAnimation = kGMSMarkerAnimationPop ;
+    _marker.appearAnimation = kGMSMarkerAnimationPop;
+    [self setMarkerIcon:_marker forTravelType:travelType];
     _marker.map = _GMapView;
 }
 
@@ -219,11 +223,14 @@
     [self fetchTravels];
     
     for (Travel *travel in _travelsArray) {
+        // NSString *travelType = [NSString stringWithFormat:@"%@", [travel valueForKey:@"travelType"]];
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([[travel valueForKey:@"latitude"] doubleValue],
                                                                   [[travel valueForKey:@"longitude"] doubleValue]);
         GMSMarker *marker = [GMSMarker markerWithPosition:coord];
         marker.title = [travel valueForKey:@"cityName"];
         marker.snippet = [travel valueForKey:@"formattedAddress"];
+        // TODO: Find suitable icons for the different travel types.
+        //[self setMarkerIcon:marker forTravelType:travelType];
         marker.map = _GMapView;
     }
 }
@@ -256,6 +263,7 @@
         [_menuBarButton setAction:@selector(revealToggleAnimated:)];
         [revealController tapGestureRecognizer];
         [revealController panGestureRecognizer];
+        [revealController setRearViewRevealWidth:([revealController rearViewRevealWidth] * 0.75f)]; // 75% of its original width.
     }
 }
 
@@ -268,6 +276,31 @@
         TMMapSettingsTableViewController *mapSettingsTVC = (TMMapSettingsTableViewController *)rearNavController.topViewController;
         mapSettingsTVC.delegate = self;
     }
+}
+
+
+/**
+ * Sets the marker's icon to our own image based on the Travel Type entered for the Travel.
+
+ @param marker The marker displayed on the map.
+ @param travelType Travel Type chosen when the Travel was created (Home, Vacation, Work).
+ */
+- (void)setMarkerIcon:(GMSMarker *)marker forTravelType:(NSString *)travelType {
+    if ([travelType  isEqualToString: @"Vacation"])     marker.icon = _homeImage;
+    else if ([travelType isEqualToString:@"Home"])      marker.icon = _vacationImage;
+    else if ([travelType isEqualToString:@"School"])    marker.icon = _schoolImage;
+    else if ([travelType isEqualToString:@"Work"])      marker.icon = _workImage;
+}
+
+/**
+ * Initializes the marker icon images to be reused when adding/redrawing
+ * the markers on the map.
+ */
+- (void)initMarkerIcons {
+    _vacationImage  = [UIImage imageNamed:@"ic_beach_access.png"];
+    _homeImage      = [UIImage imageNamed:@"ic_home.png"];
+    _schoolImage    = [UIImage imageNamed:@"school.png"];
+    _workImage      = [UIImage imageNamed:@"ic_work.png"];
 }
 
 @end

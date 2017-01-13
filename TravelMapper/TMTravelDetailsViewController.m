@@ -68,7 +68,7 @@
 - (IBAction)saveButon:(UIBarButtonItem *)sender {
     [self storeTravel:_place];
     [self dismissViewControllerAnimated:YES completion:^(void) {
-        [self.delegate willDropMarker:self];
+        [self.delegate willDropMarker:self forTravelType:_travelType];
         [self.delegate didStoreTravel:self];
     }];
 }
