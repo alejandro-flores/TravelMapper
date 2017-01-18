@@ -10,6 +10,6 @@
 
 @interface TMDetailedTravelViewController : UIViewController
 
-@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId;
+@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId, *latitude, *longitude;
 
 @end

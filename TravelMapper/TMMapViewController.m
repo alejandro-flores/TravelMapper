@@ -39,6 +39,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Disable Autolayout warnings
+    [[NSUserDefaults standardUserDefaults] setValue:@(NO) forKey:@"_UIConstraintBasedLayoutLogUnsatisfiable"];
+    
     [self initMarkerIcons];
     [self setMapSettingsDelegate];
     [self menuViewRevealSetup];
