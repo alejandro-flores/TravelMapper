@@ -9,7 +9,7 @@ target 'TravelMapper' do
   # Pods for TravelMapper
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'AFNetworking', '~> 3.0'
+  # pod 'AFNetworking', '~> 3.0'
   pod 'CWStatusBarNotification', '~> 2.3.5'
   target 'TravelMapperTests' do    inherit! :search_paths
     # Pods for testing

@@ -13,7 +13,8 @@ static const NSInteger HYB_ROW = 1;
 
 @interface TMMapSettingsTableViewController ()
 
-@property (strong, nonatomic) NSArray *menuItemsIdentifiers;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tempSegmentedControl;
+@property (strong, nonatomic) NSString *chosenTempUnits;
 
 @end
 
@@ -22,7 +23,6 @@ static const NSInteger HYB_ROW = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Hides empty rows
-    _menuItemsIdentifiers = @[@"standardCell", @"hybridCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,21 +30,6 @@ static const NSInteger HYB_ROW = 1;
 }
 
 #pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_menuItemsIdentifiers count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = [_menuItemsIdentifiers objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    return cell;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     switch (row) {
@@ -57,6 +42,12 @@ static const NSInteger HYB_ROW = 1;
         default:
             break;
     }
+}
+
+- (IBAction)changeTemperatureUnits:(UISegmentedControl *)sender {
+    NSInteger index = [_tempSegmentedControl selectedSegmentIndex];
+    
+    _chosenTempUnits = [NSString stringWithFormat:@"%@", [_tempSegmentedControl titleForSegmentAtIndex:index]];
 }
 
 @end

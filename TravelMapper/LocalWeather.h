@@ -10,9 +10,14 @@
 
 @interface LocalWeather : NSObject
 
-@property (assign, nonatomic) NSString *latitude, *longitude, *currentWeather, *temperatureUnits, *finalWeather;
+@property (assign, nonatomic) NSString *latitude, *longitude, *currentWeather;
 
-- (instancetype)initWithLatitude:(NSString *)latitude longitude:(NSString *)longitude temperatureUnits:(NSString *)temperatureUnits;
-- (NSString *)getCurrentWeatherCelsius;
-- (NSString *)getCurrentWeatherFahrenheit;
+- (instancetype)initWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
+- (float)getCurrentWeatherTemp;
+- (float)getCurrentWeatherMinTemp;
+- (float)getCurrentWeatherMaxTemp;
+- (NSString *)getCurrentWeatherIconFileName;
+- (NSString *)getCurrentWeatherDescription;
+- (NSString *)kelvinToFahrenheit:(float)K;
+- (NSString *)kelvinToCelsius:(float)K;
 @end
