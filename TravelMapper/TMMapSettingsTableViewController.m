@@ -11,10 +11,11 @@
 static const NSInteger SAT_ROW = 0;
 static const NSInteger HYB_ROW = 1;
 
+
 @interface TMMapSettingsTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tempSegmentedControl;
-@property (strong, nonatomic) NSString *chosenTempUnits;
+@property (strong, nonatomic) NSUserDefaults *userDefaults;
 
 @end
 
@@ -23,6 +24,7 @@ static const NSInteger HYB_ROW = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Hides empty rows
+    _userDefaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,8 +48,6 @@ static const NSInteger HYB_ROW = 1;
 
 - (IBAction)changeTemperatureUnits:(UISegmentedControl *)sender {
     NSInteger index = [_tempSegmentedControl selectedSegmentIndex];
-    
-    _chosenTempUnits = [NSString stringWithFormat:@"%@", [_tempSegmentedControl titleForSegmentAtIndex:index]];
 }
 
 @end

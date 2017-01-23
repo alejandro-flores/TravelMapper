@@ -50,8 +50,8 @@ NSString *description;
     _stateLabel.text        = _cityFormattedAddress;
     _traveltypeLabel.text   = [NSString stringWithFormat:@"%@", _travelType];
     _tempLabel.text         = [_localWeather kelvinToCelsius:[_localWeather getCurrentWeatherTemp]];
-    _highTempLabel.text     = [NSString stringWithFormat:@"↑%@", [_localWeather kelvinToCelsius:[_localWeather getCurrentWeatherMaxTemp]]];
-    _lowTempLabel.text      = [NSString stringWithFormat:@"↓%@", [_localWeather kelvinToCelsius:[_localWeather getCurrentWeatherMaxTemp]]];
+    _highTempLabel.text     = [NSString stringWithFormat:@"↑%@", [_localWeather kelvinToCelsius:[_localWeather getDailyForecastMaxTemp]]];
+    _lowTempLabel.text      = [NSString stringWithFormat:@"↓%@", [_localWeather kelvinToCelsius:[_localWeather getDailyForecastMinTemp]]];
     _descriptionLabel.text  = [_localWeather getCurrentWeatherDescription];
     _weatherIconImageView.image = [UIImage imageNamed:[_localWeather getCurrentWeatherIconFileName]];
     

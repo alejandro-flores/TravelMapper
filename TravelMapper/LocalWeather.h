@@ -13,11 +13,13 @@
 @property (assign, nonatomic) NSString *latitude, *longitude, *currentWeather;
 
 - (instancetype)initWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
+
 - (float)getCurrentWeatherTemp;
-- (float)getCurrentWeatherMinTemp;
-- (float)getCurrentWeatherMaxTemp;
+- (float)getDailyForecastMinTemp;
+- (float)getDailyForecastMaxTemp;
 - (NSString *)getCurrentWeatherIconFileName;
 - (NSString *)getCurrentWeatherDescription;
 - (NSString *)kelvinToFahrenheit:(float)K;
 - (NSString *)kelvinToCelsius:(float)K;
+
 @end
