@@ -27,6 +27,13 @@ static const NSInteger HYB_ROW = 1;
     _userDefaults = [NSUserDefaults standardUserDefaults];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // Read NSUserDefaults to select chosen temperature unit
+    [_tempSegmentedControl setSelectedSegmentIndex:([[_userDefaults stringForKey:@"tempUnit"] isEqualToString:@"C"] ? 0 : 1)];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -37,17 +44,32 @@ static const NSInteger HYB_ROW = 1;
     switch (row) {
         case SAT_ROW:
             [self.delegate willChangeMapType:self mapType:kGMSTypeNormal];
+            [_userDefaults setObject:@"satellite" forKey:@"mapType"];
             break;
         case HYB_ROW:
             [self.delegate willChangeMapType:self mapType:kGMSTypeHybrid];
+            [_userDefaults setObject:@"hybrid" forKey:@"mapType"];
             break;
         default:
             break;
     }
+    [_userDefaults synchronize];
 }
 
 - (IBAction)changeTemperatureUnits:(UISegmentedControl *)sender {
     NSInteger index = [_tempSegmentedControl selectedSegmentIndex];
+    
+    switch (index) {
+        case 0:
+            [_userDefaults setObject:@"C" forKey:@"tempUnit"];
+            break;
+        case 1:
+            [_userDefaults setObject:@"F" forKey:@"tempUnit"];
+            break;
+        default:
+            break;
+    }
+    [_userDefaults synchronize];
 }
 
 @end

@@ -77,6 +77,8 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
     currTempKelvin = [[[currentWeaterJSONResults objectForKey:@"main"] valueForKey:@"temp"] floatValue];
     minTempKelvin = [[[[[dailyWeatherJSONResults objectForKey:@"list"] objectAtIndex:0] objectForKey:@"temp"] objectForKey:@"min"] floatValue];
     maxTempKelvin = [[[[[dailyWeatherJSONResults objectForKey:@"list"] objectAtIndex:0] objectForKey:@"temp"] objectForKey:@"max"] floatValue];
+    
+    NSLog(@"TEMP KELVIN = %f", currTempKelvin);
 }
 
 
@@ -138,9 +140,7 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
 }
 
 - (NSString *)kelvinToFahrenheit:(float)K {
-    static const float ZERO_KELVIN = -459.67;
-    
-    return [NSString stringWithFormat:@"%.f°", ((300 * K * (9/5)) - ZERO_KELVIN)];
+    return [NSString stringWithFormat:@"%.f°", (9.0 / 5.0)*(K - 273.0) + 32.0];
 }
 
 @end
