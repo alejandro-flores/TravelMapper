@@ -11,9 +11,11 @@
 static const NSInteger SAT_ROW = 0;
 static const NSInteger HYB_ROW = 1;
 
+
 @interface TMMapSettingsTableViewController ()
 
-@property (strong, nonatomic) NSArray *menuItemsIdentifiers;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tempSegmentedControl;
+@property (strong, nonatomic) NSUserDefaults *userDefaults;
 
 @end
 
@@ -22,7 +24,14 @@ static const NSInteger HYB_ROW = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Hides empty rows
-    _menuItemsIdentifiers = @[@"standardCell", @"hybridCell"];
+    _userDefaults = [NSUserDefaults standardUserDefaults];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // Read NSUserDefaults to select chosen temperature unit
+    [_tempSegmentedControl setSelectedSegmentIndex:([[_userDefaults stringForKey:@"tempUnit"] isEqualToString:@"C"] ? 0 : 1)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,33 +39,37 @@ static const NSInteger HYB_ROW = 1;
 }
 
 #pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_menuItemsIdentifiers count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = [_menuItemsIdentifiers objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    return cell;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     switch (row) {
         case SAT_ROW:
             [self.delegate willChangeMapType:self mapType:kGMSTypeNormal];
+            [_userDefaults setObject:@"satellite" forKey:@"mapType"];
             break;
         case HYB_ROW:
             [self.delegate willChangeMapType:self mapType:kGMSTypeHybrid];
+            [_userDefaults setObject:@"hybrid" forKey:@"mapType"];
             break;
         default:
             break;
     }
+    [_userDefaults synchronize];
+}
+
+- (IBAction)changeTemperatureUnits:(UISegmentedControl *)sender {
+    NSInteger index = [_tempSegmentedControl selectedSegmentIndex];
+    
+    switch (index) {
+        case 0:
+            [_userDefaults setObject:@"C" forKey:@"tempUnit"];
+            break;
+        case 1:
+            [_userDefaults setObject:@"F" forKey:@"tempUnit"];
+            break;
+        default:
+            break;
+    }
+    [_userDefaults synchronize];
 }
 
 @end

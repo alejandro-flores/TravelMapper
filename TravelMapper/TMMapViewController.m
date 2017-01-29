@@ -26,6 +26,7 @@
 @property (strong, nonatomic) GMSAutocompleteResultsViewController *resultsViewController;
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSUserDefaults *userDefaults;
 @property (strong, nonatomic) NSMutableArray *travelsArray;
 @property (strong, nonatomic) MKPlacemark *selectedPin;
 @property (strong, nonatomic) GMSPlace *place;
@@ -38,6 +39,11 @@
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    // Disable Autolayout warnings
+    [[NSUserDefaults standardUserDefaults] setValue:@(NO) forKey:@"_UIConstraintBasedLayoutLogUnsatisfiable"];
     
     [self initMarkerIcons];
     [self setMapSettingsDelegate];
@@ -52,6 +58,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self redrawTravelMarkers];
+    [self changeMapTypeFromSettings];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -246,10 +253,10 @@
     CWStatusBarNotification *notification = [CWStatusBarNotification new];
     notification.notificationLabelBackgroundColor = color;
     notification.notificationLabelTextColor = [UIColor whiteColor];
-    notification.notificationStyle = CWNotificationStyleNavigationBarNotification;
+    notification.notificationStyle = CWNotificationStyleStatusBarNotification;
     notification.notificationAnimationInStyle = CWNotificationAnimationStyleTop;
     notification.notificationAnimationOutStyle = CWNotificationAnimationStyleLeft;
-    [notification displayNotificationWithMessage:message forDuration:0.5f];
+    [notification displayNotificationWithMessage:message forDuration:1.0f];
 }
 
 /**
@@ -278,7 +285,6 @@
     }
 }
 
-
 /**
  * Sets the marker's icon to our own image based on the Travel Type entered for the Travel.
 
@@ -301,6 +307,13 @@
     _homeImage      = [UIImage imageNamed:@"ic_home.png"];
     _schoolImage    = [UIImage imageNamed:@"school.png"];
     _workImage      = [UIImage imageNamed:@"ic_work.png"];
+}
+
+/**
+ * Loads the correct map type in viewDidLoad according to the map type chosen in the Settings Menu.
+ */
+- (void)changeMapTypeFromSettings {
+    _GMapView.mapType = ([[_userDefaults stringForKey:@"mapType"] isEqualToString:@"satellite"] ? kGMSTypeNormal : kGMSTypeHybrid);
 }
 
 @end

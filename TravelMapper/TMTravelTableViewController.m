@@ -16,7 +16,7 @@
 
 @interface TMTravelTableViewController ()
 
-@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId;
+@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId, *latitude, *longitude;
 @property (strong, nonatomic) NSMutableArray *travelsArray;
 @property (strong, nonatomic) NSString *imageURL;
 
@@ -91,6 +91,9 @@
     _cityFormattedAddress = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"formattedAddress"]];
     _travelType = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"travelType"]];
     _placeId = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"placeId"]];
+    _latitude = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"latitude"]];
+    _longitude = [NSString stringWithFormat:@"%@", [[_travelsArray objectAtIndex:indexPath.section] valueForKey:@"longitude"]];
+    
     [self performSegueWithIdentifier:@"toDetaliedTravelVC" sender:self];
 }
 
@@ -131,6 +134,8 @@
         [detailedVC setCityFormattedAddress:_cityFormattedAddress];
         [detailedVC setTravelType:_travelType];
         [detailedVC setPlaceId:_placeId];
+        [detailedVC setLatitude:_latitude];
+        [detailedVC setLongitude:_longitude];
     }
 }
 
@@ -140,7 +145,7 @@
  */
 - (void)fetchTravels {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Travel"];
-    _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil]mutableCopy];
+    _travelsArray = [[_managedObjectCtx executeFetchRequest:fetchRequest error:nil] mutableCopy];
     _travelsArray = [[[_travelsArray reverseObjectEnumerator] allObjects] mutableCopy]; // Reversed Array so that newly added Travels show up first.
 }
 
