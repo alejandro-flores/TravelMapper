@@ -1,16 +1,18 @@
-
 //
-//  LocalWeather.m
+//  TMLocalWeatherManager.m
 //  TravelMapper
 //
-//  Created by Alejandro Martin Flores Naranjo on 1/13/17.
+//  Created by Alejandro Martin Flores Naranjo on 1/31/17.
 //  Copyright © 2017 Alejandro Martin Flores Naranjo. All rights reserved.
 //
 
-#import "LocalWeather.h"
+#import "TMLocalWeatherManager.h"
+#import "TMAPIHelper.h"
 
-@implementation LocalWeather
+@implementation TMLocalWeatherManager
+
 static const NSString *API_KEY = @"***REMOVED***";   // OpenWeather API Key
+TMAPIHelper *apiHelper;               // API helper class.
 NSString *currentForecastStringURL; // URL to query the current weather data API.
 NSString *dailyForecastStringURL;   // URL to query the daily forecast data API.
 NSString *iconFileName;             // Icon name corresponding to the current weather condition.
@@ -26,6 +28,7 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
         _longitude = longitude;
         currentForecastStringURL = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&appid=%@", _latitude, _longitude, API_KEY];
         dailyForecastStringURL = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/daily?lat=%@&lon=%@&appid=%@", _latitude, _longitude, API_KEY];
+        apiHelper = [TMAPIHelper new];
     }
     [self queryWeather];
     
@@ -33,38 +36,13 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
 }
 
 /**
- * Escapes a URL String using the stringByAddingPercentEncodingWithAllowedCharacters
- * method in NSString.
-
- * @param stringURL the NSString urlString to escape.
- * @return the escaped NSString with the correct encodings.
- */
-- (NSString *)escapeURL:(NSString *)stringURL {
-    return [stringURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-}
-
-
-/**
- * Creates a NSData object with the contents of the escaped URL String.
-
- * @param stringURL escaped URL.
- * @return NSData object with the contents of the given URL.
- */
-- (NSData *)createJSONDataObject:(NSString *)stringURL {
-    NSString *escapedURL = [self escapeURL:stringURL];
-    
-    return [[NSString stringWithContentsOfURL:[NSURL URLWithString:escapedURL] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
-}
-
-
-/**
  * Queries both the current weather data API and the daily forecast API to get the necesary weather data.
- * The reason why I make an addditional call to the daily forecast API is to reflect the expected daily 
+ * The reason why I make an addditional call to the daily forecast API is to reflect the expected daily
  * minimum and maximum temperatures which the current weather data API doesn't list.
  */
 - (void)queryWeather {
-    NSData *currentForecastJSONData = [self createJSONDataObject:currentForecastStringURL];
-    NSData *dailyForecastJSONData = [self createJSONDataObject:dailyForecastStringURL];
+    NSData *currentForecastJSONData = [apiHelper createJSONDataObject:currentForecastStringURL];
+    NSData *dailyForecastJSONData = [apiHelper createJSONDataObject:dailyForecastStringURL];
     NSError *error = nil;
     
     // Response JSON Object
@@ -77,8 +55,6 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
     currTempKelvin = [[[currentWeaterJSONResults objectForKey:@"main"] valueForKey:@"temp"] floatValue];
     minTempKelvin = [[[[[dailyWeatherJSONResults objectForKey:@"list"] objectAtIndex:0] objectForKey:@"temp"] objectForKey:@"min"] floatValue];
     maxTempKelvin = [[[[[dailyWeatherJSONResults objectForKey:@"list"] objectAtIndex:0] objectForKey:@"temp"] objectForKey:@"max"] floatValue];
-    
-    NSLog(@"TEMP KELVIN = %f", currTempKelvin);
 }
 
 
@@ -86,7 +62,7 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
  * Returns the icon name corresponding to the current weather condition.
  * This icon name will be used to display the correct weather icon corresponding
  * to the current weather condition.
-
+ 
  * @return NSString with the name of the icon.
  */
 - (NSString *)getCurrentWeatherIconFileName {
@@ -96,7 +72,7 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
 
 /**
  * Returns the current weather temperature at the time of the call.
-
+ 
  * @return current temperature in Kelvin.
  */
 - (float)getCurrentWeatherTemp {
@@ -106,7 +82,7 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
 
 /**
  * Returs the daily reported minimum temperature.
-
+ 
  * @return daily mininmum temperature in Kelvin.
  */
 - (float)getDailyForecastMinTemp {
@@ -116,7 +92,7 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
 
 /**
  * Returns the daily reported maximum temperature.
-
+ 
  * @return daily minimum temperature in Kelvin.
  */
 - (float)getDailyForecastMaxTemp {

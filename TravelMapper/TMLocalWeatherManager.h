@@ -1,14 +1,14 @@
 //
-//  LocalWeather.h
+//  TMLocalWeatherManager.h
 //  TravelMapper
 //
-//  Created by Alejandro Martin Flores Naranjo on 1/13/17.
+//  Created by Alejandro Martin Flores Naranjo on 1/31/17.
 //  Copyright © 2017 Alejandro Martin Flores Naranjo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface LocalWeather : NSObject
+@interface TMLocalWeatherManager : NSObject
 
 @property (assign, nonatomic) NSString *latitude, *longitude, *currentWeather;
 
