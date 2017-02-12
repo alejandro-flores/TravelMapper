@@ -60,9 +60,11 @@ NSString *description;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     // Re-enables the PanGestureRecognizer when leaving this view.
     _revealController.panGestureRecognizer.enabled = YES;
+    
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+    [self.tabBarController.tabBar setBarStyle:UIBarStyleDefault];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,9 +73,11 @@ NSString *description;
 
 #pragma mark - Helper Methods
 - (void)setUpUIElements {
-    _nightColor = [UIColor colorWithRed:199.0f / 255.0f green:199.0f / 255.0f blue:204.0f / 255.0f alpha:1.0f];
-    if (![_timeZoneManager isDay])
+    _nightColor = [UIColor colorWithRed:36.0f / 255.0f green:42.0f / 255.0f blue:51.0f / 255.0f alpha:1.0f];
+    if (![_timeZoneManager isDay]) {
         self.view.backgroundColor = _nightColor;
+        [self changeViewsColor:[UIColor whiteColor]];
+    }
     
     _cityLabel.text         = _cityName;
     _stateLabel.text        = _cityFormattedAddress;
@@ -109,6 +113,24 @@ NSString *description;
                                [NSString stringWithFormat:@"↓%@", [_localWeatherManager kelvinToFahrenheit:[_localWeatherManager getDailyForecastMinTemp]]]);
     
     _localTimeLabel.text= [_timeZoneManager getCurrentTime];
+}
+
+/**
+ * Changes the Labels, Images and Bars color/themes to dark.
+ * Used when changing the to night colors 
+ */
+- (void)changeViewsColor:(UIColor *)color {
+    _cityLabel.textColor = color;
+    _stateLabel.textColor = color;
+    _traveltypeLabel.textColor = color;
+    _descriptionLabel.textColor = color;
+    _tempLabel.textColor = color;;
+    _highTempLabel.textColor = color;
+    _lowTempLabel.textColor = color;
+    _localTimeLabel.textColor = color;
+    _weatherIconImageView.tintColor = color;
+    [self.tabBarController.tabBar setBarStyle:UIBarStyleBlack];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
 }
 
 @end

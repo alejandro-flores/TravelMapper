@@ -9,10 +9,11 @@
 #import "TMLocalWeatherManager.h"
 #import "TMAPIHelper.h"
 
+static const NSString *API_KEY = @"***REMOVED***";   // OpenWeather API Key
+
 @implementation TMLocalWeatherManager
 
-static const NSString *API_KEY = @"***REMOVED***";   // OpenWeather API Key
-TMAPIHelper *apiHelper;               // API helper class.
+TMAPIHelper *apiHelper;             // API helper class.
 NSString *currentForecastStringURL; // URL to query the current weather data API.
 NSString *dailyForecastStringURL;   // URL to query the daily forecast data API.
 NSString *iconFileName;             // Icon name corresponding to the current weather condition.

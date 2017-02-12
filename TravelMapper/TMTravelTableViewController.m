@@ -38,7 +38,6 @@
     [super viewWillAppear:animated];
     [self fetchTravels];
     [self.tableView reloadData];
-//    NSLog(@"Travels Array Count = %ld", (unsigned long)[_travelsArray count]);
 }
 
 - (void)didReceiveMemoryWarning {
