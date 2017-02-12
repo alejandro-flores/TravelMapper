@@ -14,6 +14,7 @@
 		7E2E1CD21E4137CE0036787E /* TMAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E1CD11E4137CE0036787E /* TMAPIHelper.m */; };
 		7E319EC41E258CBD00884037 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E319EC31E258CBD00884037 /* SWRevealViewController.m */; };
 		7E319EC71E25925E00884037 /* TMMapSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E319EC61E25925E00884037 /* TMMapSettingsTableViewController.m */; };
+		7E8A6ADC1E511AF100C1AFCD /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A6ADB1E511AF100C1AFCD /* screenshots */; };
 		7E9855BC1E047C3B00F945FA /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */; };
 		7E9855BD1E047C3B00F945FA /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */; };
 		7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */; };
@@ -67,6 +68,7 @@
 		7E319EC31E258CBD00884037 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		7E319EC51E25925E00884037 /* TMMapSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMapSettingsTableViewController.h; sourceTree = "<group>"; };
 		7E319EC61E25925E00884037 /* TMMapSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMapSettingsTableViewController.m; sourceTree = "<group>"; };
+		7E8A6ADB1E511AF100C1AFCD /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
 		7E9855B81E047C3B00F945FA /* Travel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataClass.h"; sourceTree = "<group>"; };
 		7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataClass.m"; sourceTree = "<group>"; };
 		7E9855BA1E047C3B00F945FA /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		7EE9A54A1DD6749A0063F99D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E8A6ADB1E511AF100C1AFCD /* screenshots */,
 				7E319EC11E258CBD00884037 /* SWRevealViewController */,
 				7EE9A5591DD6749A0063F99D /* Assets.xcassets */,
 				7EE9A54D1DD6749A0063F99D /* AppDelegate.h */,
@@ -409,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8A6ADC1E511AF100C1AFCD /* screenshots in Resources */,
 				7EE9A5841DD676300063F99D /* Main.storyboard in Resources */,
 				7EE9A55D1DD6749A0063F99D /* LaunchScreen.storyboard in Resources */,
 				7EE9A55A1DD6749A0063F99D /* Assets.xcassets in Resources */,
