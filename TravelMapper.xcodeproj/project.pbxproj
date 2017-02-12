@@ -7,15 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35ACBCC44BCE4C107133D965 /* libPods-TravelMapperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */; };
+		5C037A8D2ADE65D8116F4EBC /* libPods-TravelMapperTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */; };
+		7E2E1CCC1E4137400036787E /* TMTimeZoneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E1CCB1E4137400036787E /* TMTimeZoneManager.m */; };
+		7E2E1CCF1E4137510036787E /* TMLocalWeatherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E1CCE1E4137510036787E /* TMLocalWeatherManager.m */; };
+		7E2E1CD21E4137CE0036787E /* TMAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E1CD11E4137CE0036787E /* TMAPIHelper.m */; };
+		7E319EC41E258CBD00884037 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E319EC31E258CBD00884037 /* SWRevealViewController.m */; };
+		7E319EC71E25925E00884037 /* TMMapSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E319EC61E25925E00884037 /* TMMapSettingsTableViewController.m */; };
+		7E8A6ADC1E511AF100C1AFCD /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A6ADB1E511AF100C1AFCD /* screenshots */; };
+		7E9855BC1E047C3B00F945FA /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */; };
+		7E9855BD1E047C3B00F945FA /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */; };
+		7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */; };
+		7EB846CF1E248B1100A523F3 /* TMBounceAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB846CE1E248B1100A523F3 /* TMBounceAnimationController.m */; };
 		7EE9A54C1DD6749A0063F99D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54B1DD6749A0063F99D /* main.m */; };
 		7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A54E1DD6749A0063F99D /* AppDelegate.m */; };
-		7EE9A5521DD6749A0063F99D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5511DD6749A0063F99D /* ViewController.m */; };
-		7EE9A5551DD6749A0063F99D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EE9A5531DD6749A0063F99D /* Main.storyboard */; };
-		7EE9A5581DD6749A0063F99D /* TravelMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5561DD6749A0063F99D /* TravelMapper.xcdatamodeld */; };
 		7EE9A55A1DD6749A0063F99D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE9A5591DD6749A0063F99D /* Assets.xcassets */; };
 		7EE9A55D1DD6749A0063F99D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EE9A55B1DD6749A0063F99D /* LaunchScreen.storyboard */; };
 		7EE9A5681DD6749A0063F99D /* TravelMapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5671DD6749A0063F99D /* TravelMapperTests.m */; };
 		7EE9A5731DD6749A0063F99D /* TravelMapperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5721DD6749A0063F99D /* TravelMapperUITests.m */; };
+		7EE9A5841DD676300063F99D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EE9A5831DD676300063F99D /* Main.storyboard */; };
+		7EE9A5891DD6764C0063F99D /* TMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5861DD6764C0063F99D /* TMMapViewController.m */; };
+		7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */; };
+		7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9A5A71DD67A530063F99D /* Model.xcdatamodeld */; };
+		889AD2611E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889AD2601E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m */; };
+		889AD2641E0F4853007A5BA0 /* TMTravelDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889AD2631E0F4853007A5BA0 /* TMTravelDetailsViewController.m */; };
+		889AD26D1E1056FB007A5BA0 /* TMDetailedTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889AD26C1E1056FB007A5BA0 /* TMDetailedTravelViewController.m */; };
+		D1F6D2D7A7E81328E06D8474 /* libPods-TravelMapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +53,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C2BBB78644DB2AB3DB495CF /* Pods-TravelMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper.debug.xcconfig"; sourceTree = "<group>"; };
+		13F4EEFA957F9E40FEECB254 /* Pods-TravelMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper.release.xcconfig"; sourceTree = "<group>"; };
+		24DFD4C3CD2391FB963A471F /* Pods-TravelMapperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapperUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5743496A020C618A94EE28FA /* Pods-TravelMapperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7E2E1CCA1E4137400036787E /* TMTimeZoneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTimeZoneManager.h; sourceTree = "<group>"; };
+		7E2E1CCB1E4137400036787E /* TMTimeZoneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTimeZoneManager.m; sourceTree = "<group>"; };
+		7E2E1CCD1E4137510036787E /* TMLocalWeatherManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMLocalWeatherManager.h; sourceTree = "<group>"; };
+		7E2E1CCE1E4137510036787E /* TMLocalWeatherManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMLocalWeatherManager.m; sourceTree = "<group>"; };
+		7E2E1CD01E4137CE0036787E /* TMAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAPIHelper.h; sourceTree = "<group>"; };
+		7E2E1CD11E4137CE0036787E /* TMAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAPIHelper.m; sourceTree = "<group>"; };
+		7E319EC21E258CBD00884037 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		7E319EC31E258CBD00884037 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		7E319EC51E25925E00884037 /* TMMapSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMapSettingsTableViewController.h; sourceTree = "<group>"; };
+		7E319EC61E25925E00884037 /* TMMapSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMapSettingsTableViewController.m; sourceTree = "<group>"; };
+		7E8A6ADB1E511AF100C1AFCD /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
+		7E9855B81E047C3B00F945FA /* Travel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataClass.h"; sourceTree = "<group>"; };
+		7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataClass.m"; sourceTree = "<group>"; };
+		7E9855BA1E047C3B00F945FA /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMTravelTableViewCell.h; path = ../TMTravelTableViewCell.h; sourceTree = "<group>"; };
+		7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMTravelTableViewCell.m; path = ../TMTravelTableViewCell.m; sourceTree = "<group>"; };
+		7EB846CD1E248B1100A523F3 /* TMBounceAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBounceAnimationController.h; sourceTree = "<group>"; };
+		7EB846CE1E248B1100A523F3 /* TMBounceAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBounceAnimationController.m; sourceTree = "<group>"; };
 		7EE9A5471DD6749A0063F99D /* TravelMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE9A54B1DD6749A0063F99D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EE9A54D1DD6749A0063F99D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7EE9A54E1DD6749A0063F99D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7EE9A5501DD6749A0063F99D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7EE9A5511DD6749A0063F99D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		7EE9A5541DD6749A0063F99D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7EE9A5571DD6749A0063F99D /* TravelMapper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TravelMapper.xcdatamodel; sourceTree = "<group>"; };
 		7EE9A5591DD6749A0063F99D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EE9A55C1DD6749A0063F99D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EE9A55E1DD6749A0063F99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +90,22 @@
 		7EE9A56E1DD6749A0063F99D /* TravelMapperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelMapperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE9A5721DD6749A0063F99D /* TravelMapperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TravelMapperUITests.m; sourceTree = "<group>"; };
 		7EE9A5741DD6749A0063F99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EE9A5831DD676300063F99D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7EE9A5851DD6764C0063F99D /* TMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMapViewController.h; sourceTree = "<group>"; };
+		7EE9A5861DD6764C0063F99D /* TMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMapViewController.m; sourceTree = "<group>"; };
+		7EE9A5871DD6764C0063F99D /* TMTravelTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTravelTableViewController.h; sourceTree = "<group>"; };
+		7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelTableViewController.m; sourceTree = "<group>"; };
+		7EE9A5A81DD67A530063F99D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		889AD25F1E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTravelDetailsPresentationController.h; sourceTree = "<group>"; };
+		889AD2601E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelDetailsPresentationController.m; sourceTree = "<group>"; };
+		889AD2621E0F4853007A5BA0 /* TMTravelDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTravelDetailsViewController.h; sourceTree = "<group>"; };
+		889AD2631E0F4853007A5BA0 /* TMTravelDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTravelDetailsViewController.m; sourceTree = "<group>"; };
+		889AD26B1E1056FB007A5BA0 /* TMDetailedTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDetailedTravelViewController.h; sourceTree = "<group>"; };
+		889AD26C1E1056FB007A5BA0 /* TMDetailedTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDetailedTravelViewController.m; sourceTree = "<group>"; };
+		9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests.release.xcconfig"; sourceTree = "<group>"; };
+		A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelMapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C21495368BD11606B526A64D /* Pods-TravelMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelMapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1F6D2D7A7E81328E06D8474 /* libPods-TravelMapper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C037A8D2ADE65D8116F4EBC /* libPods-TravelMapperTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +129,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35ACBCC44BCE4C107133D965 /* libPods-TravelMapperUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C1EFDDBAA17E63A6D753B31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C2BBB78644DB2AB3DB495CF /* Pods-TravelMapper.debug.xcconfig */,
+				13F4EEFA957F9E40FEECB254 /* Pods-TravelMapper.release.xcconfig */,
+				C21495368BD11606B526A64D /* Pods-TravelMapperTests.debug.xcconfig */,
+				9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */,
+				24DFD4C3CD2391FB963A471F /* Pods-TravelMapperUITests.debug.xcconfig */,
+				5743496A020C618A94EE28FA /* Pods-TravelMapperUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7E319EC11E258CBD00884037 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E319EC21E258CBD00884037 /* SWRevealViewController.h */,
+				7E319EC31E258CBD00884037 /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		7EE9A53E1DD6749A0063F99D = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +165,8 @@
 				7EE9A5661DD6749A0063F99D /* TravelMapperTests */,
 				7EE9A5711DD6749A0063F99D /* TravelMapperUITests */,
 				7EE9A5481DD6749A0063F99D /* Products */,
+				7EE9A5911DD677960063F99D /* Frameworks */,
+				0C1EFDDBAA17E63A6D753B31 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,15 +183,12 @@
 		7EE9A5491DD6749A0063F99D /* TravelMapper */ = {
 			isa = PBXGroup;
 			children = (
-				7EE9A54D1DD6749A0063F99D /* AppDelegate.h */,
-				7EE9A54E1DD6749A0063F99D /* AppDelegate.m */,
-				7EE9A5501DD6749A0063F99D /* ViewController.h */,
-				7EE9A5511DD6749A0063F99D /* ViewController.m */,
-				7EE9A5531DD6749A0063F99D /* Main.storyboard */,
-				7EE9A5591DD6749A0063F99D /* Assets.xcassets */,
+				7EE9A5A71DD67A530063F99D /* Model.xcdatamodeld */,
+				7EE9A5831DD676300063F99D /* Main.storyboard */,
 				7EE9A55B1DD6749A0063F99D /* LaunchScreen.storyboard */,
-				7EE9A55E1DD6749A0063F99D /* Info.plist */,
-				7EE9A5561DD6749A0063F99D /* TravelMapper.xcdatamodeld */,
+				7EE9A5821DD674D70063F99D /* Model */,
+				7EE9A5811DD674D40063F99D /* View */,
+				7EE9A5801DD674CA0063F99D /* Controller */,
 				7EE9A54A1DD6749A0063F99D /* Supporting Files */,
 			);
 			path = TravelMapper;
@@ -120,7 +197,13 @@
 		7EE9A54A1DD6749A0063F99D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E8A6ADB1E511AF100C1AFCD /* screenshots */,
+				7E319EC11E258CBD00884037 /* SWRevealViewController */,
+				7EE9A5591DD6749A0063F99D /* Assets.xcassets */,
+				7EE9A54D1DD6749A0063F99D /* AppDelegate.h */,
+				7EE9A54E1DD6749A0063F99D /* AppDelegate.m */,
 				7EE9A54B1DD6749A0063F99D /* main.m */,
+				7EE9A55E1DD6749A0063F99D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -143,6 +226,71 @@
 			path = TravelMapperUITests;
 			sourceTree = "<group>";
 		};
+		7EE9A5801DD674CA0063F99D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7EE9A5851DD6764C0063F99D /* TMMapViewController.h */,
+				7EE9A5861DD6764C0063F99D /* TMMapViewController.m */,
+				7EE9A5871DD6764C0063F99D /* TMTravelTableViewController.h */,
+				7EE9A5881DD6764C0063F99D /* TMTravelTableViewController.m */,
+				889AD26E1E1085CD007A5BA0 /* TMTravelDetailsViewController */,
+				889AD26B1E1056FB007A5BA0 /* TMDetailedTravelViewController.h */,
+				889AD26C1E1056FB007A5BA0 /* TMDetailedTravelViewController.m */,
+				7EB846CD1E248B1100A523F3 /* TMBounceAnimationController.h */,
+				7EB846CE1E248B1100A523F3 /* TMBounceAnimationController.m */,
+				7E319EC51E25925E00884037 /* TMMapSettingsTableViewController.h */,
+				7E319EC61E25925E00884037 /* TMMapSettingsTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7EE9A5811DD674D40063F99D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7EE9A5821DD674D70063F99D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E9855B81E047C3B00F945FA /* Travel+CoreDataClass.h */,
+				7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */,
+				7E9855BA1E047C3B00F945FA /* Travel+CoreDataProperties.h */,
+				7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */,
+				7EB34FA11DFCBC2D005634E8 /* TMTravelTableViewCell.h */,
+				7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */,
+				7E2E1CD01E4137CE0036787E /* TMAPIHelper.h */,
+				7E2E1CD11E4137CE0036787E /* TMAPIHelper.m */,
+				7E2E1CCD1E4137510036787E /* TMLocalWeatherManager.h */,
+				7E2E1CCE1E4137510036787E /* TMLocalWeatherManager.m */,
+				7E2E1CCA1E4137400036787E /* TMTimeZoneManager.h */,
+				7E2E1CCB1E4137400036787E /* TMTimeZoneManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7EE9A5911DD677960063F99D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A82F7859417DE1F6A42C2F0F /* libPods-TravelMapper.a */,
+				863077F8F0569DAD5134187E /* libPods-TravelMapperTests.a */,
+				4D4707A5C93BD2669EDFA5CF /* libPods-TravelMapperUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		889AD26E1E1085CD007A5BA0 /* TMTravelDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				889AD2621E0F4853007A5BA0 /* TMTravelDetailsViewController.h */,
+				889AD2631E0F4853007A5BA0 /* TMTravelDetailsViewController.m */,
+				889AD25F1E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.h */,
+				889AD2601E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m */,
+			);
+			name = TMTravelDetailsViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +298,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EE9A5771DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapper" */;
 			buildPhases = (
+				C5B2842FCF00B6125BD5C5FC /* [CP] Check Pods Manifest.lock */,
 				7EE9A5431DD6749A0063F99D /* Sources */,
 				7EE9A5441DD6749A0063F99D /* Frameworks */,
 				7EE9A5451DD6749A0063F99D /* Resources */,
+				654C13A80CC8DDB2885EB97B /* [CP] Embed Pods Frameworks */,
+				80345F0AB6AA1ECF9FCC9F7D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EE9A57A1DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapperTests" */;
 			buildPhases = (
+				86C6D0CD442F1E86C1BD6D22 /* [CP] Check Pods Manifest.lock */,
 				7EE9A55F1DD6749A0063F99D /* Sources */,
 				7EE9A5601DD6749A0063F99D /* Frameworks */,
 				7EE9A5611DD6749A0063F99D /* Resources */,
+				2A818B0E4D37908B0B9FF985 /* [CP] Embed Pods Frameworks */,
+				6501572205AC8DFFEDD6F3C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,9 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EE9A57D1DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapperUITests" */;
 			buildPhases = (
+				12FB3D13A386B5350D7DCE75 /* [CP] Check Pods Manifest.lock */,
 				7EE9A56A1DD6749A0063F99D /* Sources */,
 				7EE9A56B1DD6749A0063F99D /* Frameworks */,
 				7EE9A56C1DD6749A0063F99D /* Resources */,
+				FA29A8CE4DBCE44ED63A6C06 /* [CP] Embed Pods Frameworks */,
+				5621E2C51C9D9240F5C3F595 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,7 +367,13 @@
 				TargetAttributes = {
 					7EE9A5461DD6749A0063F99D = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5K623M54S3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					7EE9A5621DD6749A0063F99D = {
 						CreatedOnToolsVersion = 8.1;
@@ -249,9 +412,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8A6ADC1E511AF100C1AFCD /* screenshots in Resources */,
+				7EE9A5841DD676300063F99D /* Main.storyboard in Resources */,
 				7EE9A55D1DD6749A0063F99D /* LaunchScreen.storyboard in Resources */,
 				7EE9A55A1DD6749A0063F99D /* Assets.xcassets in Resources */,
-				7EE9A5551DD6749A0063F99D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,15 +435,166 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12FB3D13A386B5350D7DCE75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2A818B0E4D37908B0B9FF985 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5621E2C51C9D9240F5C3F595 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6501572205AC8DFFEDD6F3C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperTests/Pods-TravelMapperTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		654C13A80CC8DDB2885EB97B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80345F0AB6AA1ECF9FCC9F7D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapper/Pods-TravelMapper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86C6D0CD442F1E86C1BD6D22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5B2842FCF00B6125BD5C5FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA29A8CE4DBCE44ED63A6C06 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelMapperUITests/Pods-TravelMapperUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7EE9A5431DD6749A0063F99D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EE9A5581DD6749A0063F99D /* TravelMapper.xcdatamodeld in Sources */,
-				7EE9A5521DD6749A0063F99D /* ViewController.m in Sources */,
 				7EE9A54F1DD6749A0063F99D /* AppDelegate.m in Sources */,
+				7E9855BC1E047C3B00F945FA /* Travel+CoreDataClass.m in Sources */,
+				7E319EC41E258CBD00884037 /* SWRevealViewController.m in Sources */,
+				7EB846CF1E248B1100A523F3 /* TMBounceAnimationController.m in Sources */,
+				7E319EC71E25925E00884037 /* TMMapSettingsTableViewController.m in Sources */,
+				7EE9A58A1DD6764C0063F99D /* TMTravelTableViewController.m in Sources */,
+				7E2E1CCF1E4137510036787E /* TMLocalWeatherManager.m in Sources */,
+				7EE9A5A91DD67A530063F99D /* Model.xcdatamodeld in Sources */,
+				7EE9A5891DD6764C0063F99D /* TMMapViewController.m in Sources */,
+				889AD26D1E1056FB007A5BA0 /* TMDetailedTravelViewController.m in Sources */,
 				7EE9A54C1DD6749A0063F99D /* main.m in Sources */,
+				889AD2641E0F4853007A5BA0 /* TMTravelDetailsViewController.m in Sources */,
+				7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */,
+				889AD2611E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m in Sources */,
+				7E2E1CD21E4137CE0036787E /* TMAPIHelper.m in Sources */,
+				7E9855BD1E047C3B00F945FA /* Travel+CoreDataProperties.m in Sources */,
+				7E2E1CCC1E4137400036787E /* TMTimeZoneManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,14 +630,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7EE9A5531DD6749A0063F99D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7EE9A5541DD6749A0063F99D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7EE9A55B1DD6749A0063F99D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -426,9 +733,15 @@
 		};
 		7EE9A5781DD6749A0063F99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C2BBB78644DB2AB3DB495CF /* Pods-TravelMapper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5K623M54S3;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TravelMapper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,9 +750,15 @@
 		};
 		7EE9A5791DD6749A0063F99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13F4EEFA957F9E40FEECB254 /* Pods-TravelMapper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5K623M54S3;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TravelMapper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,9 +767,11 @@
 		};
 		7EE9A57B1DD6749A0063F99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C21495368BD11606B526A64D /* Pods-TravelMapperTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TravelMapperTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,9 +781,11 @@
 		};
 		7EE9A57C1DD6749A0063F99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A29FE0347D887D6B854FCA0 /* Pods-TravelMapperTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TravelMapperTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -472,8 +795,10 @@
 		};
 		7EE9A57E1DD6749A0063F99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DFD4C3CD2391FB963A471F /* Pods-TravelMapperUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TravelMapperUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapperUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,8 +808,10 @@
 		};
 		7EE9A57F1DD6749A0063F99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5743496A020C618A94EE28FA /* Pods-TravelMapperUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TravelMapperUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = afloresn.TravelMapperUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -511,6 +838,7 @@
 				7EE9A5791DD6749A0063F99D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EE9A57A1DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapperTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +847,7 @@
 				7EE9A57C1DD6749A0063F99D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EE9A57D1DD6749A0063F99D /* Build configuration list for PBXNativeTarget "TravelMapperUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,17 +856,18 @@
 				7EE9A57F1DD6749A0063F99D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7EE9A5561DD6749A0063F99D /* TravelMapper.xcdatamodeld */ = {
+		7EE9A5A71DD67A530063F99D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7EE9A5571DD6749A0063F99D /* TravelMapper.xcdatamodel */,
+				7EE9A5A81DD67A530063F99D /* Model.xcdatamodel */,
 			);
-			currentVersion = 7EE9A5571DD6749A0063F99D /* TravelMapper.xcdatamodel */;
-			path = TravelMapper.xcdatamodeld;
+			currentVersion = 7EE9A5A81DD67A530063F99D /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
