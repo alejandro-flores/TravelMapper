@@ -12,6 +12,6 @@ Travel Mapper is a pet project I started last year to get more familiar with the
 * See all your saved Travels in the Travels UITableView, select a trip to view more details about the location such as current weather, time, travel type, etc.
 * Uses the [OpenWeather API](https://openweathermap.org/api) to get the current weather for that location using its coordinates.
 * Uses [api.geonames.org](api.geonames.org) to query the time data.
-* Whent the current time at that location is past its sunset time, the theme of the page changes to dark, otherwise the standard theme is used during daylight.
-* Change the map type, temperature units and more settings coming up from the settings page.
+* When the current time at that location is past its sunset time, the theme changes to dark, otherwise the standard theme is used during daylight.
+* Change the map type, temperature units and more settings coming up from the Settings page.
 * ...more to come!
