@@ -11,15 +11,19 @@
 #import "TMBounceAnimationController.h"
 #import "TMTravelDetailsPresentationController.h"
 #import "Travel+CoreDataClass.h"
+#import "TMTimeZoneManager.h"
 
 @interface TMTravelDetailsViewController () <UIViewControllerTransitioningDelegate>
 
+@property (strong, nonatomic) TMTimeZoneManager *timeZoneManager;
+@property (strong, nonatomic) GMSPlacePhotoMetadata *cityImage;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *travelTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIImageView *cityImageView;
 @property (weak, nonatomic) IBOutlet UILabel *attributionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (strong, nonatomic) NSString *travelType;
+@property (strong, nonatomic) NSString *timeZone;
 
 @end
 
@@ -42,6 +46,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _timeZoneManager = [[TMTimeZoneManager alloc]init];
+    [_timeZoneManager queryCurrentTimeForLatitude:[NSString stringWithFormat:@"%f", _place.coordinate.latitude] longitude:[NSString stringWithFormat:@"%f", _place.coordinate.longitude]];
+    _timeZone = [_timeZoneManager getTimeZone];
+    
     // Default Selected is index 0 for "Vacation" if no other type is chosen from the segmented control.
     _travelType = [NSString stringWithFormat:@"%@", [_travelTypeSegmentedControl titleForSegmentAtIndex:0]];
     _cityNameLabel.text = [NSString stringWithString:_place.name];
@@ -93,12 +102,12 @@
     [newTravel setValue:[NSNumber numberWithDouble:place.coordinate.longitude] forKey:@"longitude"];
     [newTravel setValue:[NSDate date] forKey:@"dateVisited"];
     [newTravel setValue:_travelType forKey:@"travelType"];
+    [newTravel setValue:_timeZone forKey:@"timeZone"];
     
     //Store the New Blade to Persistent Store
     NSError *travelSaveError = nil;
     if (![_managedObjectCtx save:&travelSaveError])
         NSLog(@"TMAPVC -- Error Saving New Travel: %@", [travelSaveError localizedDescription]);
-    NSLog(@"TMAPVC -- Saved New Travel");
 }
 
 @end

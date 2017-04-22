@@ -23,15 +23,10 @@ float minTempKelvin;                // Forecasted daily minimum temperature in K
 float maxTempKelvin;                // Forecasted daily maximum temperature in Kelvin (from the daily forecast API).
 
 
-- (instancetype)initWithLatitude:(NSString *)latitude longitude:(NSString *)longitude {
+- (instancetype)init {
     if (self = [super init]) {
-        _latitude = latitude;
-        _longitude = longitude;
-        currentForecastStringURL = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&appid=%@", _latitude, _longitude, API_KEY];
-        dailyForecastStringURL = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/daily?lat=%@&lon=%@&appid=%@", _latitude, _longitude, API_KEY];
         apiHelper = [TMAPIHelper new];
     }
-    [self queryWeather];
     
     return self;
 }
@@ -41,7 +36,9 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
  * The reason why I make an addditional call to the daily forecast API is to reflect the expected daily
  * minimum and maximum temperatures which the current weather data API doesn't list.
  */
-- (void)queryWeather {
+- (void)queryWeather:(NSString *)latitude longitude:(NSString *)longitude {
+    currentForecastStringURL = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&appid=%@", latitude, longitude, API_KEY];
+    dailyForecastStringURL = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/daily?lat=%@&lon=%@&appid=%@", latitude, longitude, API_KEY];
     NSData *currentForecastJSONData = [apiHelper createJSONDataObject:currentForecastStringURL];
     NSData *dailyForecastJSONData = [apiHelper createJSONDataObject:dailyForecastStringURL];
     NSError *error = nil;
@@ -100,7 +97,6 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
     return maxTempKelvin;
 }
 
-
 /**
  * Returns a short description of the current weather condition.
  
@@ -112,12 +108,21 @@ float maxTempKelvin;                // Forecasted daily maximum temperature in K
 
 - (NSString *)kelvinToCelsius:(float)K {
     static const float ZERO_KELVIN = 273.15;
+    float celsiusTemp = K - ZERO_KELVIN;
     
-    return [NSString stringWithFormat:@"%.f°", (K - ZERO_KELVIN)];
+    if ([[[NSString stringWithFormat:@"%f", celsiusTemp] substringToIndex:2]  isEqual: @"-0"])
+        return @"0°";
+    else
+        return [NSString stringWithFormat:@"%.f°",  celsiusTemp];
 }
 
 - (NSString *)kelvinToFahrenheit:(float)K {
-    return [NSString stringWithFormat:@"%.f°", (9.0 / 5.0)*(K - 273.0) + 32.0];
+    float fahrenheitTemp = (9.0 / 5.0) * (K - 273.0) + 32.0;
+    
+    if ([[[NSString stringWithFormat:@"%f", fahrenheitTemp] substringToIndex:2]  isEqual: @"-0"])
+        return @"0°";
+    else
+        return [NSString stringWithFormat:@"%.f°", fahrenheitTemp];
 }
 
 @end

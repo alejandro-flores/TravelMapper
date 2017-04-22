@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 // Public API
 + (void)loadFirstPhotoForPlace:(NSString *)placeID imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel;
 + (void)loadImageForMetadata:(GMSPlacePhotoMetadata *)photoMetadata imageView:(UIImageView *)imageView attributionLabel:(UILabel *)attributionLabel;
++ (void)loadImageForMetadata:(GMSPlacePhotoMetadata *)photoMetadata imageView:(UIImageView *)imageView  attribution:(NSAttributedString *)attribution attributionLabel:(UILabel *)attributionLabel;
 
 @end
 

@@ -10,10 +10,10 @@
 
 @interface TMLocalWeatherManager : NSObject
 
-@property (assign, nonatomic) NSString *latitude, *longitude, *currentWeather;
+@property (assign, nonatomic) NSString *currentWeather;
 
-- (instancetype)initWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
-
+- (instancetype)init;
+- (void)queryWeather:(NSString *)latitude longitude:(NSString *)longitude;
 - (float)getCurrentWeatherTemp;
 - (float)getDailyForecastMinTemp;
 - (float)getDailyForecastMaxTemp;

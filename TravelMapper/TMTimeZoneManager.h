@@ -10,11 +10,11 @@
 
 @interface TMTimeZoneManager : NSObject
 
-@property (strong, nonatomic) NSString *latitude, *longitude;
-
-- (instancetype)initWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
+- (instancetype)init;
 
 - (NSString *)getCurrentTime;
+- (NSString *)getTimeZone;
+- (void)queryCurrentTimeForLatitude:(NSString *)latitude longitude:(NSString *)longitude;
 - (BOOL)isDay;
 
 @end
