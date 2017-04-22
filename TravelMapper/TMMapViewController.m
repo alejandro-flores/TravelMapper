@@ -15,13 +15,14 @@
 #import <CWStatusBarNotification/CWStatusBarNotification.h>
 #import "TMMapSettingsTableViewController.h"
 #import "SWRevealViewController.h"
+#import "TMCacheManager.h"
+
 @import CoreData;
 
 @interface TMMapViewController () <GMSAutocompleteResultsViewControllerDelegate, TMTravelDetailsViewControllerDelegate, TMMapSettingsTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet GMSMapView *GMapView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButton;
-
 @property (strong, nonatomic) UIImage *vacationImage, *homeImage, *schoolImage, *workImage;
 @property (strong, nonatomic) GMSAutocompleteResultsViewController *resultsViewController;
 @property (strong, nonatomic) UISearchController *searchController;
@@ -181,6 +182,7 @@
     // After dismissing TMTravelDetailsViewControllers reload markers from Model.
     // If cancel is clicked on TMTravelDetailsViewController, the marker just dropped
     // on the map is not kept, since the Travel record was discarded.
+    [[TMCacheManager sharedInstance] removeCachedImageForKey:_place.placeID];
     [self redrawTravelMarkers];
     [self showNotificationWithMessage:@"Cancelled Operation" andBackgroundColor:[UIColor redColor]];
 }

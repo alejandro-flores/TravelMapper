@@ -18,15 +18,10 @@ NSString *timeZone;     // Current Location Time Zone.
 NSString *sunrise;      // Time when sun rises.
 NSString *sunset;       // Time when sun sets.
 
-- (instancetype)initWithLatitude:(NSString *)latitude longitude:(NSString *)longitude {
+- (instancetype)init {
     if (self = [super init]) {
-        _latitude = latitude;
-        _longitude = longitude;
-        
-        stringURL = [NSString stringWithFormat:@"http://api.geonames.org/timezoneJSON?lat=%@&lng=%@&username=aflores", latitude, longitude];
         apiHelper = [TMAPIHelper new];
     }
-    [self queryCurrentTime];
     
     return self;
 }
@@ -36,12 +31,13 @@ NSString *sunset;       // Time when sun sets.
  * given latitude and longitude coordinates. Then it parses the currentTime and also the rawOffset
  * to get a representation of the current time + the time zone.
  */
-- (void)queryCurrentTime {
-    NSError *error = nil;
+- (void)queryCurrentTimeForLatitude:(NSString *)latitude longitude:(NSString *)longitude {
+    stringURL = [NSString stringWithFormat:@"http://api.geonames.org/timezoneJSON?lat=%@&lng=%@&username=aflores", latitude, longitude];
+    NSError *error;
     
     // Response JSON Object
-    NSDictionary *currentTimeJSONResults = [apiHelper createJSONDataObject:stringURL] ? [NSJSONSerialization JSONObjectWithData:[apiHelper createJSONDataObject:stringURL] options:0 error:&error] : nil;
-    
+    NSData *data = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:stringURL]];
+    NSDictionary *currentTimeJSONResults = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     currentTime = [NSString stringWithFormat:@"%@h", [[[currentTimeJSONResults valueForKey:@"time"] componentsSeparatedByString:@" "] lastObject]];
     sunrise = [NSString stringWithFormat:@"%@", [[[currentTimeJSONResults valueForKey:@"sunrise"] componentsSeparatedByString:@" "] lastObject]];
     sunset = [NSString stringWithFormat:@"%@", [[[currentTimeJSONResults valueForKey:@"sunset"] componentsSeparatedByString:@" "] lastObject]];
@@ -51,7 +47,7 @@ NSString *sunset;       // Time when sun sets.
 /**
  * Takes the parsed rawOffset and determines what the final timezone representation will
  * look like.
-
+ 
  @param parsedTimeZone rawOffset rawOffset from the JSON object.
  */
 - (void)formatTimeZone:(NSString *)rawOffset {
@@ -70,9 +66,13 @@ NSString *sunset;       // Time when sun sets.
     }
 }
 
+- (NSString *)getTimeZone {
+    return timeZone;
+}
+
 /**
  * Returns a string representation of the current time plus the formatted timezone.
-
+ 
  @return current time plus timezone.
  */
 - (NSString *)getCurrentTime {
@@ -81,7 +81,7 @@ NSString *sunset;       // Time when sun sets.
 
 /**
  * Compares the current time with the sunrise/sunset times to determine if it's day or night.
-
+ 
  @return true if it's day, false otherwise.
  */
 - (BOOL)isDay {
@@ -89,7 +89,7 @@ NSString *sunset;       // Time when sun sets.
     if ([currentTime floatValue] >= [sunset floatValue] || [currentTime floatValue] <= [sunrise floatValue]) {
         isDay = false;
     }
-
+    
     return isDay;
 }
 

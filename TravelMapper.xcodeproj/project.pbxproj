@@ -15,6 +15,7 @@
 		7E319EC41E258CBD00884037 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E319EC31E258CBD00884037 /* SWRevealViewController.m */; };
 		7E319EC71E25925E00884037 /* TMMapSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E319EC61E25925E00884037 /* TMMapSettingsTableViewController.m */; };
 		7E8A6ADC1E511AF100C1AFCD /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A6ADB1E511AF100C1AFCD /* screenshots */; };
+		7E8D51E41E5BA2FF009AFD92 /* TMCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D51E31E5BA2FF009AFD92 /* TMCacheManager.m */; };
 		7E9855BC1E047C3B00F945FA /* Travel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */; };
 		7E9855BD1E047C3B00F945FA /* Travel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9855BB1E047C3B00F945FA /* Travel+CoreDataProperties.m */; };
 		7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB34FA21DFCBC2D005634E8 /* TMTravelTableViewCell.m */; };
@@ -69,6 +70,8 @@
 		7E319EC51E25925E00884037 /* TMMapSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMapSettingsTableViewController.h; sourceTree = "<group>"; };
 		7E319EC61E25925E00884037 /* TMMapSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMapSettingsTableViewController.m; sourceTree = "<group>"; };
 		7E8A6ADB1E511AF100C1AFCD /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
+		7E8D51E21E5BA2FF009AFD92 /* TMCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCacheManager.h; sourceTree = "<group>"; };
+		7E8D51E31E5BA2FF009AFD92 /* TMCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCacheManager.m; sourceTree = "<group>"; };
 		7E9855B81E047C3B00F945FA /* Travel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataClass.h"; sourceTree = "<group>"; };
 		7E9855B91E047C3B00F945FA /* Travel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Travel+CoreDataClass.m"; sourceTree = "<group>"; };
 		7E9855BA1E047C3B00F945FA /* Travel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Travel+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 				7E2E1CCE1E4137510036787E /* TMLocalWeatherManager.m */,
 				7E2E1CCA1E4137400036787E /* TMTimeZoneManager.h */,
 				7E2E1CCB1E4137400036787E /* TMTimeZoneManager.m */,
+				7E8D51E21E5BA2FF009AFD92 /* TMCacheManager.h */,
+				7E8D51E31E5BA2FF009AFD92 /* TMCacheManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				7EE9A5891DD6764C0063F99D /* TMMapViewController.m in Sources */,
 				889AD26D1E1056FB007A5BA0 /* TMDetailedTravelViewController.m in Sources */,
 				7EE9A54C1DD6749A0063F99D /* main.m in Sources */,
+				7E8D51E41E5BA2FF009AFD92 /* TMCacheManager.m in Sources */,
 				889AD2641E0F4853007A5BA0 /* TMTravelDetailsViewController.m in Sources */,
 				7EB34FA31DFCBC2D005634E8 /* TMTravelTableViewCell.m in Sources */,
 				889AD2611E0F47C9007A5BA0 /* TMTravelDetailsPresentationController.m in Sources */,

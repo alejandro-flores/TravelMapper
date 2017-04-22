@@ -2,8 +2,8 @@
 //  Travel+CoreDataProperties.m
 //  TravelMapper
 //
-//  Created by Alejandro Martin Flores Naranjo on 12/16/16.
-//  Copyright © 2016 Alejandro Martin Flores Naranjo. All rights reserved.
+//  Created by Alejandro Martin Flores Naranjo on 3/16/17.
+//  Copyright © 2017 Alejandro Martin Flores Naranjo. All rights reserved.
 //
 
 #import "Travel+CoreDataProperties.h"
@@ -15,12 +15,13 @@
 }
 
 @dynamic cityName;
-@dynamic formattedAddress;
 @dynamic dateVisited;
+@dynamic formattedAddress;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic placeId;
 @dynamic stateName;
 @dynamic travelType;
-@dynamic placeId;
+@dynamic timeZone;
 
 @end

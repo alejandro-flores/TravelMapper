@@ -13,6 +13,7 @@
 #import "SWRevealViewController.h"
 #import "TMLocalWeatherManager.h"
 #import "TMTimeZoneManager.h"
+#import "TMCacheManager.h"
 
 @interface TMDetailedTravelViewController ()
 
@@ -30,41 +31,42 @@
 @property (weak, nonatomic) IBOutlet UILabel *highTempLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lowTempLabel;
 @property (weak, nonatomic) IBOutlet UILabel *localTimeLabel;
+
 @property (strong, nonatomic) NSUserDefaults *userDefaults;
-@property (strong, nonatomic) TMLocalWeatherManager *localWeatherManager;
-@property (strong, nonatomic) TMTimeZoneManager *timeZoneManager;
+@property (strong, nonatomic) UIImage *currentWeatherIcon;
 @property (strong, nonatomic) UIColor *nightColor;
 
 @end
 
 @implementation TMDetailedTravelViewController
-
-float tempKelvin;
-float minTempKelvin;
-float maxTempKelvin;
-NSString *description;
-
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _userDefaults = [NSUserDefaults standardUserDefaults];
+    
     // Disables opening the menu while in this view.
     _revealController = [self revealViewController];
     _revealController.panGestureRecognizer.enabled = NO;
-    
-    _userDefaults = [NSUserDefaults standardUserDefaults];
-    _localWeatherManager = [[TMLocalWeatherManager alloc]initWithLatitude:_latitude longitude:_longitude];
-    _timeZoneManager = [[TMTimeZoneManager alloc]initWithLatitude:_latitude longitude:_longitude];
-    [self setUpUIElements];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self loadFieldsAsync];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    // Re-enables the PanGestureRecognizer when leaving this view.
-    _revealController.panGestureRecognizer.enabled = YES;
     
     [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
     [self.tabBarController.tabBar setBarStyle:UIBarStyleDefault];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    // Re-enables the PanGestureRecognizer when leaving this view.
+    _revealController.panGestureRecognizer.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,9 +74,39 @@ NSString *description;
 }
 
 #pragma mark - Helper Methods
+
+/**
+ * Uses asynchronoud calls to get the city image for each Travel and to load all other data into the view.
+ */
+- (void)loadFieldsAsync {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        GMSPlacePhotoMetadata *cityImage = [[TMCacheManager sharedInstance] getCachedImageForKey:_placeId];
+        _currentWeatherIcon = [UIImage imageNamed:_iconFileName];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (cityImage) {
+                [Travel loadImageForMetadata:cityImage
+                                   imageView:_cityImageView
+                                 attribution:cityImage.attributions
+                            attributionLabel:_attributeLabel];
+            }
+            else {
+                // Gets a new city image, displays it in the cell and caches it.
+                [Travel loadFirstPhotoForPlace:_placeId
+                                     imageView:_cityImageView
+                              attributionLabel:_attributeLabel];
+            }
+            [self setUpUIElements];
+        });
+    });
+}
+
+/**
+ * Sets up the values for the different fields used in this view.
+ */
 - (void)setUpUIElements {
     _nightColor = [UIColor colorWithRed:36.0f / 255.0f green:42.0f / 255.0f blue:51.0f / 255.0f alpha:1.0f];
-    if (![_timeZoneManager isDay]) {
+    if (!_isDay) {
         self.view.backgroundColor = _nightColor;
         [self changeViewsColor:[UIColor whiteColor]];
     }
@@ -82,37 +114,17 @@ NSString *description;
     _cityLabel.text         = _cityName;
     _stateLabel.text        = _cityFormattedAddress;
     _traveltypeLabel.text   = [NSString stringWithFormat:@"%@", _travelType];
-    _descriptionLabel.text  = [_localWeatherManager getCurrentWeatherDescription];
-    _weatherIconImageView.image = [UIImage imageNamed:[_localWeatherManager getCurrentWeatherIconFileName]];
-    [self checkSelectedTemperatureUnit];
+    _descriptionLabel.text  = _weatherDescription;
+    _weatherIconImageView.image = _currentWeatherIcon;
+    _tempLabel.text = _currentTemp;
+    _highTempLabel.text = _highTemp;
+    _lowTempLabel.text = _lowTemp;
+    _localTimeLabel.text= _currentTime;
     _cityLabel.adjustsFontSizeToFitWidth        = YES;
     _stateLabel.adjustsFontSizeToFitWidth       = YES;
     _traveltypeLabel.adjustsFontSizeToFitWidth  = YES;
     _tempLabel.adjustsFontSizeToFitWidth        = YES;
     _descriptionLabel.adjustsFontSizeToFitWidth = YES;
-    
-    [Travel loadFirstPhotoForPlace:_placeId imageView:_cityImageView attributionLabel:_attributeLabel];
-}
-
-
-/**
- * Checks the stored temperature unit settings and determines whether the labels will display
- * the temperatures in Celsius or Fahrenheit according to the stored value.
- */
-- (void)checkSelectedTemperatureUnit {
-    _tempLabel.text     = ([[_userDefaults stringForKey:@"tempUnit"] isEqualToString:@"C"] ?
-                               [_localWeatherManager kelvinToCelsius:[_localWeatherManager getCurrentWeatherTemp]] :
-                               [_localWeatherManager kelvinToFahrenheit:[_localWeatherManager getCurrentWeatherTemp]]);
-    
-    _highTempLabel.text = ([[_userDefaults stringForKey:@"tempUnit"] isEqualToString:@"C"] ?
-                               [NSString stringWithFormat:@"↑%@", [_localWeatherManager kelvinToCelsius:[_localWeatherManager getDailyForecastMaxTemp]]] :
-                               [NSString stringWithFormat:@"↑%@", [_localWeatherManager kelvinToFahrenheit:[_localWeatherManager getDailyForecastMaxTemp]]]);
-    
-    _lowTempLabel.text  = ([[_userDefaults stringForKey:@"tempUnit"] isEqualToString:@"C"] ?
-                               [NSString stringWithFormat:@"↓%@", [_localWeatherManager kelvinToCelsius:[_localWeatherManager getDailyForecastMinTemp]]] :
-                               [NSString stringWithFormat:@"↓%@", [_localWeatherManager kelvinToFahrenheit:[_localWeatherManager getDailyForecastMinTemp]]]);
-    
-    _localTimeLabel.text= [_timeZoneManager getCurrentTime];
 }
 
 /**
@@ -124,7 +136,7 @@ NSString *description;
     _stateLabel.textColor = color;
     _traveltypeLabel.textColor = color;
     _descriptionLabel.textColor = color;
-    _tempLabel.textColor = color;;
+    _tempLabel.textColor = color;
     _highTempLabel.textColor = color;
     _lowTempLabel.textColor = color;
     _localTimeLabel.textColor = color;

@@ -10,6 +10,18 @@
 
 @interface TMDetailedTravelViewController : UIViewController
 
-@property (strong, nonatomic) NSString *cityName, *cityFormattedAddress, *travelType, *placeId, *latitude, *longitude;
+@property (strong, nonatomic) NSString *cityName;
+@property (strong, nonatomic) NSString *cityFormattedAddress;
+@property (strong, nonatomic) NSString *travelType;
+@property (strong, nonatomic) NSString *placeId;
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
+@property (strong, nonatomic) NSString *weatherDescription;
+@property (strong, nonatomic) NSString *iconFileName;
+@property (strong, nonatomic) NSString *currentTemp;
+@property (strong, nonatomic) NSString *lowTemp;
+@property (strong, nonatomic) NSString *highTemp;
+@property (strong, nonatomic) NSString *currentTime;
+@property (assign, nonatomic) BOOL isDay;
 
 @end
