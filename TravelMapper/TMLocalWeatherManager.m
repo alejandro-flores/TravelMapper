@@ -9,7 +9,7 @@
 #import "TMLocalWeatherManager.h"
 #import "TMAPIHelper.h"
 
-static const NSString *API_KEY = @"***REMOVED***";   // OpenWeather API Key
+static const NSString *API_KEY = @"ENTER_OW_API_KEY";   // OpenWeather API Key
 
 @implementation TMLocalWeatherManager
 
